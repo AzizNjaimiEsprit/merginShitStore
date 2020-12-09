@@ -85,7 +85,8 @@ public class QuizViewAdmin extends MenuBarController implements Initializable {
                 Parent root = loader.load();
                 AddQuizAdmin addQuizAdmin = loader.getController();
                 addQuizAdmin.setQuiz(table_quiz.getItems().get(index));
-                Global.getPrimaryStage().getScene().setRoot(root);
+                table_quiz.getScene().setRoot(root);
+                //Global.getPrimaryStage().getScene().setRoot(root);
                 Global.getPrimaryStage().setHeight(getHeight("AddQuizAdmin"));
                 Global.getPrimaryStage().setWidth(getWidth("AddQuizAdmin"));
             } else {

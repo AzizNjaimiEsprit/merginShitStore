@@ -36,6 +36,14 @@ public abstract class MenuBarController {
         //WishList + ....
         interfacesSizes.put("InterfaceWishList", "597/907");
         interfacesSizes.put("InterfaceBasket", "597/907");
+        //Library
+        interfacesSizes.put("OnlineLibrary","545.0/744.0");
+        interfacesSizes.put("QuizViewAdmin","563.0/711.0");
+        interfacesSizes.put("QuizViewClient","606.0/658.0");
+        interfacesSizes.put("ChatViewAdmin","568.0/812.0");
+        interfacesSizes.put("ChatViewClient","482.0/812.0");
+        interfacesSizes.put("AddQuizAdmin","645.0/692.0");
+        interfacesSizes.put("UpdateQuizAdmin","645.0/692.0");
     }
 
     public void handlemenuclick(ActionEvent actionEvent) {
