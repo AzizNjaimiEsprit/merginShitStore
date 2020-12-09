@@ -28,6 +28,8 @@ import java.util.ResourceBundle;
  */
 
 public class EditOrderController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     Order toEdit;
     OrderItemService orderItemService = new OrderItemService();
     OrderService orderService = new OrderService();
@@ -87,7 +89,8 @@ public class EditOrderController extends MenuBarController implements Initializa
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         id_book.setCellValueFactory(new PropertyValueFactory("bookId"));
         book_title.setCellValueFactory(new PropertyValueFactory("bookTitle"));
         quantity.setCellValueFactory(new PropertyValueFactory("quantity"));

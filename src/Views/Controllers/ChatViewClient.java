@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ChatViewClient  extends MenuBarController  implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     @FXML
     private AnchorPane col_body;

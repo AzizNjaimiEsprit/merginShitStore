@@ -24,6 +24,9 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class ClientMenuController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
+
     public Pane ProfilePane;
     public Button UpdateBtn;
     public TextField full_field;
@@ -42,7 +45,8 @@ public class ClientMenuController extends MenuBarController implements Initializ
     Client c= new Client();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         ProfilePane.setVisible(false);
         User cc= Global.getCurrentUser();
         c= cs.GetClient(cc.getId());

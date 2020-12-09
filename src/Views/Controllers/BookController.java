@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class BookController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     CrudComment cc = new CrudComment();
     CrudRate cr = new CrudRate();
     private OnlineBook toshow = null;
@@ -107,7 +109,8 @@ public class BookController extends MenuBarController implements Initializable {
     private Label moyrate;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         stars.add(etoile1);stars.add(etoile2);stars.add(etoile3);stars.add(etoile4);stars.add(etoile5);
         comment.setCellValueFactory(new PropertyValueFactory("text"));
         username.setCellValueFactory(new PropertyValueFactory("userFullName"));

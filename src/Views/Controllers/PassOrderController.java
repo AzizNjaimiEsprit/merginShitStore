@@ -33,6 +33,8 @@ import java.util.ResourceBundle;
  * @author  Njaimi Med Aziz
  */
 public class PassOrderController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     OrderItemService orderItemService = new OrderItemService();
     OrderService orderService = new OrderService();
@@ -88,7 +90,8 @@ public class PassOrderController extends MenuBarController implements Initializa
     );
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         label_discount.setVisible(false);
         amount_toPay.setVisible(false);
         discount_amount.setVisible(false);

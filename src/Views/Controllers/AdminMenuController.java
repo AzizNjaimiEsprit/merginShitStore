@@ -27,6 +27,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class AdminMenuController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     public TabPane menutab;
     public Tab adminTab;
@@ -93,7 +95,8 @@ public class AdminMenuController implements Initializable {
     clientService cs = new clientService();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
 
             image= new ImageView(new File("Views/Ressources/Images/iconelogout.png").toURI().toString());
 

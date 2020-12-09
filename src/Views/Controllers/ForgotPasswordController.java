@@ -14,6 +14,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ForgotPasswordController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     public TextField code_field;
     public PasswordField password_field;
     public PasswordField Rpassword_field;
@@ -27,7 +29,8 @@ public class ForgotPasswordController extends MenuBarController implements Initi
     int idd=0;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         password_field.setVisible(false);
         Rpassword_field.setVisible(false);
         update_btn.setVisible(false);

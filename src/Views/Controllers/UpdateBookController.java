@@ -19,6 +19,8 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class UpdateBookController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     private OnlineBook toshow = null;
     private int id =-9;
 
@@ -68,7 +70,8 @@ public class UpdateBookController extends MenuBarController implements Initializ
 
     ServiceCategorie cc = new ServiceCategorie();
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
 
         categories.setItems(cc.afficher());
 

@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class OnlineLibrary  extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     @FXML
     private TableView<Library> table_library;
 

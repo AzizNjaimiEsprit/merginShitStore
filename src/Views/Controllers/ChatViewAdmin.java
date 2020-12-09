@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ChatViewAdmin extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     @FXML
     private TableView<Chat> table_chat;

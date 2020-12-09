@@ -24,6 +24,8 @@ import java.util.ResourceBundle;
 
 
 public class UpdateQuizAdmin extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     @FXML
     private Label txt_title;

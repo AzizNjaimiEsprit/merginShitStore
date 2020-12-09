@@ -27,6 +27,8 @@ import sun.plugin2.message.JavaObjectOpMessage;
 import javax.swing.*;
 
 public class InterfaceBasket extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     private ObservableList<Basket> data;
 
@@ -76,7 +78,8 @@ public class InterfaceBasket extends MenuBarController implements Initializable 
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         System.out.println(sb.getBasketOfUser(connectedUser.getId()));
         list = sb.getBasketOfUser(Global.getCurrentUser().getId());
         txt_livre.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));

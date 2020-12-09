@@ -29,6 +29,8 @@ import javafx.scene.input.MouseEvent;
 import javax.swing.*;
 
 public class InterfaceWishList extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     private ObservableList<WishList> data;
 
     @FXML
@@ -101,7 +103,8 @@ public class InterfaceWishList extends MenuBarController implements Initializabl
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
 
 
         lists = sw.getWishListOfUser(Global.getCurrentUser().getId());

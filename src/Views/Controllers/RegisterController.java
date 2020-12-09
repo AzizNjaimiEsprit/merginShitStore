@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class RegisterController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     public AnchorPane registerPane;
     public Button register_btn;
     public TextField fullname_field;
@@ -32,7 +34,8 @@ public class RegisterController implements Initializable {
     public PasswordField repeat_field;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
 
     }
     public boolean testSaisieClient() {

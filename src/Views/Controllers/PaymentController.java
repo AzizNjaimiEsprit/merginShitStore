@@ -27,6 +27,8 @@ import java.util.ResourceBundle;
  */
 
 public class PaymentController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     Order order;
 
@@ -67,7 +69,8 @@ public class PaymentController extends MenuBarController implements Initializabl
     public void setUsedCoupn(Coupon usedCoupn) { this.usedCoupn = usedCoupn; }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         in_amount.setDisable(true);
     }
 

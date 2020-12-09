@@ -26,6 +26,8 @@ import javafx.scene.text.Text;
 import javax.swing.*;
 
 public class QuizViewClient extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     AnswerDaoImp answerDaoImp=new AnswerDaoImp();
     QuestionDaoImp questionDaoImp=new QuestionDaoImp();

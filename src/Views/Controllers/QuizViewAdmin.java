@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class QuizViewAdmin extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     @FXML
     private TableView<Quiz> table_quiz;

@@ -28,6 +28,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AddOnlineBookController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     ServiceCategorie cc = new ServiceCategorie();
     CrudOnlineBook cb = new CrudOnlineBook();
     TechnicalSheetCreation ts = new TechnicalSheetCreation();
@@ -35,6 +37,7 @@ public class AddOnlineBookController extends MenuBarController implements Initia
     File img;
     File pdf;
     private int flag = 0;
+
     @FXML
     private MenuBar menuBar;
 
@@ -128,7 +131,7 @@ public class AddOnlineBookController extends MenuBarController implements Initia
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
         initMenuBar(menuBar);
         title.setCellValueFactory(new PropertyValueFactory<OnlineBook, String>("title"));
         price.setCellValueFactory(new PropertyValueFactory<OnlineBook, Double>("price"));

@@ -24,6 +24,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ClientOrdersListController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
+
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD");
     ArrayList<String> etats = new ArrayList<>();
     OrderService orderService = new OrderService();
@@ -89,7 +92,8 @@ public class ClientOrdersListController extends MenuBarController implements Ini
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         // Initializing Choice box
         etats.add("All");
         etats.add("Non Traite");

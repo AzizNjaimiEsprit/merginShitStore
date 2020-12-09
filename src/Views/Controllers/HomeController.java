@@ -33,6 +33,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class HomeController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     CrudOnlineBook cb = new CrudOnlineBook();
     CrudRate crudRate = new CrudRate();
     ServiceCategorie cc = new ServiceCategorie();
@@ -62,7 +64,8 @@ public class HomeController extends MenuBarController implements Initializable {
     private int sliderIterator = 0;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         System.out.println(Global.getCurrentUser().toString());
         userFullName.setText(Global.getCurrentUser().getFullName());
         this.nextSlide(null);

@@ -21,6 +21,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
     public AnchorPane login;
     public Button login_btn;
@@ -37,7 +39,8 @@ public class LoginController extends MenuBarController implements Initializable 
     UserService us = new UserService();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         RegisterBtn();
         ForgotBtn();
         log();

@@ -26,6 +26,8 @@ import java.util.stream.Collectors;
  * @author Njaimi Med Aziz
  */
 public class AdminOrdersListController extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     ArrayList<String> etats = new ArrayList<>();
     ArrayList<String> etatsFind = new ArrayList<>();
     OrderService orderService = new OrderService();
@@ -97,7 +99,8 @@ public class AdminOrdersListController extends MenuBarController implements Init
     );
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         // Initializing Choice box
         etats.add("Non Traite");
         etats.add("En livraison");

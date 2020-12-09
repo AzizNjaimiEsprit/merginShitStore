@@ -16,6 +16,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class VerificationCodeController implements Initializable {
+@FXML
+    private MenuBar menuBar;
     public Button validate_btn;
     public TextField verifcode_field;
     public Hyperlink hyper;
@@ -24,7 +26,8 @@ public class VerificationCodeController implements Initializable {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         hyper.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

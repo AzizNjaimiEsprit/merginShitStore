@@ -27,6 +27,8 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class CategoryInterface extends MenuBarController implements Initializable {
+@FXML
+    private MenuBar menuBar;
 
 
     @FXML
@@ -44,7 +46,8 @@ public class CategoryInterface extends MenuBarController implements Initializabl
     User connectedUser = Global.getCurrentUser();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+       @Override public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         System.out.println(sg.afficher());
         list = sg.afficher();
         category.setCellValueFactory(new PropertyValueFactory<>("name"));
