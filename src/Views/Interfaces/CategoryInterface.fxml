@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.*?>
 <AnchorPane prefHeight="474.0" prefWidth="670.0" styleClass="parent" stylesheets="@/Views/Resources/css/StyleSheetW.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.CategoryInterface">
-   <MenuBar  >
+    <MenuBar fx:id="menuBar"  >
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>

@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.*?>
 <VBox prefHeight="868.0" prefWidth="1580.0" stylesheets="@/Views/Resources/css/style1.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.AdminOrdersListController">
-    <MenuBar  >
+     <MenuBar fx:id="menuBar"  >
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
@@ -57,7 +57,7 @@
             </menus>
         </MenuBar>
     <children>
-        <MenuBar  >
+         <MenuBar fx:id="menuBar"  >
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Order">
                     <items>

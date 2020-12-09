@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.*?>
 <AnchorPane prefHeight="524.0" prefWidth="695.0" stylesheets="@/Views/Resources/css/Style2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.QuizViewAdmin">
-   <MenuBar  >
+    <MenuBar fx:id="menuBar"  >
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.*?>
 <AnchorPane prefHeight="605.0" prefWidth="889.0" styleClass="parent" stylesheets="@/Views/Resources/css/StyleSheetW.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.InterfaceBasket">
-   <MenuBar  >
+    <MenuBar fx:id="menuBar"  >
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>

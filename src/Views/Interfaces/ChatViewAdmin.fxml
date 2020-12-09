@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.*?>
 <AnchorPane prefHeight="529.0" prefWidth="796.0" stylesheets="@/Views/Resources/css/Style2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.ChatViewAdmin">
-  <MenuBar  >
+   <MenuBar fx:id="menuBar"  >
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>

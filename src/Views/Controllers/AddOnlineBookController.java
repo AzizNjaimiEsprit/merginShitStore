@@ -35,6 +35,9 @@ public class AddOnlineBookController extends MenuBarController implements Initia
     File img;
     File pdf;
     private int flag = 0;
+    @FXML
+    private MenuBar menuBar;
+
 
     @FXML
     private Button addbtn;
@@ -126,6 +129,7 @@ public class AddOnlineBookController extends MenuBarController implements Initia
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        initMenuBar(menuBar);
         title.setCellValueFactory(new PropertyValueFactory<OnlineBook, String>("title"));
         price.setCellValueFactory(new PropertyValueFactory<OnlineBook, Double>("price"));
         author.setCellValueFactory(new PropertyValueFactory<OnlineBook, String>("authors"));

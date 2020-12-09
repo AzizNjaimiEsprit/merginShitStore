@@ -7,7 +7,7 @@
 
 <VBox prefHeight="790.0" prefWidth="878.0" stylesheets="@/Views/Resources/css/style1.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.PassOrderController">
   <children>
-    <MenuBar  >
+     <MenuBar fx:id="menuBar"  >
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
