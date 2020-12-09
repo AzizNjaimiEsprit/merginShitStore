@@ -53,12 +53,12 @@ public class SMS_Service implements Credentials {
         return false;
     }
 
-    public boolean SendSMSCouponGenerated(String numTel, Coupon coupon) {
+    public boolean SendSMSCouponGenerated(Coupon coupon) {
 
         String text = "Hi " + coupon.getUser().getFullName() + "\nYou generated a payment coupon : " + coupon.getCode() + "\nAmount : " + coupon.getAmount();
         SmsSubmissionResponse responses = client.getSmsClient().submitMessage(new TextMessage(
                 "BookStore",
-                "216" + numTel,
+                "216" + coupon.getUser().getTelephone(),
                 text));
         for (SmsSubmissionResponseMessage response : responses.getMessages()) {
             System.out.println(response.getStatus());

@@ -22,7 +22,7 @@
                         <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
                         <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
                         <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
-                        <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points"/>
+                        <MenuItem id="Coupon" mnemonicParsing="false" text="Coupon"/>
                         <SeparatorMenuItem mnemonicParsing="false"/>
                         <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
                         <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
@@ -39,7 +39,7 @@
                         <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
                         <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
                         <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
-                        <MenuItem id="Offers" mnemonicParsing="false" text="Offers"/>
+                        <MenuItem id="OfferList" mnemonicParsing="false" text="Offers"/>
                         <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
                         <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
                         <SeparatorMenuItem mnemonicParsing="false"/>

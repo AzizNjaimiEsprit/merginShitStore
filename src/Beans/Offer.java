@@ -1,5 +1,14 @@
 package Beans;
 
+import Services.OfferService;
+import javafx.scene.control.Button;
+import java.sql.Timestamp;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class Offer {
@@ -10,8 +19,13 @@ public class Offer {
     private String author;
     private float price;
     private String image;
+    private String bought;
+    private Timestamp submitDate;
+    private Button acceptOffer;
+    private Button declineOffer;
 
-    public Offer(int id, User user, String title, String description, String author, float price, String image) {
+    // Get data from database
+    public Offer(int id, User user, String title, String description, String author, float price, String image, String bought, Timestamp submitDate) {
         this.id = id;
         this.user = user;
         this.title = title;
@@ -19,60 +33,82 @@ public class Offer {
         this.author = author;
         this.price = price;
         this.image = image;
+        this.bought = bought;
+        this.submitDate = submitDate;
+    }
+
+    //Insert data into database
+    public Offer(User user, String title, String description, String author, float price, String image) {
+        this.user = user;
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.price = price;
+        this.image = image;
+    }
+
+    // Insert data into TableView JavaFX
+    public Offer (int id, User user, String title,String description, String author, float price, String image, String bought,Timestamp submitDate, Button acceptOffer, Button declineOffer) {
+        this.id = id;
+        this.user = user;
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.price = price;
+        this.image = image;
+        this.bought = bought;
+        this.submitDate = submitDate;
+        this.acceptOffer = acceptOffer;
+        this.declineOffer = declineOffer;
     }
 
     // Getters and Setters
-    public int getId() {
-        return this.id;
+    public int getId () {return this.id;}
+
+    public User getUser () {return this.user;}
+
+    public void setUser (User user) {this.user = user;}
+
+    public String getTitle () {return this.title;}
+
+    public void setTitle (String title) {this.title = title;}
+
+    public String getDescription () {return this.description;}
+
+    public void setDescription (String description) {this.description = description;}
+
+    public String getAuthor () {return this.author;}
+
+    public void setAuthor (String author) {this.author = author;}
+
+    public float getPrice () {return this.price;}
+
+    public void setPrice (float price) {this.price = price;}
+
+    public String getImage () {return this.image;}
+
+    public void setImage (String image) {this.image = image;}
+
+    public Button getAcceptOffer() {
+        return acceptOffer;
     }
 
-    public User getUser() {
-        return this.user;
+    public Button getDeclineOffer() {
+        return declineOffer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public String getSellerName () {
+        OfferService offerService = new OfferService();
+        return offerService.getSeller(this.getUser().getId());
     }
 
-    public String getTitle() {
-        return this.title;
-    }
+    public String getBought () {return this.bought;}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setBought (String bought) {this.bought = bought;}
 
-    public String getDescription() {
-        return this.description;
-    }
+    public Timestamp getSubmitDate () {return this.submitDate;}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
-    public String getAuthor() {
-        return this.author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public float getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public String getImage() {
-        return this.image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     @Override
     public boolean equals(Object o) {

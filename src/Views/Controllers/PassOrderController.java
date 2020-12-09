@@ -183,7 +183,7 @@ public class PassOrderController extends MenuBarController implements Initializa
         amount_toPay.setVisible(true);
         discount_amount.setVisible(true);
         label_toPay.setVisible(true);
-        if (couponService.isCouponValid(new Coupon(in_coupon.getText()))) {
+        if (couponService.isCouponUsed(new Coupon(in_coupon.getText()))) {
             in_coupon.setStyle("-fx-text-box-border: green; -fx-focus-color: green;");
             payment_coupon = couponService.get(in_coupon.getText());
             discount_amount.setText("-" + payment_coupon.getAmount() + " Dt");

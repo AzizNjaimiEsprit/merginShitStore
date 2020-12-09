@@ -2,8 +2,7 @@ package Services;
 
 import Beans.Coupon;
 import Beans.User;
-import Utility.Singleton;
-import api.SMS_Service;
+import Utility.*;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.sql.Connection;
@@ -12,28 +11,44 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CouponService {
-    private Connection cnx = Singleton.getConn();
-    private SMS_Service smsService = new SMS_Service();
+public class CouponService implements IService<Coupon>{
+    private final Connection cnx = Singleton.getConn();
 
-    private String couponCode() {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#*-_=+/?";
-        return RandomStringUtils.random(10, characters);
+    private String couponCode () {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#^*()-_=+[]}\\|;:\'\",<.>/?";
+        return RandomStringUtils.random( 10, characters );
     }
 
-    public Coupon add(Coupon coupon) {
+    // This method used for testing...
+    private String getPhoneNumber (int userID) {
+        try {
+            String request = "SELECT telephone FROM USER WHERE id = ?";
+            PreparedStatement st = cnx.prepareStatement(request);
+            st.setInt(1, userID);
+            ResultSet resultSet = st.executeQuery();
+            if (resultSet.next()) return resultSet.getString(1);
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return null;
+    }
+    @Override
+    public void add (Coupon coupon) {
+
+    }
+
+    public Coupon addCoupon (Coupon coupon) {
         try {
             String request = "INSERT INTO COUPON values(?, ?, ?)";
             PreparedStatement statement = cnx.prepareStatement(request);
-            String newCoupon;
-            do {
-                newCoupon = this.couponCode();
-            } while (get(newCoupon) != null);
+            String newCoupon = this.couponCode();
             statement.setString(1, newCoupon);
             statement.setInt(2, coupon.getUser().getId());
             statement.setFloat(3, coupon.getAmount());
-            statement.executeUpdate();
             coupon.setCode(newCoupon);
+            statement.executeUpdate();
+
+            System.out.println("New Coupon created successfully - an SMS was sent to " + coupon.getUser().getTelephone());
             return coupon;
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -41,8 +56,8 @@ public class CouponService {
         return null;
     }
 
-
-    public void update(Coupon coupon) {
+    @Override
+    public void update (Coupon coupon) {
         try {
             String request = "UPDATE COUPON SET amount = ? where user_id = ?";
             PreparedStatement statement = cnx.prepareStatement(request);
@@ -55,7 +70,8 @@ public class CouponService {
         }
     }
 
-    public void delete(int user_id) {
+    @Override
+    public void delete (int user_id) {
         try {
             String request = "DELETE FROM COUPON where user_id = ?";
             PreparedStatement statement = cnx.prepareStatement(request);
@@ -67,7 +83,8 @@ public class CouponService {
         }
     }
 
-    public Coupon get(int userID) {
+    @Override
+    public Coupon get (int userID) {
         try {
             String request = "SELECT * from COUPON where user_id = ?";
             PreparedStatement st = cnx.prepareStatement(request);
@@ -78,7 +95,7 @@ public class CouponService {
                         resultSet.getString(1),
                         new User(resultSet.getInt(2)),
                         resultSet.getFloat(3)
-                )
+                    )
                 );
             }
             resultSet.close();
@@ -86,27 +103,6 @@ public class CouponService {
             sqlException.printStackTrace();
         }
         return null;
-    }
-
-    public ArrayList<Coupon> get() {
-        ArrayList<Coupon> coupons = new ArrayList<>();
-        try {
-            String request = "SELECT * FROM COUPON";
-            PreparedStatement statement = cnx.prepareStatement(request);
-            ResultSet result = statement.executeQuery();
-            while (result.next()) {
-                coupons.add(
-                        new Coupon(
-                                result.getString(1),
-                                new User(result.getInt(2)),
-                                result.getFloat(3)
-                        )
-                );
-            }
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
-        return coupons;
     }
 
     public Coupon get(String code) {
@@ -130,27 +126,47 @@ public class CouponService {
         return res;
     }
 
-    public boolean isCouponValid(Coupon coupon) {
+    @Override
+    public ArrayList<Coupon> get () {
+        ArrayList<Coupon> coupons = new ArrayList<>();
+        try {
+            String request = "SELECT * FROM COUPON";
+            PreparedStatement statement = cnx.prepareStatement(request);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                coupons.add(
+                        new Coupon(
+                        result.getString(1),
+                        new User(result.getInt(2)),
+                        result.getFloat(3)
+                    )
+                );
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return coupons;
+    }
+
+    public boolean isCouponUsed (Coupon coupon) {
         try {
             String request = "SELECT * FROM COUPON WHERE code = ?";
             PreparedStatement statement = cnx.prepareStatement(request);
             statement.setString(1, coupon.getCode());
             ResultSet result = statement.executeQuery();
-
-            if (!result.next()) return false;
-
+            if (!result.next()) return true;
             else {
-                System.out.println("TAADA");
-                String req = "SELECT * FROM COUPON_USAGE_HISTORY WHERE coupon_code = ? and usage_type = 'PAYMENT'";
+                String req = "SELECT * FROM COUPON_USAGE_HISTORY WHERE coupon_code = ? and usage_type = 'payment'";
                 PreparedStatement st = cnx.prepareStatement(req);
                 st.setString(1, coupon.getCode());
                 ResultSet resultSet = st.executeQuery();
-                if (resultSet.next()) return false;
-                else return true;
+                if (!resultSet.next()) return true;
+                else return false;
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-        return true;
+        return false;
     }
+
 }

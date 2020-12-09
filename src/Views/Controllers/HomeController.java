@@ -203,14 +203,13 @@ public class HomeController extends MenuBarController implements Initializable {
     }
 
     public void goToBasket(MouseEvent mouseEvent) {
-        redirect("InterfaceBasket");
+        redirect("PassOrderPage");
+        //redirect("InterfaceBasket");
 
     }
 
     public void goToOrder(MouseEvent mouseEvent) {
-        //    redirect("Order");
-
-
+        redirect("Offer");
     }
 
 

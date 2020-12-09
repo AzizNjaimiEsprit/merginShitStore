@@ -17,7 +17,8 @@ import java.util.ArrayList;
 
 public class OrderItemService implements IService<OrderItem> {
     private Connection con = Singleton.getConn();
-
+    private ReptureStock reptureStock = new ReptureStock();
+    private CrudBook crudBook = new CrudBook();
 
     /******************************************** Interface Implementation **********************************************/
     @Override
@@ -29,6 +30,9 @@ public class OrderItemService implements IService<OrderItem> {
             preparedStmt.setInt(3, item.getQuantity());
             preparedStmt.execute();
             System.out.println("Item Inseré Avec Succes");
+            item.getBook().setQuantity(item.getBook().getQuantity()- item.getQuantity());
+            crudBook.ModifierQuantitéLivre(item.getBook());
+            reptureStock.verificationStock(item.getBook());
             //crudBook.updateQuantity(bookid,amount);
         } catch (Exception e) {
             e.printStackTrace();

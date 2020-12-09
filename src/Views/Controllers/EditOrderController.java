@@ -115,7 +115,7 @@ public class EditOrderController extends MenuBarController implements Initializa
         orderService.update(toEdit);
         // Saving coupon and sending email
 
-        Coupon insertedCoupon = couponService.add(new Coupon(null, toEdit.getUser(), toRepayValue));
+        Coupon insertedCoupon = couponService.addCoupon(new Coupon(null, toEdit.getUser(), toRepayValue));
         historyService.add(new CouponUsageHistory(insertedCoupon, toEdit, "REFUND"));
         sms_service.SendSMSRefund(toEdit, insertedCoupon);
         // Redirecting

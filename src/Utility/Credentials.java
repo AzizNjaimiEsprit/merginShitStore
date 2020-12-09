@@ -5,8 +5,8 @@ public interface Credentials {
     String from = "bookstore.cm.esprit@gmail.com";
     String password = "bookstore1234";
     // Nexmo Api Credentials 
-    String nexmo_apiKey = "b17813**";
-    String nexmo_apiSecret = "D6YjaxTfSEBiIu**";
+    String nexmo_apiKey = "b17813bb";
+    String nexmo_apiSecret = "D6YjaxTfSEBiIuph";
 
     // Database Credentials
     String host = "bvuadnkmwdnnubgw2znc-mysql.services.clever-cloud.com";

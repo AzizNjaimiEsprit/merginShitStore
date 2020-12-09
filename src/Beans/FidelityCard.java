@@ -7,13 +7,13 @@ public class FidelityCard {
     private User user;
     private int points;
 
-    public FidelityCard(int id, User user, int points) {
+    public FidelityCard (int id, User user, int points) {
         this.id = id;
         this.user = user;
         this.points = points;
     }
 
-    public FidelityCard(User user, int points) {
+    public FidelityCard (User user, int points) {
         this.user = user;
         this.points = points;
     }

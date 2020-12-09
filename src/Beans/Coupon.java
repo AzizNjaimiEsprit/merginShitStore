@@ -12,6 +12,11 @@ public class Coupon {
         this.code = code;
     }
 
+    public Coupon (User user, float amount) {
+        this.user = user;
+        this.amount = amount;
+    }
+
     public Coupon(String code, User user, float amount) {
         this.code = code;
         this.user = user;
@@ -43,6 +48,7 @@ public class Coupon {
                 Objects.equals(code, coupon.code) &&
                 Objects.equals(user, coupon.user);
     }
+
 
 
     @Override

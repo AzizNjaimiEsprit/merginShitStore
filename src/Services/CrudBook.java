@@ -94,22 +94,7 @@ public class CrudBook {
         }
     }
 
-    public int RecupererQuantitéLivre(Book b) {
-        if (b.equals(RecupererLivre(b))) {
-            try {
-                PreparedStatement preparedStat = cnn.prepareStatement(" SELECT quantity From BOOK  WHERE id=" + b.getId());
-                ResultSet res = preparedStat.executeQuery();
-                while (res.next())
-                    return res.getInt("quantity");
-                System.out.println("La quantité du livre " + b.getId() + "est modifier ");
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        } else {
-            System.out.println("le livre n'existe pas ");
-        }
-        return Integer.parseInt(null);
-    }
+
 
 
     public void ModifierQuantitéLivre(Book b) {

@@ -1,5 +1,6 @@
 package Views.Controllers;
 
+import Beans.User;
 import Utility.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -51,6 +52,11 @@ public abstract class MenuBarController {
         interfacesSizes.put("AdminMenu","650/816");
         interfacesSizes.put("VerificationCode","439/616");
         interfacesSizes.put("ForgotPassword","439/616");
+        // fidelity + coupon +offer
+        interfacesSizes.put("OfferList","544/744");
+        interfacesSizes.put("Coupon","453/675");
+        interfacesSizes.put("OfferDetails","516/708");
+        interfacesSizes.put("Offer","609/656");
 
     }
 
@@ -58,6 +64,10 @@ public abstract class MenuBarController {
         String ch = actionEvent.getTarget().toString();
         String id = ch.substring(ch.indexOf("id=") + 3, ch.indexOf(","));
         System.out.println(id);
+        if (id.equals("logout")){
+            Global.setCurrentUser(new User());
+            redirect("login");
+        }
         redirect(id);
     }
 

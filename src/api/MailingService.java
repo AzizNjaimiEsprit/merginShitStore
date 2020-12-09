@@ -1,6 +1,7 @@
 package api;
 
 
+import Beans.Book;
 import Beans.Order;
 import Beans.OrderItem;
 import Utility.Credentials;
@@ -81,6 +82,21 @@ public class MailingService implements Credentials {
             mex.printStackTrace();
         }
     }
+     public void sendReptureStockEmail(Book B){
+         try {
+             MimeMessage message = new MimeMessage(session);
+             message.setFrom(new InternetAddress(from));
+             message.addRecipient(Message.RecipientType.TO, new InternetAddress("samar.neji@esprit.tn"));
+             message.setSubject("Alerte : Repture du stock ");
+             message.setText(" Bonjour Admin \n Le Stock du livre N°" + B.getId() + " est en repture du stock " + "\n ** DETAIL DU LIVRE ** \n" + B.toString() + "`\n" + "Cordialement");
+             System.out.println("sending...");
+
+             Transport.send(message);
+             System.out.println("Sent message successfully....");
+         } catch (MessagingException mex) {
+             mex.printStackTrace();
+         }
+     }
 
     public void sendConfirmationEmail(String to, String msg) {
         try {
