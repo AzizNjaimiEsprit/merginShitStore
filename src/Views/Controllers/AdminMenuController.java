@@ -26,7 +26,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class AdminMenuController implements Initializable {
+public class AdminMenuController extends MenuBarController implements Initializable {
     @FXML
     private MenuBar menuBar;
 

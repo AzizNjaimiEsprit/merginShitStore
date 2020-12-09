@@ -26,11 +26,11 @@
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
-                    <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                      <items>
+                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
 
 
-                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
+                        <MenuItem id="AdminMenu" mnemonicParsing="false" text="Users List"/>
                         <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
                         <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
                         <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>

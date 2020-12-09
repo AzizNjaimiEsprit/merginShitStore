@@ -199,7 +199,7 @@ public class HomeController extends MenuBarController implements Initializable {
     }
 
     public void goToAccountDetails(MouseEvent mouseEvent) {
-        //   redirect("Account");
+          redirect("ClientMenu");
     }
 
     public void goToBasket(MouseEvent mouseEvent) {

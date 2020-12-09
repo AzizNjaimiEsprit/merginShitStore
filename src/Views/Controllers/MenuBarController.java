@@ -44,6 +44,14 @@ public abstract class MenuBarController {
         interfacesSizes.put("ChatViewClient","482.0/812.0");
         interfacesSizes.put("AddQuizAdmin","645.0/692.0");
         interfacesSizes.put("UpdateQuizAdmin","645.0/692.0");
+        //user
+        interfacesSizes.put("login","527/639");
+        interfacesSizes.put("register","439/616");
+        interfacesSizes.put("ClientMenu","639/816");
+        interfacesSizes.put("AdminMenu","650/816");
+        interfacesSizes.put("VerificationCode","439/616");
+        interfacesSizes.put("ForgotPassword","439/616");
+
     }
 
     public void handlemenuclick(ActionEvent actionEvent) {

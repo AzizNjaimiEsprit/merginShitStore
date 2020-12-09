@@ -16,7 +16,7 @@ public class Main extends Application {
         UserService userSer = new UserService();
         Global.setCurrentUser(userSer.GetUser(3));
         System.out.println(userSer.GetUser(3));
-        Parent root = FXMLLoader.load(getClass().getResource("../Views/Interfaces/HomeByAziz.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Views/Interfaces/login.fxml"));
         primaryStage.getIcons().add(new Image("file:src/Views/Resources/images/icon.png"));
         Global.setPrimaryStage(primaryStage);
         Stage ps = Global.getPrimaryStage();

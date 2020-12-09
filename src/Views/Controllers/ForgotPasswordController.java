@@ -35,7 +35,7 @@ public class ForgotPasswordController extends MenuBarController implements Initi
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initMenuBar(menuBar);
+        //initMenuBar(menuBar);
         password_field.setVisible(false);
         Rpassword_field.setVisible(false);
         update_btn.setVisible(false);

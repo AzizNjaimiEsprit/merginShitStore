@@ -1,93 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<AnchorPane fx:id="AnchorMenu" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;"
-            stylesheets="@/Views/Resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.171"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.ClientMenuController">
-    <Button fx:id="profile" layoutX="699.0" layoutY="23.0" mnemonicParsing="false" onAction="#ProfileAction"
-            prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: transparent;">
+
+<AnchorPane fx:id="AnchorMenu" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" stylesheets="@/Views/Resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.ClientMenuController">
+    <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="807.0">
+        <menus>
+            <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
+                <items>
+                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
+
+                    <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders" />
+                    <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library" />
+                    <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList" />
+                    <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket" />
+                    <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points" />
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem id="logout" mnemonicParsing="false" text="Log out" />
+                    <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                <items>
+                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
+
+
+                    <MenuItem id="AdminMenu" mnemonicParsing="false" text="Users List" />
+                    <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List" />
+                    <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List" />
+                    <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders" />
+                    <MenuItem id="Offers" mnemonicParsing="false" text="Offers" />
+                    <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List" />
+                    <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ" />
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem id="logout" mnemonicParsing="false" text="Log out" />
+                    <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin" />
+                    <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Our Web Site" />
+                    <MenuItem mnemonicParsing="false" text="Contact" />
+                    <MenuItem mnemonicParsing="false" text="About BookStore" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+    <Button fx:id="profile" layoutX="699.0" layoutY="28.0" mnemonicParsing="false" onAction="#ProfileAction" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: transparent;">
         <graphic>
-            <FontAwesomeIconView fill="#61c4f2" glyphName="USER" glyphSize="24"/>
+            <FontAwesomeIconView fill="#61c4f2" glyphName="USER" glyphSize="24" />
         </graphic>
     </Button>
-    <Button fx:id="logout" layoutX="699.0" layoutY="70.0" mnemonicParsing="false" onAction="#LogoutAction"
-            prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: transparent;">
+    <Button fx:id="logout" layoutX="699.0" layoutY="70.0" mnemonicParsing="false" onAction="#LogoutAction" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: transparent;">
         <graphic>
-            <FontAwesomeIconView fill="#61c4f2" glyphName="COGS" glyphSize="24"/>
+            <FontAwesomeIconView fill="#61c4f2" glyphName="COGS" glyphSize="24" />
         </graphic>
     </Button>
-    <Pane fx:id="ProfilePane" layoutX="139.0" layoutY="122.0" prefHeight="400.0" prefWidth="544.0"
-          style="-fx-background-color: #ffffff;">
+    <Pane fx:id="ProfilePane" layoutX="139.0" layoutY="122.0" prefHeight="400.0" prefWidth="544.0" style="-fx-background-color: #ffffff;">
         <children>
-            <Button fx:id="UpdateBtn" layoutX="270.0" layoutY="293.0" mnemonicParsing="false" onAction="#UpdateAction"
-                    prefHeight="40.0" prefWidth="104.0" text="Update"/>
-            <TextField fx:id="full_field" layoutX="114.0" layoutY="45.0" promptText="Full Name"/>
-            <TextField fx:id="phone_field" layoutX="115.0" layoutY="102.0" promptText="Phone"/>
-            <TextField fx:id="email_field" layoutX="391.0" layoutY="45.0" promptText="Email"/>
-            <TextField fx:id="address_field" layoutX="392.0" layoutY="106.0" promptText="Address"/>
-            <TextField fx:id="zip_field" layoutX="113.0" layoutY="167.0" promptText="Zip Code"/>
-            <TextField fx:id="login_field" layoutX="394.0" layoutY="169.0" promptText="Login"/>
-            <PasswordField fx:id="pass_field" layoutX="108.0" layoutY="236.0" promptText="Password"/>
-            <PasswordField fx:id="Rpass_field" layoutX="392.0" layoutY="236.0" promptText="Repeat Password"/>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="42.0" prefHeight="25.0"
-                   prefWidth="110.0" text="Full Name" textOverrun="CLIP">
+            <Button fx:id="UpdateBtn" layoutX="270.0" layoutY="293.0" mnemonicParsing="false" onAction="#UpdateAction" prefHeight="40.0" prefWidth="104.0" text="Update" />
+            <TextField fx:id="full_field" layoutX="114.0" layoutY="45.0" promptText="Full Name" />
+            <TextField fx:id="phone_field" layoutX="115.0" layoutY="102.0" promptText="Phone" />
+            <TextField fx:id="email_field" layoutX="391.0" layoutY="45.0" promptText="Email" />
+            <TextField fx:id="address_field" layoutX="392.0" layoutY="106.0" promptText="Address" />
+            <TextField fx:id="zip_field" layoutX="113.0" layoutY="167.0" promptText="Zip Code" />
+            <TextField fx:id="login_field" layoutX="394.0" layoutY="169.0" promptText="Login" />
+            <PasswordField fx:id="pass_field" layoutX="108.0" layoutY="236.0" promptText="Password" />
+            <PasswordField fx:id="Rpass_field" layoutX="392.0" layoutY="236.0" promptText="Repeat Password" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="42.0" prefHeight="25.0" prefWidth="110.0" text="Full Name" textOverrun="CLIP">
                 <effect>
-                    <Bloom threshold="0.0"/>
+                    <Bloom threshold="0.0" />
                 </effect>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="101.0" prefHeight="25.0"
-                   prefWidth="110.0" text="Phone Number" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="101.0" prefHeight="25.0" prefWidth="110.0" text="Phone Number" textAlignment="CENTER">
                 <effect>
-                    <Bloom threshold="0.0"/>
+                    <Bloom threshold="0.0" />
                 </effect>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="163.0" prefHeight="25.0"
-                   prefWidth="110.0" text="Zip Code" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="163.0" prefHeight="25.0" prefWidth="110.0" text="Zip Code" textAlignment="CENTER">
                 <effect>
-                    <Bloom threshold="0.0"/>
+                    <Bloom threshold="0.0" />
                 </effect>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="235.0" prefHeight="25.0"
-                   prefWidth="110.0" text="Password" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="235.0" prefHeight="25.0" prefWidth="110.0" text="Password" textAlignment="CENTER">
                 <effect>
-                    <Bloom threshold="0.0"/>
+                    <Bloom threshold="0.0" />
                 </effect>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="277.0" layoutY="44.0" prefHeight="25.0"
-                   prefWidth="110.0" text="Email" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="277.0" layoutY="44.0" prefHeight="25.0" prefWidth="110.0" text="Email" textAlignment="CENTER">
                 <effect>
-                    <Bloom threshold="0.0"/>
+                    <Bloom threshold="0.0" />
                 </effect>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="279.0" layoutY="106.0" prefHeight="25.0"
-                   prefWidth="110.0" text="Address" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="279.0" layoutY="106.0" prefHeight="25.0" prefWidth="110.0" text="Address" textAlignment="CENTER">
                 <effect>
-                    <Bloom threshold="0.0"/>
+                    <Bloom threshold="0.0" />
                 </effect>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="281.0" layoutY="168.0" prefHeight="25.0"
-                   prefWidth="110.0" text="Login" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="281.0" layoutY="168.0" prefHeight="25.0" prefWidth="110.0" text="Login" textAlignment="CENTER">
                 <effect>
-                    <Bloom threshold="0.0"/>
+                    <Bloom threshold="0.0" />
                 </effect>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="278.0" layoutY="232.0" prefHeight="25.0"
-                   prefWidth="110.0" text="Repeat Password" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="278.0" layoutY="232.0" prefHeight="25.0" prefWidth="110.0" text="Repeat Password" textAlignment="CENTER">
                 <effect>
-                    <Bloom threshold="0.0"/>
+                    <Bloom threshold="0.0" />
                 </effect>
             </Label>
         </children>
     </Pane>
-    <ImageView fitHeight="45.0" fitWidth="149.0" layoutX="24.0" layoutY="23.0" preserveRatio="true" smooth="true">
+    <ImageView fitHeight="45.0" fitWidth="149.0" layoutX="24.0" layoutY="45.0" preserveRatio="true" smooth="true">
         <image>
-            <Image url="@/Views/Resources/images/logo.png"/>
+            <Image url="@/Views/Resources/images/logo.png" />
         </image>
     </ImageView>
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="592.0" layoutY="36.0" prefHeight="25.0" prefWidth="131.0" text="Personal Information" textAlignment="CENTER">
+        <effect>
+            <Bloom threshold="0.0" />
+        </effect>
+    </Label>
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="606.0" layoutY="74.0" prefHeight="25.0" prefWidth="110.0" text="Log out" textAlignment="CENTER">
+        <effect>
+            <Bloom threshold="0.0" />
+        </effect>
+    </Label>
 </AnchorPane>
