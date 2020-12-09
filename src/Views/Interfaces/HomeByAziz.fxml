@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="926.0" prefWidth="1314.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.HomeController">
+  <children>
+    <MenuBar  >
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane fx:id="childrenHolder" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="975.0" prefWidth="1313.0" VBox.vgrow="ALWAYS">
+      <children>
+        <Label alignment="CENTER" layoutX="130.0" layoutY="177.0" style="&#10;" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+          <font>
+            <Font size="18.0" />
+          </font>
+        </Label>
+            <TextField fx:id="textSearch" layoutX="276.0" layoutY="26.0" prefHeight="40.0" prefWidth="685.0" />
+            <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="971.0" layoutY="27.0" onMouseClicked="#showBook" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/icons8-search-48.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="47.0" fitWidth="51.0" layoutX="1241.0" layoutY="18.0" onMouseClicked="#goToBasket" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/icons8-checkout-96.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="category" layoutX="1036.0" layoutY="23.0" text="Hello" textFill="#1e225e">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="userFullName" layoutX="1081.0" layoutY="23.0" text="User Name " textFill="#1e225e">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="1124.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/icons8-expand-arrow-48.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="1036.0" layoutY="46.0" onMouseClicked="#goToAccountDetails" text="My Account " textFill="#1d225cd6">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="47.0" fitWidth="51.0" layoutX="1194.0" layoutY="19.0" onMouseClicked="#goToWishlist" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/icons8-love-96.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="262.0" layoutX="26.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/AppLogo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="847.0" layoutX="218.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/pub1.jpg" />
+               </image>
+            </ImageView>
+            <Line endX="-37.000030517578125" endY="-222.0" layoutX="232.0" layoutY="687.0" startX="-37.000030517578125" startY="-476.0" stroke="#1e225e" />
+            <ImageView fx:id="cover1" fitHeight="226.0" fitWidth="175.0" layoutX="156.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/sommeilnoir.jpeg" />
+               </image>
+            </ImageView>
+            <Label fx:id="title1" layoutX="181.0" layoutY="766.0" text="Sommeil Noir" textAlignment="CENTER" textFill="#1e225e">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="author1" layoutX="181.0" layoutY="788.0" prefHeight="21.0" prefWidth="110.0" text="Antall" textAlignment="CENTER" textFill="#1e225e">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="295.0" layoutY="807.0" />
+            <Label layoutX="142.0" layoutY="808.0" text="Recommended  by " textFill="#726e6e">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label fx:id="rate1" layoutX="257.0" layoutY="805.0" text="67% " textFill="RED">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="title2" layoutX="449.0" layoutY="765.0" text="Sommeil Noir" textAlignment="CENTER" textFill="#1e225e">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="464.0" layoutY="807.0" />
+            <Label fx:id="title3" layoutX="727.0" layoutY="764.0" text="Sommeil Noir" textAlignment="CENTER" textFill="#1e225e">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="654.0" layoutY="809.0" />
+            <Label fx:id="title4" layoutX="1001.0" layoutY="765.0" text="Sommeil Noir" textAlignment="CENTER" textFill="#1e225e">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="792.0" layoutY="809.0" />
+            <Label layoutX="1083.0" layoutY="669.0" />
+            <Label fx:id="price1" layoutX="198.0" layoutY="823.0" text="30D" textFill="#1e225e">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="author2" layoutX="449.0" layoutY="786.0" prefHeight="21.0" prefWidth="89.0" text="Antall" textFill="#1e225e">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="author3" layoutX="726.0" layoutY="788.0" prefHeight="21.0" prefWidth="89.0" text="Antall" textFill="#1e225e">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="author4" layoutX="1006.0" layoutY="784.0" prefHeight="21.0" prefWidth="89.0" text="Antall" textFill="#1e225e">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="price2" layoutX="488.0" layoutY="826.0" text="30D" textFill="#1e225e">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="price3" layoutX="752.0" layoutY="827.0" text="30D" textFill="#1e225e">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="price4" layoutX="1016.0" layoutY="823.0" text="30D" textFill="#1e225e">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <ScrollPane layoutX="1094.0" layoutY="211.0" prefHeight="266.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="236.0" prefWidth="200.0" />
+              </content>
+            </ScrollPane>
+            <Label fx:id="category31" layoutX="1108.0" layoutY="175.0" text="Ask Me Here " textFill="#1e225e">
+               <font>
+                  <Font name="Calibri Italic" size="25.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="47.0" layoutX="1241.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/icons8-inquiry-48.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="430.0" layoutY="811.0" text="Recommended  by " textFill="#726e6e">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label fx:id="rate2" layoutX="545.0" layoutY="808.0" text="67% " textFill="RED">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="695.0" layoutY="810.0" text="Recommended  by " textFill="#726e6e">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label fx:id="rate3" layoutX="809.0" layoutY="807.0" text="67% " textFill="RED">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="981.0" layoutY="806.0" text="Recommended  by " textFill="#726e6e">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label fx:id="rate4" layoutX="1099.0" layoutY="804.0" text="67% " textFill="RED">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="category32" layoutX="575.0" layoutY="484.0" text="All Books " textFill="#1e225e">
+               <font>
+                  <Font name="Calibri Italic" size="35.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="cover2" fitHeight="227.0" fitWidth="169.0" layoutX="419.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/sommeilnoir.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cover3" fitHeight="227.0" fitWidth="175.0" layoutX="689.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/sommeilnoir.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cover4" fitHeight="235.0" fitWidth="184.0" layoutX="959.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/sommeilnoir.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="56.0" layoutY="625.0" onMouseClicked="#precSlide" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/icons8-back-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="55.0" layoutX="1202.0" layoutY="625.0" onMouseClicked="#nextSlide" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/icons8-forward-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="277.0" fitWidth="760.0" layoutX="278.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Views/Resources/images/order.png" />
+               </image>
+            </ImageView>
+            <Hyperlink layoutX="678.0" layoutY="388.0" onMouseClicked="#goToOrder" text="Admit an order " textFill="WHITE">
+               <font>
+                  <Font name="Lucida Console" size="21.0" />
+               </font>
+            </Hyperlink>
+            <Line endX="-96.0" endY="-198.0" layoutX="200.0" layoutY="702.0" startX="359.0" startY="-198.0" stroke="#1d225c" />
+            <Line endX="73.0" endY="-198.0" layoutX="655.0" layoutY="702.0" startX="537.0" startY="-198.0" stroke="#1d225c" />
+            <ChoiceBox fx:id="categorylist" layoutX="21.0" layoutY="248.0" prefWidth="150.0" />
+            <Label layoutX="50.0" layoutY="213.0" prefWidth="103.0" text="Category List" textFill="#1e225e">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="aaa" layoutX="19.0" layoutY="330.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="ppp" layoutX="19.0" layoutY="421.0" prefWidth="150.0" />
+            <Label layoutX="18.0" layoutY="388.0" prefHeight="26.0" prefWidth="162.0" text="Published House List " textFill="#1e225e">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="304.0" prefWidth="103.0" text="Authors List" textFill="#1e225e">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Line endX="-37.000030517578125" endY="-222.0" layoutX="1111.0" layoutY="687.0" startX="-37.000030517578125" startY="-476.0" stroke="#1e225e" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

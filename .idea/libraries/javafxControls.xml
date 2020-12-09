@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="javafxControls">
+    <CLASSES>
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/gson-2.8.2.jar!/" />
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/itextpdf-5.4.2.jar!/" />
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/Java-Mail.jar!/" />
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/mysql-connector.jar!/" />
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/stripe-java-20.29.0.jar!/" />
+      <root url="file://W:/Esprit/JAVA_POO/toSend/javafxControls" />
+      <root url="file://W:/Esprit/JAVA_POO/toSend/Nexmo" />
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/twilio-7.17.6-jar-with-dependencies.jar!/" />
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/jbcrypt-0.3m.jar!/" />
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/fontawesomefx-8.9.jar!/" />
+      <root url="jar://W:/Esprit/JAVA_POO/toSend/bytes-1.3.0.jar!/" />
+      <root url="file://W:/Esprit/JAVA_POO/toSend/libs-20201209T122335Z-001/libs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://W:/Esprit/JAVA_POO/toSend/javafxControls" recursive="false" />
+    <jarDirectory url="file://W:/Esprit/JAVA_POO/toSend/libs-20201209T122335Z-001/libs" recursive="false" />
+    <jarDirectory url="file://W:/Esprit/JAVA_POO/toSend/Nexmo" recursive="false" />
+  </library>
+</component>
