@@ -19,11 +19,11 @@ import java.util.Map;
 public abstract class MenuBarController {
     public Map<String,String> interfacesSizes =  new HashMap<>();
 
-    @FXML
-    private MenuBar menuBar;
+    protected void initMenuBar(MenuBar m){
+        m.prefWidthProperty().bind(Global.getPrimaryStage().widthProperty());
+    }
 
     public MenuBarController() {
-        menuBar.prefWidthProperty().bind(Global.getPrimaryStage().widthProperty());
         //Orders
         interfacesSizes.put("PassOrderPage","915.0/896");
         interfacesSizes.put("ClientOrdersListPage","915.0/1598");
