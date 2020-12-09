@@ -1,3 +1,4 @@
+/*
 package Views.Controllers;
 
 import Beans.Chat;
@@ -21,6 +22,8 @@ import java.util.ResourceBundle;
 
 public class ChatViewClient extends MenuBarController implements Initializable {
     @FXML
+*/
+/*
     private MenuBar menuBar;
 
     @FXML
@@ -32,12 +35,13 @@ public class ChatViewClient extends MenuBarController implements Initializable {
     @FXML
     private VBox box_question;
 
-    ObservableList<Chat> list = FXCollections.observableArrayList();
-    ChatDaoImp chatDaoImp = new ChatDaoImp();
-    ArrayList<Label> labels = new ArrayList<>();
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void InitFAQ(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Chat> list = FXCollections.observableArrayList();
+        ChatDaoImp chatDaoImp = new ChatDaoImp();
+        ArrayList<Label> labels = new ArrayList<>();
+
         try {
             list = chatDaoImp.afficherChat();
 
@@ -62,6 +66,9 @@ public class ChatViewClient extends MenuBarController implements Initializable {
             e.printStackTrace();
         }
     }
+*//*
+
 
 
 }
+*/

@@ -2,25 +2,27 @@
     -fx-opacity: 0;
     -fx-border-color: transparent;
 }
-.tab-pane
-{
-    -fx-tab-min-width:90px;
+
+.tab-pane {
+    -fx-tab-min-width: 90px;
     -fx-border-color: transparent;
 }
-.tab{
-    -fx-background-insets: 0 1 0 1,0,0;
+
+.tab {
+    -fx-background-insets: 0 1 0 1, 0, 0;
     -fx-border-color: transparent;
 }
-.tab-pane .tab
-{
+
+.tab-pane .tab {
     -fx-background-color: #e6e6e6;
     -fx-border-color: transparent;
 }
-.tab-pane .tab:selected
-{
+
+.tab-pane .tab:selected {
     -fx-background-color: #61c4f2;
     -fx-border-color: transparent;
 }
+
 .tab .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: #03a8f8;
@@ -28,15 +30,18 @@
     -fx-font-weight: bold;
     -fx-border-color: transparent;
 }
+
 .tab:selected .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: #ffffff;
     -fx-border-color: transparent;
 }
+
 .tab-pane:top *.tab-header-area {
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overridden as 5 2 0 0 */
 }
+
 .table-view .column-header,
 .table-view .column-header .filler,
 .table-view .column-header .label,
@@ -45,6 +50,7 @@
     -fx-text-fill: white;
     -fx-padding: 13;
 }
+
 /*
 .text-field {
     -fx-background-color: -fx-text-box-border, -fx-background ;
@@ -58,6 +64,7 @@
 .text-field {
     -fx-background-radius: 30;
 }
+
 .button {
     -fx-background-color: #61c4f2;
     -fx-background-radius: 30;
@@ -67,7 +74,7 @@
     -fx-padding: 10 20 10 20;
 }
 
-.loginBtn{
-    -fx-background-color:#61c4f2;
-    -fx-text-fill:#FFF;
+.loginBtn {
+    -fx-background-color: #61c4f2;
+    -fx-text-fill: #FFF;
 }

@@ -7,47 +7,48 @@
 <AnchorPane prefHeight="550.0" prefWidth="889.0" styleClass="parent" stylesheets="@/Views/Resources/css/StyleSheetW.css"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Views.Controllers.InterfaceWishList">
-    <MenuBar fx:id="menuBar">
-        <menus>
-            <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
-                <items>
-                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
-                    <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
-                    <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
-                    <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
-                    <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
-                    <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points"/>
-                    <SeparatorMenuItem mnemonicParsing="false"/>
-                    <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
-                    <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
-                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
-                <items>
-                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
-                    <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
-                    <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
-                    <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
-                    <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
-                    <MenuItem id="Offers" mnemonicParsing="false" text="Offers"/>
-                    <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
-                    <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
-                    <SeparatorMenuItem mnemonicParsing="false"/>
-                    <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
-                    <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin"/>
-                    <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
-                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Our Web Site"/>
-                    <MenuItem mnemonicParsing="false" text="Contact"/>
-                    <MenuItem mnemonicParsing="false" text="About BookStore"/>
-                </items>
-            </Menu>
-        </menus>
-    </MenuBar>
     <children>
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
+                    <items>
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
+                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
+                        <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
+                        <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
+                        <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                    <items>
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
+                        <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
+                        <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
+                        <MenuItem id="Offers" mnemonicParsing="false" text="Offers"/>
+                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
+                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Our Web Site"/>
+                        <MenuItem mnemonicParsing="false" text="Contact"/>
+                        <MenuItem mnemonicParsing="false" text="About BookStore"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+
         <TableView fx:id="tableview_wl" layoutX="92.0" layoutY="145.0" onMouseClicked="#DetailsActionHandler"
                    prefHeight="321.0" prefWidth="292.0">
             <columns>

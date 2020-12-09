@@ -1,131 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.*?>
-
-<VBox prefHeight="790.0" prefWidth="878.0" stylesheets="@/Views/Resources/css/style1.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.PassOrderController">
-  <children>
-    <MenuBar  >
+<VBox prefHeight="790.0" prefWidth="878.0" stylesheets="@/Views/Resources/css/style1.css"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Views.Controllers.PassOrderController">
+    <children>
+        <MenuBar fx:id="menuBar">
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders" />
-						<MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library" />
-						<MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList" />
-						<MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket" />
-						<MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
+                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
+                        <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
+                        <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
+                        <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-				<Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List" />
-						<MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List" />
-						<MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List" />
-						<MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders" />
-						<MenuItem id="Offers" mnemonicParsing="false" text="Offers" />
-						<MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List" />
-						<MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
+                        <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
+                        <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
+                        <MenuItem id="Offers" mnemonicParsing="false" text="Offers"/>
+                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
+                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Our Web Site" />
-						<MenuItem mnemonicParsing="false" text="Contact" />
-                        <MenuItem mnemonicParsing="false" text="About BookStore" />
+                        <MenuItem mnemonicParsing="false" text="Our Web Site"/>
+                        <MenuItem mnemonicParsing="false" text="Contact"/>
+                        <MenuItem mnemonicParsing="false" text="About BookStore"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-         <children>
-            <ImageView fitHeight="70.0" fitWidth="89.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/Views/Resources/images/basket1.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="335.0" layoutY="33.0" styleClass="pagesTitles" text="Passer une commande">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <TableView fx:id="order_items" layoutX="49.0" layoutY="120.0" prefHeight="195.0" prefWidth="791.0">
-               <columns>
-                  <TableColumn fx:id="id_book" prefWidth="148.80001831054688" text="Book ID" />
-                  <TableColumn fx:id="book_title" prefWidth="326.40000915527344" text="Book Title" />
-                  <TableColumn fx:id="quantity" prefWidth="137.5999755859375" text="Quantity" />
-                  <TableColumn fx:id="price" prefWidth="171.2000732421875" text="Prix" />
-               </columns>
-            </TableView>
-            <Label layoutX="51.0" layoutY="505.0" text="Addresse">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="51.0" layoutY="565.0" text="Code Postale">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="51.0" layoutY="628.0" text="Telephone">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="in_adrs" layoutX="156.0" layoutY="502.0" prefHeight="26.0" prefWidth="346.0" />
-            <TextField fx:id="in_codepostale" layoutX="156.0" layoutY="561.0" prefHeight="26.0" prefWidth="261.0" />
-            <TextField fx:id="in_telephone" layoutX="156.0" layoutY="624.0" prefHeight="26.0" prefWidth="219.0" />
-            <Label layoutX="701.0" layoutY="326.0" text="Total Price : ">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <Button layoutX="392.0" layoutY="704.0" mnemonicParsing="false" onMouseClicked="#valider" prefHeight="32.0" prefWidth="138.0" styleClass="buttonBlue" text="Continue" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Label fx:id="text_totalPrice" layoutX="788.0" layoutY="325.0" text="180 Dt">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="52.0" layoutY="446.0" text="Coupon">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="in_coupon" layoutX="156.0" layoutY="444.0" prefHeight="26.0" prefWidth="219.0" />
-            <Button layoutX="413.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#validateCoupon" styleClass="buttonBlue" text="Validate" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            <Label fx:id="label_discount" layoutX="701.0" layoutY="355.0" text="Discount : ">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="discount_amount" layoutX="790.0" layoutY="357.0" text="25 Dt">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="amount_toPay" layoutX="788.0" layoutY="387.0" text="165 Dt">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="label_toPay" layoutX="701.0" layoutY="389.0" text="TO PAY : " />
-         </children>
-    </AnchorPane>
-  </children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <ImageView fitHeight="70.0" fitWidth="89.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@/Views/Resources/images/basket1.png"/>
+                    </image>
+                </ImageView>
+                <Label layoutX="335.0" layoutY="33.0" styleClass="pagesTitles" text="Passer une commande">
+                    <font>
+                        <Font size="22.0"/>
+                    </font>
+                </Label>
+                <TableView fx:id="order_items" layoutX="49.0" layoutY="120.0" prefHeight="195.0" prefWidth="791.0">
+                    <columns>
+                        <TableColumn fx:id="id_book" prefWidth="148.80001831054688" text="Book ID"/>
+                        <TableColumn fx:id="book_title" prefWidth="326.40000915527344" text="Book Title"/>
+                        <TableColumn fx:id="quantity" prefWidth="137.5999755859375" text="Quantity"/>
+                        <TableColumn fx:id="price" prefWidth="171.2000732421875" text="Prix"/>
+                    </columns>
+                </TableView>
+                <Label layoutX="51.0" layoutY="505.0" text="Addresse">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="51.0" layoutY="565.0" text="Code Postale">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="51.0" layoutY="628.0" text="Telephone">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="in_adrs" layoutX="156.0" layoutY="502.0" prefHeight="26.0" prefWidth="346.0"/>
+                <TextField fx:id="in_codepostale" layoutX="156.0" layoutY="561.0" prefHeight="26.0" prefWidth="261.0"/>
+                <TextField fx:id="in_telephone" layoutX="156.0" layoutY="624.0" prefHeight="26.0" prefWidth="219.0"/>
+                <Label layoutX="701.0" layoutY="326.0" text="Total Price : ">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Button layoutX="392.0" layoutY="704.0" mnemonicParsing="false" onMouseClicked="#valider"
+                        prefHeight="32.0" prefWidth="138.0" styleClass="buttonBlue" text="Continue" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="text_totalPrice" layoutX="788.0" layoutY="325.0" text="180 Dt">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="52.0" layoutY="446.0" text="Coupon">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="in_coupon" layoutX="156.0" layoutY="444.0" prefHeight="26.0" prefWidth="219.0"/>
+                <Button layoutX="413.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#validateCoupon"
+                        styleClass="buttonBlue" text="Validate" textFill="WHITE">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="label_discount" layoutX="701.0" layoutY="355.0" text="Discount : ">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="discount_amount" layoutX="790.0" layoutY="357.0" text="25 Dt">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="amount_toPay" layoutX="788.0" layoutY="387.0" text="165 Dt">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="label_toPay" layoutX="701.0" layoutY="389.0" text="TO PAY : "/>
+            </children>
+        </AnchorPane>
+    </children>
 </VBox>

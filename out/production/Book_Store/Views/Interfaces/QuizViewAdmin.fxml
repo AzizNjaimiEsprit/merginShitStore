@@ -1,94 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.*?>
-<AnchorPane prefHeight="524.0" prefWidth="695.0" stylesheets="@/Views/Resources/css/Style2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.QuizViewAdmin">
-   <MenuBar  >
+<AnchorPane prefHeight="524.0" prefWidth="695.0" stylesheets="@/Views/Resources/css/Style2.css"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Views.Controllers.QuizViewAdmin">
+    <children>
+        <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="695.0">
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders" />
-						<MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library" />
-						<MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList" />
-						<MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket" />
-						<MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+
+
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+
+                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
+                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
+                        <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
+                        <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
+                        <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-				<Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List" />
-						<MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List" />
-						<MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List" />
-						<MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders" />
-						<MenuItem id="Offers" mnemonicParsing="false" text="Offers" />
-						<MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List" />
-						<MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+
+
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+
+                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
+                        <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
+                        <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
+                        <MenuItem id="Offers" mnemonicParsing="false" text="Offers"/>
+                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
+                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Our Web Site" />
-						<MenuItem mnemonicParsing="false" text="Contact" />
-                        <MenuItem mnemonicParsing="false" text="About BookStore" />
+                        <MenuItem mnemonicParsing="false" text="Our Web Site"/>
+                        <MenuItem mnemonicParsing="false" text="Contact"/>
+                        <MenuItem mnemonicParsing="false" text="About BookStore"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-    <children>
-      <MenuBar prefHeight="27.0" prefWidth="695.0">
-        <menus>
-          <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Quiz list">
-            <items>
-                <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="Chat list" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <Label layoutX="251.0" layoutY="63.0" styleClass="pagesTitles" text="Online book quiz list" />
-      <TableView fx:id="table_quiz" fixedCellSize="0.0" layoutX="20.0" layoutY="122.0" prefHeight="372.0" prefWidth="657.0">
-        <columns>
-          <TableColumn fx:id="col_book" prefWidth="190.0" text="Book" />
-          <TableColumn fx:id="col_add" prefWidth="150.0" text="Add quiz" />
-            <TableColumn fx:id="col_update" prefWidth="134.0" text="Update quiz" />
-            <TableColumn fx:id="col_remove" prefWidth="158.0" text="Remove quiz" />
-        </columns>
-      </TableView>
-      <ImageView fitHeight="76.0" fitWidth="133.0" layoutX="20.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@/Views/Resources/images/test-quiz.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="481.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@/Views/Resources/images/logo.png" />
-         </image>
-      </ImageView>
-   </children>
+
+
+        <Label layoutX="251.0" layoutY="63.0" styleClass="pagesTitles" text="Online book quiz list"/>
+        <TableView fx:id="table_quiz" fixedCellSize="0.0" layoutX="20.0" layoutY="122.0" prefHeight="372.0"
+                   prefWidth="657.0">
+            <columns>
+                <TableColumn fx:id="col_book" prefWidth="190.0" text="Book"/>
+                <TableColumn fx:id="col_add" prefWidth="150.0" text="Add quiz"/>
+                <TableColumn fx:id="col_update" prefWidth="134.0" text="Update quiz"/>
+                <TableColumn fx:id="col_remove" prefWidth="158.0" text="Remove quiz"/>
+            </columns>
+        </TableView>
+        <ImageView fitHeight="76.0" fitWidth="133.0" layoutX="20.0" layoutY="40.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@/Views/Resources/images/test-quiz.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="120.0" fitWidth="98.0" layoutX="544.0" layoutY="32.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@/Views/Resources/images/logo.png"/>
+            </image>
+        </ImageView>
+    </children>
 </AnchorPane>

@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.*?>
-
-<VBox prefHeight="873.0" prefWidth="1580.0" stylesheets="@/Views/Resources/css/style1.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.ClientOrdersListController">
+<VBox prefHeight="873.0" prefWidth="1580.0" stylesheets="@/Views/Resources/css/style1.css"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Views.Controllers.ClientOrdersListController">
     <children>
-        <MenuBar  >
+        <MenuBar fx:id="menuBar">
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders" />
-						<MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library" />
-						<MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList" />
-						<MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket" />
-						<MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
+                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
+                        <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
+                        <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
+                        <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-				<Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List" />
-						<MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List" />
-						<MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List" />
-						<MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders" />
-						<MenuItem id="Offers" mnemonicParsing="false" text="Offers" />
-						<MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List" />
-						<MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
+                        <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
+                        <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
+                        <MenuItem id="Offers" mnemonicParsing="false" text="Offers"/>
+                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
+                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Our Web Site" />
-						<MenuItem mnemonicParsing="false" text="Contact" />
-                        <MenuItem mnemonicParsing="false" text="About BookStore" />
+                        <MenuItem mnemonicParsing="false" text="Our Web Site"/>
+                        <MenuItem mnemonicParsing="false" text="Contact"/>
+                        <MenuItem mnemonicParsing="false" text="About BookStore"/>
                     </items>
                 </Menu>
             </menus>
@@ -51,64 +54,73 @@
             <children>
                 <Label layoutX="701.0" layoutY="14.0" styleClass="pagesTitles" text="My Orders">
                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="18.0"/>
                     </font>
                 </Label>
-                <ChoiceBox fx:id="status_select" layoutX="1268.0" layoutY="77.0" prefHeight="26.0" prefWidth="139.0" />
+                <ChoiceBox fx:id="status_select" layoutX="1268.0" layoutY="77.0" prefHeight="26.0" prefWidth="139.0"/>
                 <Label layoutX="1215.0" layoutY="81.0" text="Status">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-                <ImageView fx:id="find_btn" fitHeight="26.0" fitWidth="40.0" layoutX="1442.0" layoutY="77.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </Label>
+                <ImageView fx:id="find_btn" fitHeight="26.0" fitWidth="40.0" layoutX="1442.0" layoutY="77.0"
+                           onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@/Views/Resources/images/search.png" />
+                        <Image url="@/Views/Resources/images/search.png"/>
                     </image>
                 </ImageView>
-                <ImageView fitHeight="40.0" fitWidth="54.0" layoutX="19.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="40.0" fitWidth="54.0" layoutX="19.0" layoutY="17.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <image>
-                        <Image url="@/Views/Resources/images/purchases.png" />
+                        <Image url="@/Views/Resources/images/purchases.png"/>
                     </image>
                 </ImageView>
-                <TableView fx:id="table" layoutX="20.0" layoutY="130.0" onMouseClicked="#clickItem" prefHeight="404.0" prefWidth="1517.0" style="-fx-border-color: #61c4f2;">
+                <TableView fx:id="table" layoutX="20.0" layoutY="130.0" onMouseClicked="#clickItem" prefHeight="404.0"
+                           prefWidth="1517.0" style="-fx-border-color: #61c4f2;">
                     <columns>
-                        <TableColumn fx:id="userId" prefWidth="163.99998474121094" text="Client" />
-                        <TableColumn fx:id="totalPrice" prefWidth="125.60003662109375" text="Prix Totale" />
-                        <TableColumn fx:id="paymentID" prefWidth="228.0" text="Paiement ID" />
-                        <TableColumn fx:id="orderDate" prefWidth="183.199951171875" text="Date" />
-                        <TableColumn fx:id="address" prefWidth="273.59991455078125" text="Address" />
-                  <TableColumn fx:id="zipCode" minWidth="0.0" prefWidth="129.5999755859375" text="Zip Code" />
-                  <TableColumn fx:id="numTel" prefWidth="176.0001220703125" text="Num Tel" />
-                  <TableColumn fx:id="status" prefWidth="143.2000732421875" text="Status" />
+                        <TableColumn fx:id="userId" prefWidth="163.99998474121094" text="Client"/>
+                        <TableColumn fx:id="totalPrice" prefWidth="125.60003662109375" text="Prix Totale"/>
+                        <TableColumn fx:id="paymentID" prefWidth="228.0" text="Paiement ID"/>
+                        <TableColumn fx:id="orderDate" prefWidth="183.199951171875" text="Date"/>
+                        <TableColumn fx:id="address" prefWidth="273.59991455078125" text="Address"/>
+                        <TableColumn fx:id="zipCode" minWidth="0.0" prefWidth="129.5999755859375" text="Zip Code"/>
+                        <TableColumn fx:id="numTel" prefWidth="176.0001220703125" text="Num Tel"/>
+                        <TableColumn fx:id="status" prefWidth="143.2000732421875" text="Status"/>
                     </columns>
                 </TableView>
-            <TableView fx:id="order_items" layoutX="288.0" layoutY="592.0" prefHeight="226.0" prefWidth="1054.0" style="-fx-border-color: #61c4f2;">
-              <columns>
-                  <TableColumn fx:id="book_title" prefWidth="436.8000183105469" text="Book Title" />
-                  <TableColumn fx:id="quantity" minWidth="5.5999755859375" prefWidth="188.79998779296875" text="Quantity" />
-                  <TableColumn fx:id="price_item" minWidth="0.800048828125" prefWidth="206.4000244140625" text="Book Price" />
-                  <TableColumn fx:id="total_price_item" prefWidth="212.0001220703125" text="Prix Total" />
-              </columns>
-            </TableView>
-            <Label layoutX="913.0" layoutY="81.0" text="End Date">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <DatePicker fx:id="end_date" layoutX="985.0" layoutY="77.0" />
-            <DatePicker fx:id="start_date" layoutX="656.0" layoutY="77.0" />
-            <Label layoutX="581.0" layoutY="81.0" text="Start Date">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <Label layoutX="1503.0" layoutY="70.0" onMouseClicked="#resetFilters" text="X" textFill="RED">
-               <font>
-                  <Font name="System Bold" size="26.0" />
-               </font>
-            </Label>
-            <Label layoutX="288.0" layoutY="555.0" text="Order Items : ">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
+                <TableView fx:id="order_items" layoutX="288.0" layoutY="592.0" prefHeight="226.0" prefWidth="1054.0"
+                           style="-fx-border-color: #61c4f2;">
+                    <columns>
+                        <TableColumn fx:id="book_title" prefWidth="436.8000183105469" text="Book Title"/>
+                        <TableColumn fx:id="quantity" minWidth="5.5999755859375" prefWidth="188.79998779296875"
+                                     text="Quantity"/>
+                        <TableColumn fx:id="price_item" minWidth="0.800048828125" prefWidth="206.4000244140625"
+                                     text="Book Price"/>
+                        <TableColumn fx:id="total_price_item" prefWidth="212.0001220703125" text="Prix Total"/>
+                    </columns>
+                </TableView>
+                <Label layoutX="913.0" layoutY="81.0" text="End Date">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </Label>
+                <DatePicker fx:id="end_date" layoutX="985.0" layoutY="77.0"/>
+                <DatePicker fx:id="start_date" layoutX="656.0" layoutY="77.0"/>
+                <Label layoutX="581.0" layoutY="81.0" text="Start Date">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="1503.0" layoutY="70.0" onMouseClicked="#resetFilters" text="X" textFill="RED">
+                    <font>
+                        <Font name="System Bold" size="26.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="288.0" layoutY="555.0" text="Order Items : ">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
     </children>

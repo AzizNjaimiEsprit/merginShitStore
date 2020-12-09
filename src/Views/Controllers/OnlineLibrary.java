@@ -65,7 +65,7 @@ public class OnlineLibrary extends MenuBarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initMenuBar(menuBar);
+        //initMenuBar(menuBar);
         ObservableList<Library> listM = daoLibraryImp.getLibraryitems(Global.getCurrentUser().getId());
         for (int i = 0; i < listM.size(); i++) {
             resumeButton.add(new Button());

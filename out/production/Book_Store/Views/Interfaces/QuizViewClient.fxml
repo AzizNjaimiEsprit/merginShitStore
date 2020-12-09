@@ -1,137 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.control.*?>
-<AnchorPane prefHeight="567.0" prefWidth="642.0" stylesheets="@/Views/Resources/css/Style2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.QuizViewClient">
-    <MenuBar  >
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="567.0" prefWidth="642.0" stylesheets="@/Views/Resources/css/Style2.css"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Views.Controllers.QuizViewClient">
+    <children>
+        <MenuBar fx:id="menuBar">
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders" />
-						<MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library" />
-						<MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList" />
-						<MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket" />
-						<MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
+                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
+                        <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
+                        <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
+                        <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-				<Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List" />
-						<MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List" />
-						<MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List" />
-						<MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders" />
-						<MenuItem id="Offers" mnemonicParsing="false" text="Offers" />
-						<MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List" />
-						<MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
+                        <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
+                        <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
+                        <MenuItem id="Offers" mnemonicParsing="false" text="Offers"/>
+                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
+                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Our Web Site" />
-						<MenuItem mnemonicParsing="false" text="Contact" />
-                        <MenuItem mnemonicParsing="false" text="About BookStore" />
+                        <MenuItem mnemonicParsing="false" text="Our Web Site"/>
+                        <MenuItem mnemonicParsing="false" text="Contact"/>
+                        <MenuItem mnemonicParsing="false" text="About BookStore"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-    <children>
-        <Text layoutX="202.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pagesTitles" text="Welcome to the Quiz">
+
+        <Text layoutX="202.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pagesTitles"
+              text="Welcome to the Quiz">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
         </Text>
-        <Text layoutX="62.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Question 1:" />
-        <Text layoutX="62.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Question 2:" />
-        <Text layoutX="62.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Question 3:" />
-        <Text layoutX="40.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="1 :" />
-        <Text layoutX="40.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="2 :" />
-        <Text layoutX="40.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="3 :" />
-        <Text layoutX="40.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="1 :" />
-        <Text layoutX="40.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="2 :" />
-        <Text layoutX="40.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="3 :" />
-        <Text layoutX="40.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="1 :" />
-        <Text layoutX="40.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="2 :" />
-        <Text layoutX="40.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="3 :" />
-      <Text fx:id="txt_q1" layoutX="131.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Text" wrappingWidth="418.13671875" />
-      <Text fx:id="txt_q2" layoutX="131.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Text" wrappingWidth="418.13671875" />
-      <Text fx:id="txt_q3" layoutX="131.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Text" wrappingWidth="418.13671875" />
-      <Button layoutX="241.0" layoutY="495.0" mnemonicParsing="false" onMouseClicked="#checkAnswer" prefHeight="45.0" prefWidth="118.0" styleClass="buttonBlue" text="Check Answer" />
-      <RadioButton id="1" fx:id="txt_ans1" layoutX="61.0" layoutY="134.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="478.0" text="RadioButton">
-         <toggleGroup>
-            <ToggleGroup fx:id="question1" />
-         </toggleGroup></RadioButton>
-      <RadioButton id="2" fx:id="txt_ans2" layoutX="62.0" layoutY="167.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="478.0" text="RadioButton" toggleGroup="$question1" />
-      <RadioButton id="3" fx:id="txt_ans3" layoutX="61.0" layoutY="199.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="478.0" text="RadioButton" toggleGroup="$question1" />
-      <RadioButton id="1" fx:id="txt_ans4" layoutX="61.0" layoutY="270.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="478.0" text="RadioButton">
-         <toggleGroup>
-            <ToggleGroup fx:id="question2" />
-         </toggleGroup></RadioButton>
-      <RadioButton id="2" fx:id="txt_ans5" layoutX="62.0" layoutY="303.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="478.0" text="RadioButton" toggleGroup="$question2" />
-      <RadioButton id="3" fx:id="txt_ans6" layoutX="62.0" layoutY="335.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="478.0" text="RadioButton" toggleGroup="$question2" />
-      <RadioButton id="1" fx:id="txt_ans7" layoutX="62.0" layoutY="398.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="478.0" text="RadioButton">
-         <toggleGroup>
-            <ToggleGroup fx:id="question3" />
-         </toggleGroup></RadioButton>
-      <RadioButton id="2" fx:id="txt_ans8" layoutX="62.0" layoutY="431.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="478.0" text="RadioButton" toggleGroup="$question3" />
-      <RadioButton id="3" fx:id="txt_ans9" layoutX="62.0" layoutY="463.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="478.0" text="RadioButton" toggleGroup="$question3" />
-      <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="642.0">
-        <menus>
-          <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Quiz">
-            <items>
-                <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My library" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="374.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@/Views/Resources/images/quiz.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="359.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@/Views/Resources/images/goodluck.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="40.0" layoutY="79.0" text="Select the right answer for each question:">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="428.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@/Views/Resources/images/logo.png" />
-         </image>
-      </ImageView>
+        <Text layoutX="62.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="Question 1:"/>
+        <Text layoutX="62.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="Question 2:"/>
+        <Text layoutX="62.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="Question 3:"/>
+        <Text layoutX="40.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="1 :"/>
+        <Text layoutX="40.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="2 :"/>
+        <Text layoutX="40.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="3 :"/>
+        <Text layoutX="40.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="1 :"/>
+        <Text layoutX="40.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="2 :"/>
+        <Text layoutX="40.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="3 :"/>
+        <Text layoutX="40.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="1 :"/>
+        <Text layoutX="40.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="2 :"/>
+        <Text layoutX="40.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="3 :"/>
+        <Text fx:id="txt_q1" layoutX="131.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="Text" wrappingWidth="418.13671875"/>
+        <Text fx:id="txt_q2" layoutX="131.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="Text" wrappingWidth="418.13671875"/>
+        <Text fx:id="txt_q3" layoutX="131.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="Text" wrappingWidth="418.13671875"/>
+        <Button layoutX="241.0" layoutY="495.0" mnemonicParsing="false" onMouseClicked="#checkAnswer" prefHeight="45.0"
+                prefWidth="118.0" styleClass="buttonBlue" text="Check Answer"/>
+        <RadioButton id="1" fx:id="txt_ans1" layoutX="61.0" layoutY="134.0" mnemonicParsing="false" prefHeight="24.0"
+                     prefWidth="478.0" text="RadioButton">
+            <toggleGroup>
+                <ToggleGroup fx:id="question1"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton id="2" fx:id="txt_ans2" layoutX="62.0" layoutY="167.0" mnemonicParsing="false" prefHeight="24.0"
+                     prefWidth="478.0" text="RadioButton" toggleGroup="$question1"/>
+        <RadioButton id="3" fx:id="txt_ans3" layoutX="61.0" layoutY="199.0" mnemonicParsing="false" prefHeight="24.0"
+                     prefWidth="478.0" text="RadioButton" toggleGroup="$question1"/>
+        <RadioButton id="1" fx:id="txt_ans4" layoutX="61.0" layoutY="270.0" mnemonicParsing="false" prefHeight="17.0"
+                     prefWidth="478.0" text="RadioButton">
+            <toggleGroup>
+                <ToggleGroup fx:id="question2"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton id="2" fx:id="txt_ans5" layoutX="62.0" layoutY="303.0" mnemonicParsing="false" prefHeight="17.0"
+                     prefWidth="478.0" text="RadioButton" toggleGroup="$question2"/>
+        <RadioButton id="3" fx:id="txt_ans6" layoutX="62.0" layoutY="335.0" mnemonicParsing="false" prefHeight="17.0"
+                     prefWidth="478.0" text="RadioButton" toggleGroup="$question2"/>
+        <RadioButton id="1" fx:id="txt_ans7" layoutX="62.0" layoutY="398.0" mnemonicParsing="false" prefHeight="17.0"
+                     prefWidth="478.0" text="RadioButton">
+            <toggleGroup>
+                <ToggleGroup fx:id="question3"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton id="2" fx:id="txt_ans8" layoutX="62.0" layoutY="431.0" mnemonicParsing="false" prefHeight="17.0"
+                     prefWidth="478.0" text="RadioButton" toggleGroup="$question3"/>
+        <RadioButton id="3" fx:id="txt_ans9" layoutX="62.0" layoutY="463.0" mnemonicParsing="false" prefHeight="17.0"
+                     prefWidth="478.0" text="RadioButton" toggleGroup="$question3"/>
+        <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="642.0">
+            <menus>
+                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Quiz">
+                    <items>
+                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My library"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="374.0" layoutY="152.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@/Views/Resources/images/quiz.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="359.0" layoutY="335.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@/Views/Resources/images/goodluck.png"/>
+            </image>
+        </ImageView>
+        <Label layoutX="40.0" layoutY="79.0" text="Select the right answer for each question:">
+            <font>
+                <Font name="System Bold" size="13.0"/>
+            </font>
+        </Label>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="428.0" layoutY="39.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@/Views/Resources/images/logo.png"/>
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

@@ -1,16 +1,15 @@
-.btns{
+.btns {
     -fx-background-radius: 50px;
-    -fx-background-color:  #61c4f2;
+    -fx-background-color: #61c4f2;
 }
 
-.parent{
-    -fx-background-color:  white;
+.parent {
+    -fx-background-color: white;
 }
 
 .table-view .column-header * {
     -fx-background-color: #61c4f2;
     -fx-stoke: transparent;
-
 
 
 }

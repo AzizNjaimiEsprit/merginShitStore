@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.*?>
 <VBox prefHeight="926.0" prefWidth="1314.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
@@ -14,6 +14,7 @@
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
                         <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+
                         <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
                         <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
                         <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
@@ -27,6 +28,8 @@
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
                     <items>
                         <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+
+
                         <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
                         <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
                         <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
@@ -202,11 +205,6 @@
                         <Font name="System Bold" size="22.0"/>
                     </font>
                 </Label>
-                <ScrollPane layoutX="1094.0" layoutY="211.0" prefHeight="266.0" prefWidth="200.0">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="236.0" prefWidth="200.0"/>
-                    </content>
-                </ScrollPane>
                 <Label fx:id="category31" layoutX="1108.0" layoutY="175.0" text="Ask Me Here " textFill="#1e225e">
                     <font>
                         <Font name="Calibri Italic" size="25.0"/>
@@ -320,6 +318,30 @@
                 </Label>
                 <Line endX="-37.000030517578125" endY="-222.0" layoutX="1111.0" layoutY="687.0"
                       startX="-37.000030517578125" startY="-476.0" stroke="#1e225e"/>
+                <SplitPane layoutX="1093.0" layoutY="225.0" orientation="VERTICAL" prefHeight="241.0" prefWidth="185.0">
+                    <items>
+                        <AnchorPane fx:id="col_body" minHeight="0.0" minWidth="0.0" prefHeight="225.0"
+                                    prefWidth="235.0">
+                            <children>
+                                <ScrollPane prefHeight="225.0" prefWidth="185.0">
+                                    <content>
+                                        <AnchorPane fx:id="scroll_question" minHeight="0.0" minWidth="0.0"
+                                                    prefHeight="226.0" prefWidth="185.0">
+                                            <children>
+                                                <VBox fx:id="box_question" prefHeight="225.0" prefWidth="183.0"
+                                                      spacing="15.0">
+                                                    <padding>
+                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                                    </padding>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
             </children>
         </AnchorPane>
     </children>

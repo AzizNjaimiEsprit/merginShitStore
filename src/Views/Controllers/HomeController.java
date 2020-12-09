@@ -2,7 +2,9 @@ package Views.Controllers;
 
 import Beans.Book;
 import Beans.Category;
+import Beans.Chat;
 import Beans.OnlineBook;
+import Services.ChatDaoImp;
 import Services.CrudOnlineBook;
 import Services.CrudRate;
 import Services.ServiceCategorie;
@@ -23,10 +25,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import org.controlsfx.control.textfield.TextFields;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -43,6 +49,9 @@ public class HomeController extends MenuBarController implements Initializable {
 
     Comparator<Node> comparator = (n1, n2) -> (n1.getId().compareTo(n2.getId()));
     Predicate<Node> compare = n -> (n.getId().contains("title") || n.getId().contains("author") || n.getId().contains("cover") || n.getId().contains("rate") || n.getId().contains("price"));
+
+    @FXML
+    private VBox box_question;
 
     @FXML
     private AnchorPane childrenHolder;
@@ -77,6 +86,7 @@ public class HomeController extends MenuBarController implements Initializable {
         categorylist.setItems(cc.afficher());
         aaa.setItems(FXCollections.observableArrayList(listOfauthors));
         ppp.setItems(FXCollections.observableArrayList(listOfPubHouses));
+        InitFAQ();
 
 
         //****************************************************
@@ -202,4 +212,37 @@ public class HomeController extends MenuBarController implements Initializable {
 
 
     }
+
+
+
+    public void InitFAQ() {
+        ObservableList<Chat> list = FXCollections.observableArrayList();
+        ChatDaoImp chatDaoImp = new ChatDaoImp();
+        ArrayList<Label> labels = new ArrayList<>();
+
+        try {
+            list = chatDaoImp.afficherChat();
+
+            for (int i = 0; i < list.size(); i++) {
+                Label label = new Label(list.get(i).getQuestion());
+                label.setWrapText(true);
+                label.setTextAlignment(TextAlignment.JUSTIFY);
+                label.setMaxWidth(167);
+                labels.add(label);
+                String answer = list.get(i).getReponse();
+                labels.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        JOptionPane.showMessageDialog(null, answer);
+                    }
+                });
+                ;
+                box_question.getChildren().add(labels.get(i));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
