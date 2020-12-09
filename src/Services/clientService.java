@@ -1,32 +1,29 @@
 package Services;
-import Services.IServiceClient;
-import Services.IServiceUser;
+
 import Beans.Client;
-import Beans.User;
+import Utility.Singleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import org.mindrot.jbcrypt.BCrypt;
-import Utility.Singleton;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class clientService implements IServiceClient<Client> {
     private Connection cnx;
     private Statement ste;
     private PreparedStatement pst;
     private ResultSet rs;
+
     public clientService() {
         cnx = Singleton.getConn();
     }
 
     @Override
     public void AddClient(Client t) {
-       // userService us= new userService();
+        // userService us= new userService();
         //us.AddAdmin(t);
-        ObservableList <Client> allusers=GetAllClient();
-        for (Client u : allusers ) {
+        ObservableList<Client> allusers = GetAllClient();
+        for (Client u : allusers) {
             System.out.println(u);
             if (u.getEmail().equals(t.getEmail())) {
                 System.out.println("Email already used");
@@ -55,17 +52,17 @@ public class clientService implements IServiceClient<Client> {
     }
 
     @Override
-    public void UpdateClient(String adresse,int zip_code, int id) {
+    public void UpdateClient(String adresse, int zip_code, int id) {
         String req = "update CLIENT set adresse = ?,zip_code = ? where id = ? ";
         try {
             pst = cnx.prepareStatement(req);
 
-            pst.setString(1,adresse);
-            pst.setInt(2,zip_code);
-            pst.setInt(3,id);
+            pst.setString(1, adresse);
+            pst.setInt(2, zip_code);
+            pst.setInt(3, id);
             pst.executeUpdate();
             System.out.println("Client: successfully updated");
-           // afficherAlert("Client: successfully updated", Alert.AlertType.INFORMATION);
+            // afficherAlert("Client: successfully updated", Alert.AlertType.INFORMATION);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -73,7 +70,7 @@ public class clientService implements IServiceClient<Client> {
 
     @Override
     public void DeleteClient(int id) {
-        String req = "delete from CLIENT where id ="+id;
+        String req = "delete from CLIENT where id =" + id;
         try {
             ste = cnx.createStatement();
             //pst.setInt(1,id);
@@ -93,16 +90,17 @@ public class clientService implements IServiceClient<Client> {
         alert.setContentText(message);
         alert.show();
     }
+
     @Override
     public ObservableList<Client> GetAllClient() {
         String req = "SELECT c.*,u.* FROM CLIENT as c inner join USER as u on c.id_user=u.id ";
-        ObservableList<Client> list= FXCollections.observableArrayList();
+        ObservableList<Client> list = FXCollections.observableArrayList();
         try {
             ste = cnx.createStatement();
             rs = ste.executeQuery(req);
 
             while (rs.next()) {
-                list.add(new Client (rs.getInt("u.id"),rs.getString("u.full_name"),rs.getString("u.email"),rs.getString("u.telephone"),rs.getString("u.login"),rs.getString("u.password"),rs.getInt("c.id"),rs.getString("c.adresse"),rs.getInt("c.zip_code")));
+                list.add(new Client(rs.getInt("u.id"), rs.getString("u.full_name"), rs.getString("u.email"), rs.getString("u.telephone"), rs.getString("u.login"), rs.getString("u.password"), rs.getInt("c.id"), rs.getString("c.adresse"), rs.getInt("c.zip_code")));
                 //System.out.println(list);
             }
         } catch (SQLException ex) {
@@ -120,9 +118,9 @@ public class clientService implements IServiceClient<Client> {
             pst = cnx.prepareStatement(req);
             rs = pst.executeQuery(req);
             while (rs.next()) {
-                u = new Client (rs.getInt("u.id"),rs.getString("u.full_name"),rs.getString("u.email"),rs.getString("u.telephone"),rs.getString("u.login"),rs.getString("u.password"),rs.getInt("c.id"),rs.getString("c.adresse"),rs.getInt("c.zip_code"));
+                u = new Client(rs.getInt("u.id"), rs.getString("u.full_name"), rs.getString("u.email"), rs.getString("u.telephone"), rs.getString("u.login"), rs.getString("u.password"), rs.getInt("c.id"), rs.getString("c.adresse"), rs.getInt("c.zip_code"));
             }
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return u;

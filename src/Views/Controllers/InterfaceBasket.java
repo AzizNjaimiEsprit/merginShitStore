@@ -1,8 +1,9 @@
 package Views.Controllers;
 
-import Beans.*;
+import Beans.Basket;
+import Beans.Book;
+import Beans.User;
 import Services.ServicesBasket;
-
 import Utility.Global;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,22 +13,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.ResourceBundle;
-import Beans.Basket;
-import Beans.Book;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import sun.plugin2.message.JavaObjectOpMessage;
-
-import javax.swing.*;
 
 public class InterfaceBasket extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
 
     private ObservableList<Basket> data;
@@ -78,7 +75,7 @@ public class InterfaceBasket extends MenuBarController implements Initializable 
 
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         initMenuBar(menuBar);
         System.out.println(sb.getBasketOfUser(connectedUser.getId()));
         list = sb.getBasketOfUser(Global.getCurrentUser().getId());
@@ -87,9 +84,9 @@ public class InterfaceBasket extends MenuBarController implements Initializable 
         txt_prix.setCellValueFactory(new PropertyValueFactory<>("bookPrice"));
         txt_prixTotale.setCellValueFactory(new PropertyValueFactory<>("TotalPrice"));
 
-       // btnUpdate.setStyle(" -fx-background-radius: 50px; ");
-       // btnValider.setStyle(" -fx-background-radius: 50px; ");
-      //  btnDelete.setStyle(" -fx-background-radius: 50px; ");
+        // btnUpdate.setStyle(" -fx-background-radius: 50px; ");
+        // btnValider.setStyle(" -fx-background-radius: 50px; ");
+        //  btnDelete.setStyle(" -fx-background-radius: 50px; ");
 
 
 
@@ -107,13 +104,13 @@ public class InterfaceBasket extends MenuBarController implements Initializable 
         if (mouseEvent.getClickCount() == 1) {
             QteTextBox.setDisable(false);
             btnUpdate.setDisable(false);
-           Basket b= tableviewPanier.getSelectionModel().getSelectedItem();
+            Basket b = tableviewPanier.getSelectionModel().getSelectedItem();
             BookTextBox.setText(b.getBookTitle());
             QteTextBox.setText(Integer.toString(b.getQuantity()));
-            PriceTextBox.setText(Double.toString( b.getBookPrice()));
-            double res=b.getQuantity()*b.getBookPrice();
+            PriceTextBox.setText(Double.toString(b.getBookPrice()));
+            double res = b.getQuantity() * b.getBookPrice();
             TotalPriceTextBox.setText(Double.toString(res));
-        }else{
+        } else {
 
 
             String newQuantity = JOptionPane.showInputDialog(null, "Enter new quantity");
@@ -155,25 +152,26 @@ public class InterfaceBasket extends MenuBarController implements Initializable 
 
         }
     }
+
     @FXML
     public void updateAction(ActionEvent actionEvent) throws IOException {
-       if(QteTextBox.getText().equals("") || QteTextBox.getText().equals("0")){
-           Alert alert = new Alert(Alert.AlertType.WARNING, "Quantity must not be empty or equal to zero", ButtonType.OK);
+        if (QteTextBox.getText().equals("") || QteTextBox.getText().equals("0")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Quantity must not be empty or equal to zero", ButtonType.OK);
             alert.show();
             return;
-       }
+        }
 
-       try{
-        int qte=Integer.parseInt(QteTextBox.getText());
-       }catch (Exception e){
-           Alert alert = new Alert(Alert.AlertType.WARNING, "Quantity must be an integer", ButtonType.OK);
-           alert.show();
-           return;
-       }
+        try {
+            int qte = Integer.parseInt(QteTextBox.getText());
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Quantity must be an integer", ButtonType.OK);
+            alert.show();
+            return;
+        }
 
-        Basket B=tableviewPanier.getSelectionModel().getSelectedItem();
+        Basket B = tableviewPanier.getSelectionModel().getSelectedItem();
 
-       B.setQuantity(Integer.parseInt( QteTextBox.getText()));
+        B.setQuantity(Integer.parseInt(QteTextBox.getText()));
         sb.modifier(tableviewPanier.getSelectionModel().getSelectedItem());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Interfaces/InterfaceBasket.fxml"));
         Parent root = loader.load();
@@ -182,18 +180,18 @@ public class InterfaceBasket extends MenuBarController implements Initializable 
 
     @FXML
     void rechercheActionHandler(KeyEvent event) {
-        ObservableList<Basket> listRecherche=FXCollections.observableArrayList();
-    if(textRechercher.getText()!=""){
-        Iterator iterator=list.iterator();
-        while (iterator.hasNext()){
-            Basket b=(Basket)iterator.next();
-            if(b.getBookTitle().contains(textRechercher.getText())){
-                listRecherche.add(b);
+        ObservableList<Basket> listRecherche = FXCollections.observableArrayList();
+        if (textRechercher.getText() != "") {
+            Iterator iterator = list.iterator();
+            while (iterator.hasNext()) {
+                Basket b = (Basket) iterator.next();
+                if (b.getBookTitle().contains(textRechercher.getText())) {
+                    listRecherche.add(b);
+                }
+                tableviewPanier.setItems(listRecherche);
             }
-            tableviewPanier.setItems(listRecherche);
+        } else {
+            tableviewPanier.setItems(list);
         }
-    }else{
-        tableviewPanier.setItems(list);
-    }
     }
 }

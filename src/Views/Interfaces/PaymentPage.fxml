@@ -1,111 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<VBox prefHeight="537.0" prefWidth="694.0" style="-fx-background-color: white;" stylesheets="@/Views/Resources/css/style1.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.PaymentController">
-  <children>
-     <MenuBar fx:id="menuBar"  >
+<?import javafx.scene.text.*?>
+<VBox prefHeight="537.0" prefWidth="694.0" style="-fx-background-color: white;"
+      stylesheets="@/Views/Resources/css/style1.css" xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.PaymentController">
+    <children>
+        <MenuBar fx:id="menuBar">
             <menus>
                 <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders" />
-						<MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library" />
-						<MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList" />
-						<MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket" />
-						<MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
+                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
+                        <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
+                        <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
+                        <MenuItem id="Fidelty" mnemonicParsing="false" text="Fidelity Points"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-				<Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List" />
-						<MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List" />
-						<MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List" />
-						<MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders" />
-						<MenuItem id="Offers" mnemonicParsing="false" text="Offers" />
-						<MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List" />
-						<MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-						<MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="Users List" mnemonicParsing="false" text="Users List"/>
+                        <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
+                        <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
+                        <MenuItem id="Offers" mnemonicParsing="false" text="Offers"/>
+                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
+                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Our Web Site" />
-						<MenuItem mnemonicParsing="false" text="Contact" />
-                        <MenuItem mnemonicParsing="false" text="About BookStore" />
+                        <MenuItem mnemonicParsing="false" text="Our Web Site"/>
+                        <MenuItem mnemonicParsing="false" text="Contact"/>
+                        <MenuItem mnemonicParsing="false" text="About BookStore"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="438.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label layoutX="169.0" layoutY="29.0" text="In order to proceed with your payment, please enter">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <ImageView fitHeight="59.0" fitWidth="90.0" layoutX="16.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/Views/Resources/images/basket1.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="59.0" fitWidth="90.0" layoutX="607.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/Views/Resources/images/payment1.png" />
-               </image>
-            </ImageView>
-            <TextField fx:id="in_numCarte" layoutX="272.0" layoutY="183.0" prefHeight="26.0" prefWidth="232.0" />
-            <TextField fx:id="in_month" layoutX="272.0" layoutY="240.0" prefHeight="26.0" prefWidth="60.0" />
-            <TextField fx:id="in_year" layoutX="341.0" layoutY="240.0" prefHeight="26.0" prefWidth="90.0" />
-            <Label layoutX="132.0" layoutY="185.0" text="Card Number">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Label layoutX="132.0" layoutY="239.0" text="Expiration date">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <TextField fx:id="in_email" layoutX="272.0" layoutY="300.0" prefHeight="26.0" prefWidth="232.0" />
-            <Label layoutX="134.0" layoutY="299.0" text="Email">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <TextField fx:id="in_amount" layoutX="275.0" layoutY="363.0" />
-            <Label layoutX="131.0" layoutY="362.0" text="Amount To Pay">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Button layoutX="306.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#checkCard" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #61c4f2; -fx-background-radius: 50px;" text="Confirm" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Label layoutX="256.0" layoutY="62.0" text="yout credit card informations">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <TextField fx:id="in_fullname" layoutX="272.0" layoutY="128.0" prefHeight="26.0" prefWidth="232.0" />
-            <Label layoutX="133.0" layoutY="128.0" text="Full Name">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-         </children>
-    </AnchorPane>
-  </children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="438.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label layoutX="169.0" layoutY="29.0" text="In order to proceed with your payment, please enter">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ImageView fitHeight="59.0" fitWidth="90.0" layoutX="16.0" layoutY="16.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@/Views/Resources/images/basket1.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="59.0" fitWidth="90.0" layoutX="607.0" layoutY="19.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@/Views/Resources/images/payment1.png"/>
+                    </image>
+                </ImageView>
+                <TextField fx:id="in_numCarte" layoutX="272.0" layoutY="183.0" prefHeight="26.0" prefWidth="232.0"/>
+                <TextField fx:id="in_month" layoutX="272.0" layoutY="240.0" prefHeight="26.0" prefWidth="60.0"/>
+                <TextField fx:id="in_year" layoutX="341.0" layoutY="240.0" prefHeight="26.0" prefWidth="90.0"/>
+                <Label layoutX="132.0" layoutY="185.0" text="Card Number">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="132.0" layoutY="239.0" text="Expiration date">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="in_email" layoutX="272.0" layoutY="300.0" prefHeight="26.0" prefWidth="232.0"/>
+                <Label layoutX="134.0" layoutY="299.0" text="Email">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="in_amount" layoutX="275.0" layoutY="363.0"/>
+                <Label layoutX="131.0" layoutY="362.0" text="Amount To Pay">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <Button layoutX="306.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#checkCard"
+                        prefHeight="39.0" prefWidth="123.0"
+                        style="-fx-background-color: #61c4f2; -fx-background-radius: 50px;" text="Confirm"
+                        textFill="WHITE">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Button>
+                <Label layoutX="256.0" layoutY="62.0" text="yout credit card informations">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="in_fullname" layoutX="272.0" layoutY="128.0" prefHeight="26.0" prefWidth="232.0"/>
+                <Label layoutX="133.0" layoutY="128.0" text="Full Name">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
 </VBox>

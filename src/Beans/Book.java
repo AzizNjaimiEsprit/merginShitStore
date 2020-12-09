@@ -13,7 +13,7 @@ public class Book {
     private int quantity;
     private String status;
     private Category category;
-    private String image ;
+    private String image;
     private int nbPage;
     private String Authors;
 
@@ -99,7 +99,8 @@ public class Book {
     }
 
     public String getAuthors() {
-        return Authors; }
+        return Authors;
+    }
 
     public String getImage() {
         return image;
@@ -182,7 +183,7 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return getId() == book.getId() ;
+        return getId() == book.getId();
     }
 
     @Override

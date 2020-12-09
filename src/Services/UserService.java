@@ -2,30 +2,23 @@ package Services;
 
 import Beans.Client;
 import Beans.User;
+import Utility.Singleton;
 import api.MailingService;
+import com.twilio.Twilio;
+import com.twilio.type.PhoneNumber;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import org.mindrot.jbcrypt.BCrypt;
-import Utility.Singleton;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-
-import com.twilio.Twilio;
-import com.twilio.type.PhoneNumber;
-
 import java.sql.*;
-import java.util.*;
+import java.util.Properties;
+import java.util.Random;
 
 public class UserService implements IServiceUser<User> {
     private Connection cnx;
@@ -474,11 +467,11 @@ public class UserService implements IServiceUser<User> {
     public User GetUser(int id) {
         User u = null;
         try {
-            String req = "SELECT * FROM USER where id="+id;
+            String req = "SELECT * FROM USER where id=" + id;
             pst = cnx.prepareStatement(req);
             rs = pst.executeQuery(req);
             while (rs.next()) {
-                return(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6),rs.getInt(7)));
+                return (new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

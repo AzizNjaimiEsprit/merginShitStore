@@ -14,26 +14,26 @@ public class Library {
     private Button readButton;
     private Button quizButton;
 
-    public Library(){
+    public Library() {
 
     }
 
-    public Library(User user, OnlineBook book, String status, int reachedPage,int quizScore) {
+    public Library(User user, OnlineBook book, String status, int reachedPage, int quizScore) {
         this.user = user;
         this.book = book;
         this.status = status;
         this.reachedPage = reachedPage;
-        this.quizScore=quizScore;
+        this.quizScore = quizScore;
     }
 
-    public Library(OnlineBook book, String status, int reachedPage,int quizScore) {
+    public Library(OnlineBook book, String status, int reachedPage, int quizScore) {
         this.book = book;
         this.status = status;
         this.reachedPage = reachedPage;
-        this.quizScore=quizScore;
+        this.quizScore = quizScore;
     }
 
-    public Library(OnlineBook book, String status, int reachedPage,Button resumeButton, Button readButton, Button quizButton) {
+    public Library(OnlineBook book, String status, int reachedPage, Button resumeButton, Button readButton, Button quizButton) {
         this.book = book;
         this.status = status;
         this.reachedPage = reachedPage;
@@ -130,7 +130,7 @@ public class Library {
                 '}';
     }
 
-    public String getBookTitle(){
+    public String getBookTitle() {
         return book.getTitle();
     }
 }

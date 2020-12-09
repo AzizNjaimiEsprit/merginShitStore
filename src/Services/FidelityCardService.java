@@ -1,10 +1,8 @@
 package Services;
 
 import Beans.FidelityCard;
-import Beans.Offer;
 import Beans.User;
 import Utility.Singleton;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,11 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class FidelityCardService implements IService<FidelityCard>{
+public class FidelityCardService implements IService<FidelityCard> {
     private Connection cnx = Singleton.getConn();
 
     @Override
-    public void add (FidelityCard card) {
+    public void add(FidelityCard card) {
         try {
             String request = "INSERT INTO FIDELITYCARD value (null, ?, ?)";
             PreparedStatement statement = cnx.prepareStatement(request);
@@ -30,7 +28,7 @@ public class FidelityCardService implements IService<FidelityCard>{
     }
 
     @Override
-    public void delete (int userID) {
+    public void delete(int userID) {
         try {
             String request = "DELETE FROM FIDELITYCARD where user_id = ?";
             PreparedStatement statement = cnx.prepareStatement(request);
@@ -43,7 +41,7 @@ public class FidelityCardService implements IService<FidelityCard>{
     }
 
     @Override
-    public void update (FidelityCard card) {
+    public void update(FidelityCard card) {
         try {
             String request = "UPDATE FIDELITYCARD SET points = ? where user_id = ?";
             PreparedStatement statement = cnx.prepareStatement(request);
@@ -56,7 +54,7 @@ public class FidelityCardService implements IService<FidelityCard>{
     }
 
     @Override
-    public FidelityCard get (int userID) {
+    public FidelityCard get(int userID) {
         try {
             String request = "SELECT * from FIDELITYCARD where user_id = ?";
             PreparedStatement st = cnx.prepareStatement(request);
@@ -77,7 +75,7 @@ public class FidelityCardService implements IService<FidelityCard>{
     }
 
     @Override
-    public ArrayList<FidelityCard> get () {
+    public ArrayList<FidelityCard> get() {
         ArrayList<FidelityCard> cards = new ArrayList<>();
         try {
             String request = "SELECT * FROM FIDELITYCARD";
@@ -97,7 +95,6 @@ public class FidelityCardService implements IService<FidelityCard>{
         }
         return cards;
     }
-
 
 
 }

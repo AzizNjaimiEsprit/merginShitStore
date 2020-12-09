@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- *
- * @author  Njaimi Med Aziz
+ * @author Njaimi Med Aziz
  */
 
 public class OrderItem {
@@ -55,11 +54,25 @@ public class OrderItem {
 
     // Extra getters used by javafx interfaces
 
-    public String getBookTitle() { return book.getTitle(); }
-    public int getBookId() { return book.getId(); }
-    public float getBookPrice() { return (float) book.getPrice(); }
-    public int getOrderId(){return this.order.getId(); }
-    public float getTotalBooksPrice(){return (float) (book.getPrice()*quantity);}
+    public String getBookTitle() {
+        return book.getTitle();
+    }
+
+    public int getBookId() {
+        return book.getId();
+    }
+
+    public float getBookPrice() {
+        return (float) book.getPrice();
+    }
+
+    public int getOrderId() {
+        return this.order.getId();
+    }
+
+    public float getTotalBooksPrice() {
+        return (float) (book.getPrice() * quantity);
+    }
 
     @Override
     public String toString() {
@@ -70,10 +83,11 @@ public class OrderItem {
                 ", bookId=" + book.getId() +
                 '}';
     }
-    public static String afficherTab(ArrayList<OrderItem> tab){
+
+    public static String afficherTab(ArrayList<OrderItem> tab) {
         String res = "";
-        for (int i=0;i< tab.size();i++)
-            res += "\t"+tab.get(i).toString()+"\n";
+        for (int i = 0; i < tab.size(); i++)
+            res += "\t" + tab.get(i).toString() + "\n";
         return res;
     }
 

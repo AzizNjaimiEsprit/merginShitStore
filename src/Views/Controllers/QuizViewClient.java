@@ -4,35 +4,31 @@ import Beans.FidelityCard;
 import Beans.Library;
 import Beans.Quiz;
 import Beans.User;
-import Services.AnswerDaoImp;
-import Services.QuestionDaoImp;
-import Services.QuizDaoImp;
-import Services.FidelityCardService;
-import Services.DaoLibraryImp;
+import Services.*;
 import Utility.Global;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import javax.swing.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class QuizViewClient extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
 
-    AnswerDaoImp answerDaoImp=new AnswerDaoImp();
-    QuestionDaoImp questionDaoImp=new QuestionDaoImp();
-    QuizDaoImp quizDaoImp=new QuizDaoImp();
-    DaoLibraryImp daoLibraryImp=new DaoLibraryImp();
+    AnswerDaoImp answerDaoImp = new AnswerDaoImp();
+    QuestionDaoImp questionDaoImp = new QuestionDaoImp();
+    QuizDaoImp quizDaoImp = new QuizDaoImp();
+    DaoLibraryImp daoLibraryImp = new DaoLibraryImp();
 
     @FXML
     private Button btn_check;
@@ -76,20 +72,21 @@ public class QuizViewClient extends MenuBarController implements Initializable {
     Library library;
     ObservableList<Quiz> quiz;
     int bookId;
-    User connectedUser=new User(Global.getCurrentUser().getId());
-    FidelityCardService fidelityCardService=new FidelityCardService();
+    User connectedUser = new User(Global.getCurrentUser().getId());
+    FidelityCardService fidelityCardService = new FidelityCardService();
+
     public Library getLibrary() {
         return library;
     }
 
-    public void setLibrary(Library library) throws Exception{
-            this.library = library;
-            bookId = library.getBook().getId();
-            quiz = quizDaoImp.getQuizById(bookId);
-            if(quiz==null){
-                throw new Exception();
-            }
-            initQuiz(library.getBook().getId());
+    public void setLibrary(Library library) throws Exception {
+        this.library = library;
+        bookId = library.getBook().getId();
+        quiz = quizDaoImp.getQuizById(bookId);
+        if (quiz == null) {
+            throw new Exception();
+        }
+        initQuiz(library.getBook().getId());
     }
 
 
@@ -98,7 +95,7 @@ public class QuizViewClient extends MenuBarController implements Initializable {
 
     }
 
-    public void initQuiz(int id){
+    public void initQuiz(int id) {
         /* Adding first question */
         txt_q1.setText(quiz.get(0).getQuestion().getQuestion());
         txt_ans1.setText(quiz.get(0).getQuestion().getAnswerId().getFirstAnswer());
@@ -144,7 +141,7 @@ public class QuizViewClient extends MenuBarController implements Initializable {
             else if ((txt_ans9.isSelected() && Integer.parseInt(txt_ans9.getId()) == correctAnswer3))
                 score++;
             library.setQuizScore(score);
-            daoLibraryImp.sendSms(connectedUser,library);
+            daoLibraryImp.sendSms(connectedUser, library);
             daoLibraryImp.updateQuizScore(new Library(connectedUser, library.getBook(), library.getStatus(), library.getReachedPage(), library.getQuizScore()));
             FidelityCard fidelityCard = fidelityCardService.get(connectedUser.getId());
             fidelityCard.setPoints(fidelityCard.getPoints() + score * 10);
@@ -156,8 +153,7 @@ public class QuizViewClient extends MenuBarController implements Initializable {
             Global.getPrimaryStage().getScene().setRoot(root);
             Global.getPrimaryStage().setHeight(getHeight("OnlineLibrary"));
             Global.getPrimaryStage().setWidth(getWidth("OnlineLibrary"));
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 

@@ -10,13 +10,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,7 +30,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class BookController extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
     CrudComment cc = new CrudComment();
     CrudRate cr = new CrudRate();
@@ -109,9 +108,13 @@ public class BookController extends MenuBarController implements Initializable {
     private Label moyrate;
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         initMenuBar(menuBar);
-        stars.add(etoile1);stars.add(etoile2);stars.add(etoile3);stars.add(etoile4);stars.add(etoile5);
+        stars.add(etoile1);
+        stars.add(etoile2);
+        stars.add(etoile3);
+        stars.add(etoile4);
+        stars.add(etoile5);
         comment.setCellValueFactory(new PropertyValueFactory("text"));
         username.setCellValueFactory(new PropertyValueFactory("userFullName"));
 
@@ -121,7 +124,7 @@ public class BookController extends MenuBarController implements Initializable {
     public void init(OnlineBook b) {
         commentList = FXCollections.observableArrayList(cc.RecupererListComment(b));
         commentableview.setItems(commentList);
-        Image image = new Image("file:///C:/wamp64/www/BookStore/BooksImage/"+b.getId()+".jpg");
+        Image image = new Image("file:///C:/wamp64/www/BookStore/BooksImage/" + b.getId() + ".jpg");
         bookimage.setImage(image);
         title.setText(b.getTitle());
         author.setText(b.getAuthors());
@@ -133,9 +136,8 @@ public class BookController extends MenuBarController implements Initializable {
         priceonlinebook.setText(String.valueOf(b.getPrice() - b.getPrice() * 0.75));
         moyrate.setText(String.valueOf(cr.getMoyRates(b)));
         Rate rate = cr.RecupererRate(new Rate(0, b, Global.getCurrentUser(), 0));
-        if (rate!=null)
-        {
-            rateFlag=false;
+        if (rate != null) {
+            rateFlag = false;
             setStarImages(rate.getRate());
         }
 
@@ -152,19 +154,19 @@ public class BookController extends MenuBarController implements Initializable {
         cc.AjouterCommentaire(c);
         commentList = FXCollections.observableArrayList(cc.RecupererListComment(toshow));
         commentableview.setItems(commentList);
-        JOptionPane.showMessageDialog(null,"Thank you for your comment");
+        JOptionPane.showMessageDialog(null, "Thank you for your comment");
         txtcomment.clear();
 
     }
 
     public void goToWishlist(ActionEvent actionEvent) {
-        WishList wishList =  new WishList(Global.getCurrentUser(),toshow);
+        WishList wishList = new WishList(Global.getCurrentUser(), toshow);
         servicesWishList.ajouter(wishList);
         redirect("InterfaceWishList");
     }
 
     public void goToCard(ActionEvent actionEvent) {
-        servicesBasket.ajouter(new Basket(Global.getCurrentUser(),toshow,1));
+        servicesBasket.ajouter(new Basket(Global.getCurrentUser(), toshow, 1));
         redirect("InterfaceBasket");
     }
     //Image image = new Image("../Resources/images/full.png");
@@ -175,7 +177,7 @@ public class BookController extends MenuBarController implements Initializable {
         cr.AjouterRate(rate);
         ratenote.setText("1");
         setStarImages(1);
-        JOptionPane.showMessageDialog(null,"Thank you for your review ");
+        JOptionPane.showMessageDialog(null, "Thank you for your review ");
 
     }
 
@@ -185,7 +187,7 @@ public class BookController extends MenuBarController implements Initializable {
         cr.AjouterRate(rate);
         ratenote.setText("2");
         setStarImages(2);
-        JOptionPane.showMessageDialog(null,"Thank you for your review ");
+        JOptionPane.showMessageDialog(null, "Thank you for your review ");
 
     }
 
@@ -195,7 +197,7 @@ public class BookController extends MenuBarController implements Initializable {
         cr.AjouterRate(rate);
         ratenote.setText("3");
         setStarImages(3);
-        JOptionPane.showMessageDialog(null,"Thank you for your review ");
+        JOptionPane.showMessageDialog(null, "Thank you for your review ");
 
     }
 
@@ -205,7 +207,7 @@ public class BookController extends MenuBarController implements Initializable {
         cr.AjouterRate(rate);
         ratenote.setText("4");
         setStarImages(4);
-        JOptionPane.showMessageDialog(null,"Thank you for your review ");
+        JOptionPane.showMessageDialog(null, "Thank you for your review ");
 
     }
 
@@ -215,12 +217,13 @@ public class BookController extends MenuBarController implements Initializable {
         cr.AjouterRate(rate);
         ratenote.setText("5");
         setStarImages(5);
-        JOptionPane.showMessageDialog(null,"Thank you for your review ");
+        JOptionPane.showMessageDialog(null, "Thank you for your review ");
 
     }
-    public void setStarImages(int x){
+
+    public void setStarImages(int x) {
         rateFlag = false;
-        for (int i=0;i<x;i++)
+        for (int i = 0; i < x; i++)
             stars.get(i).setImage(starImageFull);
     }
 
@@ -232,7 +235,7 @@ public class BookController extends MenuBarController implements Initializable {
     }
 
     public void TSdownload(MouseEvent mouseEvent) {
-       File file = new File( "C:/wamp64/www/BookStore/BookTechnicalSheet/"+b.getId()+".pdf");
+        File file = new File("C:/wamp64/www/BookStore/BookTechnicalSheet/" + b.getId() + ".pdf");
         try {
             Desktop.getDesktop().open(file);
         } catch (IOException e) {

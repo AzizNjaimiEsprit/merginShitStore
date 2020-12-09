@@ -9,7 +9,7 @@ public class User {
     private String telephone;
     private String login;
     private String password;
-    private int role=0;
+    private int role = 0;
     private String verificationCode;
 
 
@@ -50,7 +50,10 @@ public class User {
     public User(int id) {
         this.id = id;
     }
-    public User(){ }
+
+    public User() {
+    }
+
     public User(String fullName, String email, String telephone, String login, String password) {
         this.fullName = fullName;
         this.email = email;
@@ -140,7 +143,6 @@ public class User {
                 Objects.equals(password, user.password) &&
                 Objects.equals(verificationCode, user.verificationCode);
     }
-
 
 
     @Override

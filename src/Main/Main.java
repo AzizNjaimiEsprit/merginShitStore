@@ -6,14 +6,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         UserService userSer = new UserService();
         Global.setCurrentUser(userSer.GetUser(3));
         System.out.println(userSer.GetUser(3));
@@ -22,7 +21,7 @@ public class Main extends Application {
         Global.setPrimaryStage(primaryStage);
         Stage ps = Global.getPrimaryStage();
         ps.setTitle("BookStore");
-                Scene scene = new Scene(root);
+        Scene scene = new Scene(root);
         ps.setScene(scene);
         ps.show();
         //

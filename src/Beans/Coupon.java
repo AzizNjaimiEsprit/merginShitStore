@@ -45,7 +45,6 @@ public class Coupon {
     }
 
 
-
     @Override
     public String toString() {
         return "Coupon{" +

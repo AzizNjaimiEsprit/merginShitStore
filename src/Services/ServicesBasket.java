@@ -1,9 +1,5 @@
 package Services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import Beans.Basket;
 import Beans.Book;
 import Beans.User;
@@ -11,6 +7,11 @@ import Utility.Global;
 import Utility.Singleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ServicesBasket /*implements IServiceBasket<Basket>*/ {
     Connection cnx = Singleton.getConn();
@@ -88,33 +89,31 @@ public class ServicesBasket /*implements IServiceBasket<Basket>*/ {
     }*/
 
 
-            public ObservableList<Basket> getBasketOfUser(int userId){
-                ObservableList<Basket> res= FXCollections.observableArrayList();
-                try{
+    public ObservableList<Basket> getBasketOfUser(int userId) {
+        ObservableList<Basket> res = FXCollections.observableArrayList();
+        try {
 
-                    String req = "Select * FROM BASKET WHERE user_id=? ";
-                    PreparedStatement st = cnx.prepareStatement(req);
-                    st.setInt(1, userId);
-                    ResultSet rs = st.executeQuery();
-                    while (rs.next()){
-                        int quantity = rs.getInt("quantity");
-                        int bookid = rs.getInt("book_id");
-                        Book book = cb.RecupererLivreByID(bookid);
-                        User user= Global.getCurrentUser();
-                        res.add(new Basket(user,book,quantity));
-                    }
-                    rs.close();
-                }
-                catch(Exception e){
-                    System.out.println(e.getMessage());
-                }
-                return res;
-
+            String req = "Select * FROM BASKET WHERE user_id=? ";
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setInt(1, userId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int quantity = rs.getInt("quantity");
+                int bookid = rs.getInt("book_id");
+                Book book = cb.RecupererLivreByID(bookid);
+                User user = Global.getCurrentUser();
+                res.add(new Basket(user, book, quantity));
             }
-
-
-
+            rs.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        return res;
+
+    }
+
+
+}
 
 
 

@@ -1,18 +1,17 @@
 package Services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import Beans.*;
-
+import Beans.Book;
+import Beans.User;
+import Beans.WishList;
 import Utility.Global;
 import Utility.Singleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ServicesWishList /*implements IServiceWishList <WishList>*/ {
     Connection cnx = Singleton.getConn();

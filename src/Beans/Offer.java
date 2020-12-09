@@ -22,31 +22,57 @@ public class Offer {
     }
 
     // Getters and Setters
-    public int getId () {return this.id;}
+    public int getId() {
+        return this.id;
+    }
 
-    public User getUser () {return this.user;}
+    public User getUser() {
+        return this.user;
+    }
 
-    public void setUser (User user) {this.user = user;}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-    public String getTitle () {return this.title;}
+    public String getTitle() {
+        return this.title;
+    }
 
-    public void setTitle (String title) {this.title = title;}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public String getDescription () {return this.description;}
+    public String getDescription() {
+        return this.description;
+    }
 
-    public void setDescription (String description) {this.description = description;}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public String getAuthor () {return this.author;}
+    public String getAuthor() {
+        return this.author;
+    }
 
-    public void setAuthor (String author) {this.author = author;}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-    public float getPrice () {return this.price;}
+    public float getPrice() {
+        return this.price;
+    }
 
-    public void setPrice (float price) {this.price = price;}
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
-    public String getImage () {return this.image;}
+    public String getImage() {
+        return this.image;
+    }
 
-    public void setImage (String image) {this.image = image;}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @Override
     public boolean equals(Object o) {

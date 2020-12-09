@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class ChatDaoImp implements ChatDao<Chat> {
-    Connection conn= Singleton.getConn();
+    Connection conn = Singleton.getConn();
 
     @Override
     public void ajouterElementChat(Chat chat) {
@@ -22,47 +22,44 @@ public class ChatDaoImp implements ChatDao<Chat> {
                 }
             }
             PreparedStatement st = conn.prepareStatement("INSERT INTO CHAT (question,reponse) VALUES(?,?)");
-            st.setString(1,chat.getQuestion());
-            st.setString(2,chat.getReponse());
+            st.setString(1, chat.getQuestion());
+            st.setString(2, chat.getReponse());
             st.executeUpdate();
             System.out.println("Chat question and answer have been added successfully!");
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Override
     public String afficherReponse(Chat chat) {
-        String reponse=null;
-      try{
-          PreparedStatement st = conn.prepareStatement("SELECT reponse from CHAT where id=? AND question=?");
-          st.setInt(1,chat.getId()) ;
-          st.setString(2,chat.getQuestion());
+        String reponse = null;
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT reponse from CHAT where id=? AND question=?");
+            st.setInt(1, chat.getId());
+            st.setString(2, chat.getQuestion());
 
-          ResultSet rs=st.executeQuery();
-          while (rs.next()) {
-              reponse = rs.getString("reponse");
-          }
-      }
-      catch(Exception e){
-          System.out.println(e.getMessage());
-      }
-      return reponse;
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                reponse = rs.getString("reponse");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return reponse;
     }
 
     @Override
     public void modifierChatItem(Chat chat) {
-        try{
+        try {
             System.out.println(chat);
-            PreparedStatement st=conn.prepareStatement("UPDATE CHAT SET question=? ,reponse=? WHERE id=?");
-            st.setString(1,chat.getQuestion());
-            st.setString(2,chat.getReponse());
-            st.setInt(3,chat.getId());
+            PreparedStatement st = conn.prepareStatement("UPDATE CHAT SET question=? ,reponse=? WHERE id=?");
+            st.setString(1, chat.getQuestion());
+            st.setString(2, chat.getReponse());
+            st.setInt(3, chat.getId());
             st.executeUpdate();
             System.out.println("Chat item has been updated successfully!");
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -72,7 +69,7 @@ public class ChatDaoImp implements ChatDao<Chat> {
         try {
             PreparedStatement preparedStmt = conn.prepareStatement("DELETE FROM CHAT WHERE id=? ");
             preparedStmt.setInt(1, chat.getId());
-            int result= preparedStmt.executeUpdate();
+            int result = preparedStmt.executeUpdate();
             if (result != 0)
                 System.out.println("Chat item has been removed Successfully!");
             else
@@ -84,35 +81,35 @@ public class ChatDaoImp implements ChatDao<Chat> {
 
     @Override
     public ObservableList<Chat> afficherChat() {
-        ObservableList<Chat> res= FXCollections.observableArrayList();;
-        try{
+        ObservableList<Chat> res = FXCollections.observableArrayList();
+        ;
+        try {
             PreparedStatement preparedStat = conn.prepareStatement("SELECT * FROM CHAT");
-            ResultSet rs=preparedStat.executeQuery();
-            while(rs.next()){
+            ResultSet rs = preparedStat.executeQuery();
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String question = rs.getString("question");
                 String reponse = rs.getString("reponse");
-                Chat chat=new Chat(id,question,reponse);
+                Chat chat = new Chat(id, question, reponse);
                 res.add(chat);
             }
             rs.close();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return res;
     }
 
-    public Chat getChatItem(Chat chat){
-        Chat returnedChat=null;
-        try{
-            PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM CHAT WHERE question=?");
-            preparedStatement.setString(1,chat.getQuestion());
-            ResultSet rs=preparedStatement.executeQuery();
-            if(rs.next()){
-                returnedChat=new Chat(rs.getInt("id"),chat.getQuestion(),chat.getReponse());
+    public Chat getChatItem(Chat chat) {
+        Chat returnedChat = null;
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM CHAT WHERE question=?");
+            preparedStatement.setString(1, chat.getQuestion());
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                returnedChat = new Chat(rs.getInt("id"), chat.getQuestion(), chat.getReponse());
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return returnedChat;

@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.SwipeEvent;
 
 import javax.swing.*;
 import java.net.URL;
@@ -26,7 +25,7 @@ import java.util.stream.Collectors;
  * @author Njaimi Med Aziz
  */
 public class AdminOrdersListController extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
     ArrayList<String> etats = new ArrayList<>();
     ArrayList<String> etatsFind = new ArrayList<>();
@@ -99,7 +98,7 @@ public class AdminOrdersListController extends MenuBarController implements Init
     );
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         initMenuBar(menuBar);
         // Initializing Choice box
         etats.add("Non Traite");
@@ -172,7 +171,7 @@ public class AdminOrdersListController extends MenuBarController implements Init
     public void search(MouseEvent event) {
         List<Order> filteredList = ordersData;
         Predicate<Order> filterByStatus = p -> (p.getStatus().equals(status_select.getValue()) || status_select.getValue().equals("All"));
-        Predicate<Order> filterByDate = p -> (LocalDate.parse(p.getOrderDate()).compareTo(start_date.getValue())>=0 && LocalDate.parse(p.getOrderDate()).compareTo(end_date.getValue())<=0);
+        Predicate<Order> filterByDate = p -> (LocalDate.parse(p.getOrderDate()).compareTo(start_date.getValue()) >= 0 && LocalDate.parse(p.getOrderDate()).compareTo(end_date.getValue()) <= 0);
         if (start_date.getValue() != null && end_date.getValue() != null) {
             filteredList = filteredList.stream().filter(filterByStatus::test).filter(filterByDate::test).collect(Collectors.toList());
         } else {

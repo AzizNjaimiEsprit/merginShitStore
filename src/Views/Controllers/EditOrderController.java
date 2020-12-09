@@ -4,16 +4,16 @@ import Beans.Coupon;
 import Beans.CouponUsageHistory;
 import Beans.Order;
 import Beans.OrderItem;
-import Services.*;
+import Services.CouponHistoryService;
+import Services.CouponService;
+import Services.OrderItemService;
+import Services.OrderService;
 import api.SMS_Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -23,12 +23,11 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
- *
- * @author  Njaimi Med Aziz
+ * @author Njaimi Med Aziz
  */
 
 public class EditOrderController extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
     Order toEdit;
     OrderItemService orderItemService = new OrderItemService();
@@ -37,7 +36,7 @@ public class EditOrderController extends MenuBarController implements Initializa
     CouponHistoryService historyService = new CouponHistoryService();
     SMS_Service sms_service = new SMS_Service();
     InputControlOrders inputControl = new InputControlOrders();
-    private float toRepayValue= 0;
+    private float toRepayValue = 0;
     ObservableList<OrderItem> res = FXCollections.observableArrayList();
 
     @FXML
@@ -50,7 +49,7 @@ public class EditOrderController extends MenuBarController implements Initializa
     private TableColumn<OrderItem, String> book_title;
 
     @FXML
-    private TableColumn<OrderItem, Integer>quantity;
+    private TableColumn<OrderItem, Integer> quantity;
 
     @FXML
     private TableColumn<OrderItem, Float> price;
@@ -83,13 +82,12 @@ public class EditOrderController extends MenuBarController implements Initializa
         res.addAll(toEdit.getItems());
         in_adrs.setText(toEdit.getAddress());
         in_telephone.setText(toEdit.getNumTel());
-        in_codepostale.setText(""+toEdit.getZipCode());
+        in_codepostale.setText("" + toEdit.getZipCode());
     }
 
 
-
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         initMenuBar(menuBar);
         id_book.setCellValueFactory(new PropertyValueFactory("bookId"));
         book_title.setCellValueFactory(new PropertyValueFactory("bookTitle"));
@@ -103,44 +101,44 @@ public class EditOrderController extends MenuBarController implements Initializa
 
     public void valider(MouseEvent mouseEvent) {
         System.out.println("Save Method");
-        if (! inputControl.checkAddOrder1(in_adrs.getText(),in_codepostale.getText(),in_telephone.getText())){
+        if (!inputControl.checkAddOrder1(in_adrs.getText(), in_codepostale.getText(), in_telephone.getText())) {
             return;
         }
         toEdit.setAddress(in_adrs.getText());
         toEdit.setNumTel(in_telephone.getText());
         toEdit.setZipCode(Integer.parseInt(in_codepostale.getText()));
         ArrayList<OrderItem> tmp = new ArrayList<>();
-        for (OrderItem i: res) {
+        for (OrderItem i : res) {
             tmp.add(i);
         }
         toEdit.setItems(tmp);
         orderService.update(toEdit);
         // Saving coupon and sending email
 
-        Coupon insertedCoupon = couponService.add(new Coupon(null,toEdit.getUser(),toRepayValue));
-        historyService.add(new CouponUsageHistory(insertedCoupon,toEdit,"REFUND"));
-        sms_service.SendSMSRefund(toEdit,insertedCoupon);
+        Coupon insertedCoupon = couponService.add(new Coupon(null, toEdit.getUser(), toRepayValue));
+        historyService.add(new CouponUsageHistory(insertedCoupon, toEdit, "REFUND"));
+        sms_service.SendSMSRefund(toEdit, insertedCoupon);
         // Redirecting
         redirect("ClientOrdersListPage");
     }
 
     public void clickItem(MouseEvent mouseEvent) {
         OrderItem toEdit;
-        if (order_items.getSelectionModel().getSelectedIndex() == -1){
+        if (order_items.getSelectionModel().getSelectedIndex() == -1) {
             return;
         }
-        if (mouseEvent.getClickCount() == 2 ){
-            if (order_items.getSelectionModel().getSelectedItem().getQuantity()==1){
-                JOptionPane.showMessageDialog(null,"You can't update this item");
+        if (mouseEvent.getClickCount() == 2) {
+            if (order_items.getSelectionModel().getSelectedItem().getQuantity() == 1) {
+                JOptionPane.showMessageDialog(null, "You can't update this item");
                 return;
             }
             toEdit = order_items.getSelectionModel().getSelectedItem();
-            Integer[] options = new Integer[toEdit.getQuantity()-1];
+            Integer[] options = new Integer[toEdit.getQuantity() - 1];
             int j = 0;
-            for(Integer i=toEdit.getQuantity()-1;i>0;i--){
+            for (Integer i = toEdit.getQuantity() - 1; i > 0; i--) {
                 options[j++] = i;
             }
-            Integer newQ =(Integer)JOptionPane.showInputDialog(null,
+            Integer newQ = (Integer) JOptionPane.showInputDialog(null,
                     "Enter the new quantity",
                     "New Quantity",
                     JOptionPane.QUESTION_MESSAGE,
@@ -151,7 +149,7 @@ public class EditOrderController extends MenuBarController implements Initializa
             float bookprice = toEdit.getBookPrice();
             int diff = toEdit.getQuantity() - newQ;
             toRepayValue += bookprice * diff;
-            text_totalPrice.setText(""+toRepayValue+" Dt");
+            text_totalPrice.setText("" + toRepayValue + " Dt");
             order_items.getSelectionModel().getSelectedItem().setQuantity(newQ);
             order_items.refresh();
         }

@@ -3,11 +3,10 @@ package Beans;
 import java.util.Objects;
 
 public class Comment {
-    private int id ;
-    private String text ;
+    private int id;
+    private String text;
     private Book book;
     private User user;
-
 
 
     public Comment(int id, String text, Book b, User u) {
@@ -16,7 +15,6 @@ public class Comment {
         this.book = b;
         this.user = u;
     }
-
 
 
     public int getId() {
@@ -50,10 +48,12 @@ public class Comment {
     public void setUser(User user) {
         this.user = user;
     }
-//EXTRA
-    public String getUserFullName(){
+
+    //EXTRA
+    public String getUserFullName() {
         return this.user.getFullName();
     }
+
     @Override
     public String toString() {
         return "Comment{" +

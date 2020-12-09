@@ -1,8 +1,8 @@
 package Views.Controllers;
 
-import Services.clientService;
+import Beans.Client;
 import Services.UserService;
-import Beans.*;
+import Services.clientService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,8 +19,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class RegisterController implements Initializable {
-@FXML
-    private MenuBar menuBar;
+
     public AnchorPane registerPane;
     public Button register_btn;
     public TextField fullname_field;
@@ -34,10 +33,10 @@ public class RegisterController implements Initializable {
     public PasswordField repeat_field;
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
-        initMenuBar(menuBar);
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
+
     public boolean testSaisieClient() {
         if (
                 fullname_field.getText().trim().isEmpty()
@@ -52,13 +51,11 @@ public class RegisterController implements Initializable {
             return false;
         }
         Pattern err = Pattern.compile("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
-        if(!err.matcher(email_field.getText()).matches())
-        {
+        if (!err.matcher(email_field.getText()).matches()) {
             afficherAlert("Check your email format!!", Alert.AlertType.ERROR);
             return false;
         }
-        if(phone_field.getText().length()!=8)
-        {
+        if (phone_field.getText().length() != 8) {
             afficherAlert("Phone Number must contains 8 numbers", Alert.AlertType.ERROR);
             return false;
         }
@@ -75,9 +72,9 @@ public class RegisterController implements Initializable {
     public void RegisterAction(ActionEvent actionEvent) throws IOException {
         clientService cs = new clientService();
         UserService us = new UserService();
-        if(testSaisieClient()) {
+        if (testSaisieClient()) {
             if (password_field.getText().equals(repeat_field.getText())) {
-                Client c = new Client(fullname_field.getText(),email_field.getText(),phone_field.getText(),login_field.getText(),password_field.getText(),address_field.getText(),Integer.parseInt(zipcode_field.getText()));
+                Client c = new Client(fullname_field.getText(), email_field.getText(), phone_field.getText(), login_field.getText(), password_field.getText(), address_field.getText(), Integer.parseInt(zipcode_field.getText()));
                 us.AddAdmin(c);
                 int t = us.getId(login_field.getText());
                 Client cc = new Client(t, fullname_field.getText(), email_field.getText(), phone_field.getText(), login_field.getText(), password_field.getText(), address_field.getText(), Integer.parseInt(zipcode_field.getText()));
@@ -87,8 +84,7 @@ public class RegisterController implements Initializable {
                 fxml = FXMLLoader.load(getClass().getResource("/Views/Interfaces/login.fxml"));
                 registerPane.getChildren().removeAll();
                 registerPane.getChildren().setAll(fxml);
-            }
-            else
+            } else
                 afficherAlert("Your password field must be equals to Repeat password field", Alert.AlertType.ERROR);
         }
 
@@ -100,6 +96,7 @@ public class RegisterController implements Initializable {
         registerPane.getChildren().removeAll();
         registerPane.getChildren().setAll(fxml);
     }
+
     public void afficherAlert(String message, Alert.AlertType t) {
         Alert alert = new Alert(t);
         alert.setTitle("Information Dialog");

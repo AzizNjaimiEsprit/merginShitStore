@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ import java.util.ResourceBundle;
 
 
 public class UpdateQuizAdmin extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
 
     @FXML
@@ -77,12 +78,12 @@ public class UpdateQuizAdmin extends MenuBarController implements Initializable 
 
 
     Quiz quiz;
-    AnswerDaoImp answerDaoImp=new AnswerDaoImp();
-    QuestionDaoImp questionDaoImp=new QuestionDaoImp();
-    QuizDaoImp quizDaoImp=new QuizDaoImp();
-    int userId= Global.getCurrentUser().getId();
+    AnswerDaoImp answerDaoImp = new AnswerDaoImp();
+    QuestionDaoImp questionDaoImp = new QuestionDaoImp();
+    QuizDaoImp quizDaoImp = new QuizDaoImp();
+    int userId = Global.getCurrentUser().getId();
     OnlineBook bookId;
-    InputControlLibrary inputControlLibrary =new InputControlLibrary();
+    InputControlLibrary inputControlLibrary = new InputControlLibrary();
 
     public Quiz getQuiz() {
         return quiz;
@@ -90,15 +91,15 @@ public class UpdateQuizAdmin extends MenuBarController implements Initializable 
 
     public void setQuiz(Quiz quiz) throws Exception {
         this.quiz = quiz;
-        bookId=quiz.getOnlineBookId();
-        txt_title.setText(txt_title.getText()+" to the book "+bookId.getTitle());
+        bookId = quiz.getOnlineBookId();
+        txt_title.setText(txt_title.getText() + " to the book " + bookId.getTitle());
         txt_title.setMaxWidth(Double.MAX_VALUE);
         txt_title.setAlignment(Pos.CENTER);
         initQuiz(quiz);
     }
 
     private void initQuiz(Quiz quiz) {
-       ObservableList<Quiz> existQuiz=quizDaoImp.getQuizById(bookId.getId());
+        ObservableList<Quiz> existQuiz = quizDaoImp.getQuizById(bookId.getId());
         //Filling question 1
         txt_q1.setText(existQuiz.get(0).getQuestion().getQuestion());
         txt_ans1.setText(existQuiz.get(0).getQuestion().getAnswerId().getFirstAnswer());
@@ -127,9 +128,9 @@ public class UpdateQuizAdmin extends MenuBarController implements Initializable 
     @FXML
     void updateQuiz(ActionEvent event) {
         try {
-            boolean valid= inputControlLibrary.checkQuizInput(txt_q1.getText(),txt_q2.getText(),txt_q3.getText(),txt_ans1.getText(),txt_ans2.getText(),
-                    txt_ans3.getText(),txt_ans4.getText(),txt_ans5.getText(),txt_ans6.getText(),txt_ans7.getText(),txt_ans8.getText()
-                    ,txt_ans9.getText(),txt_correct1.getText(),txt_correct2.getText(),txt_correct3.getText());
+            boolean valid = inputControlLibrary.checkQuizInput(txt_q1.getText(), txt_q2.getText(), txt_q3.getText(), txt_ans1.getText(), txt_ans2.getText(),
+                    txt_ans3.getText(), txt_ans4.getText(), txt_ans5.getText(), txt_ans6.getText(), txt_ans7.getText(), txt_ans8.getText()
+                    , txt_ans9.getText(), txt_correct1.getText(), txt_correct2.getText(), txt_correct3.getText());
             if (valid) {
                 ObservableList<Quiz> existQuiz = quizDaoImp.getQuizById(bookId.getId());
                 //Adding Question1
@@ -148,8 +149,7 @@ public class UpdateQuizAdmin extends MenuBarController implements Initializable 
                 Global.getPrimaryStage().setHeight(getHeight("QuizViewAdmin"));
                 Global.getPrimaryStage().setWidth(getWidth("QuizViewAdmin"));
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

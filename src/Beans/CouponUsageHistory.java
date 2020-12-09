@@ -3,8 +3,7 @@ package Beans;
 import java.util.Objects;
 
 /**
- *
- * @author  Njaimi Med Aziz
+ * @author Njaimi Med Aziz
  */
 
 public class CouponUsageHistory {

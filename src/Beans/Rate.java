@@ -3,22 +3,21 @@ package Beans;
 import java.util.Objects;
 
 public class Rate {
-    private int id ;
-    private int rate ;
+    private int id;
+    private int rate;
     private Book book;
     private User user;
 
-    public Rate(int id, Book book, User user ,int rate) {
+    public Rate(int id, Book book, User user, int rate) {
         this.id = id;
         this.book = book;
         this.user = user;
         this.rate = rate;
     }
 
-    public Rate( ) {
+    public Rate() {
 
     }
-
 
 
     public int getId() {

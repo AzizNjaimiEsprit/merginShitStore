@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- *
- * @author  Njaimi Med Aziz
+ * @author Njaimi Med Aziz
  */
 
 public class Order {
@@ -120,22 +119,29 @@ public class Order {
     }
 
     // Extra getters used by javafx interfaces
-    public int getUserId() { return user.getId(); }
-    public String getUserFullName(){return user.getFullName();}
-    public float getDiscountCoupon (){
+    public int getUserId() {
+        return user.getId();
+    }
+
+    public String getUserFullName() {
+        return user.getFullName();
+    }
+
+    public float getDiscountCoupon() {
         CouponHistoryService couponHistoryService = new CouponHistoryService();
-        CouponUsageHistory x = couponHistoryService.get(id,"PAYMENT");
-        if (x != null && x.getUsageType().equals("PAYMENT")){
+        CouponUsageHistory x = couponHistoryService.get(id, "PAYMENT");
+        if (x != null && x.getUsageType().equals("PAYMENT")) {
             return x.getCoupon().getAmount();
-        }else
+        } else
             return 0;
     }
-    public float getRefundCoupon (){
+
+    public float getRefundCoupon() {
         CouponHistoryService couponHistoryService = new CouponHistoryService();
-        CouponUsageHistory x = couponHistoryService.get(id,"REFUND");
-        if (x != null){
+        CouponUsageHistory x = couponHistoryService.get(id, "REFUND");
+        if (x != null) {
             return x.getCoupon().getAmount();
-        }else{
+        } else {
             return 0;
         }
     }

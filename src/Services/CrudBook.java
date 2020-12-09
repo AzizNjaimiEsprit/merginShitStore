@@ -2,8 +2,8 @@ package Services;
 
 import Beans.Book;
 import Beans.Category;
-import api.TechnicalSheetCreation;
 import Utility.Singleton;
+import api.TechnicalSheetCreation;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -36,8 +36,9 @@ public class CrudBook {
                 //t.CreatTS(b);
 
                 ResultSet rs = preparedStat.getGeneratedKeys();
-                if (rs.next()){
-                    return rs.getInt(1);}
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
 
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
@@ -70,27 +71,27 @@ public class CrudBook {
 
     public void ModifierLivre(Book b) {
 
-            try {
-                PreparedStatement preparedStat = cnn.prepareStatement(" UPDATE BOOK b SET title=? , price =? ,pub_house=?,summary=?," +
-                        "release_date=?,quantity=?,status =?,category_id=?," + "image=?,nb_page=?,author=? WHERE b.id=" + b.getId());
-                preparedStat.setString(1, b.getTitle());
-                preparedStat.setDouble(2, b.getPrice());
-                preparedStat.setString(3, b.getPubHouse());
-                preparedStat.setString(4, b.getSummary());
-                preparedStat.setDate(5, b.getReleaseDate());
-                preparedStat.setInt(6, b.getQuantity());
-                preparedStat.setString(7, b.getStatus());
-                preparedStat.setInt(8, b.getCategory().getId());
-                preparedStat.setString(9, b.getImage());
-                preparedStat.setInt(10, b.getNbPage());
-                preparedStat.setString(11, b.getAuthors());
+        try {
+            PreparedStatement preparedStat = cnn.prepareStatement(" UPDATE BOOK b SET title=? , price =? ,pub_house=?,summary=?," +
+                    "release_date=?,quantity=?,status =?,category_id=?," + "image=?,nb_page=?,author=? WHERE b.id=" + b.getId());
+            preparedStat.setString(1, b.getTitle());
+            preparedStat.setDouble(2, b.getPrice());
+            preparedStat.setString(3, b.getPubHouse());
+            preparedStat.setString(4, b.getSummary());
+            preparedStat.setDate(5, b.getReleaseDate());
+            preparedStat.setInt(6, b.getQuantity());
+            preparedStat.setString(7, b.getStatus());
+            preparedStat.setInt(8, b.getCategory().getId());
+            preparedStat.setString(9, b.getImage());
+            preparedStat.setInt(10, b.getNbPage());
+            preparedStat.setString(11, b.getAuthors());
 
-                //executing the request
-                preparedStat.executeUpdate();
-                System.out.println("livre " + b.getId() + "est modifier ");
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
+            //executing the request
+            preparedStat.executeUpdate();
+            System.out.println("livre " + b.getId() + "est modifier ");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public int RecupererQuantitéLivre(Book b) {

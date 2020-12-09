@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,8 +34,9 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class HomeController extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
+
     CrudOnlineBook cb = new CrudOnlineBook();
     CrudRate crudRate = new CrudRate();
     ServiceCategorie cc = new ServiceCategorie();
@@ -64,8 +66,7 @@ public class HomeController extends MenuBarController implements Initializable {
     private int sliderIterator = 0;
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
-        initMenuBar(menuBar);
+    public void initialize(URL location, ResourceBundle resources) {
         System.out.println(Global.getCurrentUser().toString());
         userFullName.setText(Global.getCurrentUser().getFullName());
         this.nextSlide(null);

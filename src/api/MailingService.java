@@ -11,13 +11,13 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 /**
- *
- * @author  Njaimi Med Aziz
+ * @author Njaimi Med Aziz
  */
 
 public class MailingService implements Credentials {
     Properties props;
     Session session;
+
     public MailingService() {
         props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -27,7 +27,7 @@ public class MailingService implements Credentials {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
         //get Session
-         session = Session.getDefaultInstance(props,
+        session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(from, password);
@@ -56,7 +56,7 @@ public class MailingService implements Credentials {
             message.setSubject("Your Bookstore Order Receipt" + order.getId());
 
             // Now set the actual message
-            String text = ""+
+            String text = "" +
                     "Hi " + order.getUser().getFullName() + " \n\n" +
                     "Thanks for your purchase from our BookStore \n\n" +
                     "YOUR ORDER INFORMATION: \n\n" +
@@ -81,7 +81,8 @@ public class MailingService implements Credentials {
             mex.printStackTrace();
         }
     }
-    public void sendConfirmationEmail (String to, String msg){
+
+    public void sendConfirmationEmail(String to, String msg) {
         try {
             // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);

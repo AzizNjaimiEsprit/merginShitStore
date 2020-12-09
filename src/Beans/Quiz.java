@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import java.util.Objects;
 
 public class Quiz {
-    private  User user;
+    private User user;
     private OnlineBook onlineBookId;
     private Question question;
     private Button addButton;
@@ -18,7 +18,7 @@ public class Quiz {
         this.question = question;
     }
 
-    public Quiz( OnlineBook onlineBookId, Question question) {
+    public Quiz(OnlineBook onlineBookId, Question question) {
         this.onlineBookId = onlineBookId;
         this.question = question;
     }
@@ -88,10 +88,9 @@ public class Quiz {
         Quiz quiz = (Quiz) o;
         return
                 Objects.equals(user, quiz.user) &&
-                Objects.equals(onlineBookId, quiz.onlineBookId) &&
-                Objects.equals(question, quiz.question);
+                        Objects.equals(onlineBookId, quiz.onlineBookId) &&
+                        Objects.equals(question, quiz.question);
     }
-
 
 
     @Override
@@ -102,7 +101,7 @@ public class Quiz {
                 '}';
     }
 
-    public String getBookTitle(){
+    public String getBookTitle() {
         return onlineBookId.getTitle();
     }
 }

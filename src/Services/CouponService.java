@@ -16,19 +16,19 @@ public class CouponService {
     private Connection cnx = Singleton.getConn();
     private SMS_Service smsService = new SMS_Service();
 
-    private String couponCode () {
+    private String couponCode() {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#*-_=+/?";
-        return RandomStringUtils.random( 10, characters );
+        return RandomStringUtils.random(10, characters);
     }
 
-    public Coupon add (Coupon coupon) {
+    public Coupon add(Coupon coupon) {
         try {
             String request = "INSERT INTO COUPON values(?, ?, ?)";
             PreparedStatement statement = cnx.prepareStatement(request);
             String newCoupon;
-            do{
+            do {
                 newCoupon = this.couponCode();
-            }while (get(newCoupon) != null);
+            } while (get(newCoupon) != null);
             statement.setString(1, newCoupon);
             statement.setInt(2, coupon.getUser().getId());
             statement.setFloat(3, coupon.getAmount());
@@ -42,7 +42,7 @@ public class CouponService {
     }
 
 
-    public void update (Coupon coupon) {
+    public void update(Coupon coupon) {
         try {
             String request = "UPDATE COUPON SET amount = ? where user_id = ?";
             PreparedStatement statement = cnx.prepareStatement(request);
@@ -55,7 +55,7 @@ public class CouponService {
         }
     }
 
-    public void delete (int user_id) {
+    public void delete(int user_id) {
         try {
             String request = "DELETE FROM COUPON where user_id = ?";
             PreparedStatement statement = cnx.prepareStatement(request);
@@ -67,7 +67,7 @@ public class CouponService {
         }
     }
 
-    public Coupon get (int userID) {
+    public Coupon get(int userID) {
         try {
             String request = "SELECT * from COUPON where user_id = ?";
             PreparedStatement st = cnx.prepareStatement(request);
@@ -78,7 +78,7 @@ public class CouponService {
                         resultSet.getString(1),
                         new User(resultSet.getInt(2)),
                         resultSet.getFloat(3)
-                    )
+                )
                 );
             }
             resultSet.close();
@@ -88,7 +88,7 @@ public class CouponService {
         return null;
     }
 
-    public ArrayList<Coupon> get () {
+    public ArrayList<Coupon> get() {
         ArrayList<Coupon> coupons = new ArrayList<>();
         try {
             String request = "SELECT * FROM COUPON";
@@ -97,10 +97,10 @@ public class CouponService {
             while (result.next()) {
                 coupons.add(
                         new Coupon(
-                        result.getString(1),
-                        new User(result.getInt(2)),
-                        result.getFloat(3)
-                    )
+                                result.getString(1),
+                                new User(result.getInt(2)),
+                                result.getFloat(3)
+                        )
                 );
             }
         } catch (SQLException sqlException) {
@@ -108,18 +108,19 @@ public class CouponService {
         }
         return coupons;
     }
-    public Coupon get (String code) {
+
+    public Coupon get(String code) {
         Coupon res = null;
         try {
             String request = "SELECT * FROM COUPON where code =?";
             PreparedStatement statement = cnx.prepareStatement(request);
-            statement.setString(1,code);
+            statement.setString(1, code);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 res = new Coupon(
-                                result.getString(1),
-                                new User(result.getInt(2)),
-                                result.getFloat(3)
+                        result.getString(1),
+                        new User(result.getInt(2)),
+                        result.getFloat(3)
                 );
                 return res;
             }
@@ -128,7 +129,8 @@ public class CouponService {
         }
         return res;
     }
-    public boolean isCouponValid (Coupon coupon) {
+
+    public boolean isCouponValid(Coupon coupon) {
         try {
             String request = "SELECT * FROM COUPON WHERE code = ?";
             PreparedStatement statement = cnx.prepareStatement(request);

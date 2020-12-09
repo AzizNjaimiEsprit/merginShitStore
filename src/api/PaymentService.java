@@ -4,7 +4,6 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.*;
 
-
 import java.util.*;
 
 public class PaymentService {
@@ -48,7 +47,7 @@ public class PaymentService {
 
             try {
                 Charge charge = Charge.create(params);
-                System.out.println(charge.getId()+charge.getStatus());
+                System.out.println(charge.getId() + charge.getStatus());
                 CustomerBalanceTransaction balanceTransaction = customer.balanceTransactions().create(params2);
                 return charge.getId();
             } catch (Exception e) {
@@ -60,7 +59,7 @@ public class PaymentService {
         return null;
     }
 
-    public boolean checkValidCard (String name,String email,String numCard,int ExpMonth,int ExpYear){
+    public boolean checkValidCard(String name, String email, String numCard, int ExpMonth, int ExpYear) {
         Map<String, Object> retrieveParams =
                 new HashMap<>();
         List<String> expandList = new ArrayList<>();
@@ -70,7 +69,7 @@ public class PaymentService {
         String cus_id = "";
         try {
             cus_id = this.getCustomer(email).getId();
-        }catch (NullPointerException ex){
+        } catch (NullPointerException ex) {
             System.out.println("No user Found");
             return false;
         }
@@ -82,7 +81,7 @@ public class PaymentService {
                     null
             );
             // Checking name
-            if (!customer.getName().equals(name)){
+            if (!customer.getName().equals(name)) {
                 System.out.println("Customer not found");
                 return false;
             }
@@ -112,9 +111,10 @@ public class PaymentService {
         } catch (StripeException e) {
             e.printStackTrace();
         }
-    return false;
+        return false;
     }
-    public void getCharges(){
+
+    public void getCharges() {
         Map<String, Object> params = new HashMap<>();
         params.put("limit", 10);
 

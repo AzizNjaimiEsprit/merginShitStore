@@ -1,7 +1,10 @@
 package Views.Controllers;
 
-import Services.clientService;
+import Beans.Client;
+import Beans.User;
 import Services.UserService;
+import Services.clientService;
+import Utility.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,10 +15,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import Beans.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import Utility.Global;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,8 +25,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class ClientMenuController extends MenuBarController implements Initializable {
-@FXML
-    private MenuBar menuBar;
+//    @FXML
+//    private MenuBar menuBar;
 
     public Pane ProfilePane;
     public Button UpdateBtn;
@@ -40,17 +41,17 @@ public class ClientMenuController extends MenuBarController implements Initializ
     public Button profile;
     public Button logout;
     public AnchorPane AnchorMenu;
-    UserService us=new UserService();
+    UserService us = new UserService();
     clientService cs = new clientService();
-    Client c= new Client();
+    Client c = new Client();
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
-        initMenuBar(menuBar);
+    public void initialize(URL location, ResourceBundle resources) {
+        //initMenuBar(menuBar);
         ProfilePane.setVisible(false);
-        User cc= Global.getCurrentUser();
-        c= cs.GetClient(cc.getId());
-        System.out.println("Client is : "+c);
+        User cc = Global.getCurrentUser();
+        c = cs.GetClient(cc.getId());
+        System.out.println("Client is : " + c);
         full_field.setText(c.getFullName());
         phone_field.setText(c.getTelephone());
         email_field.setText(c.getEmail());
@@ -63,23 +64,21 @@ public class ClientMenuController extends MenuBarController implements Initializ
 
     public boolean testSaisie() {
         if (
-                   full_field.getText().trim().isEmpty()
-                || phone_field.getText().trim().isEmpty()
-                || email_field.getText().trim().isEmpty()
-                || address_field.getText().trim().isEmpty()
-                || zip_field.getText().trim().isEmpty()
+                full_field.getText().trim().isEmpty()
+                        || phone_field.getText().trim().isEmpty()
+                        || email_field.getText().trim().isEmpty()
+                        || address_field.getText().trim().isEmpty()
+                        || zip_field.getText().trim().isEmpty()
         ) {
             afficherAlert("All fields must be completed!!", Alert.AlertType.ERROR);
             return false;
         }
         Pattern err = Pattern.compile("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
-        if(!err.matcher(email_field.getText()).matches())
-        {
+        if (!err.matcher(email_field.getText()).matches()) {
             afficherAlert("Check your email format!!", Alert.AlertType.ERROR);
             return false;
         }
-        if(phone_field.getText().length()!=8)
-        {
+        if (phone_field.getText().length() != 8) {
             afficherAlert("Phone Number must contains 8 numbers", Alert.AlertType.ERROR);
             return false;
         }
@@ -94,32 +93,27 @@ public class ClientMenuController extends MenuBarController implements Initializ
     }
 
     public void UpdateAction(ActionEvent actionEvent) throws SQLException {
-        Client c1 = new Client(full_field.getText(),email_field.getText(),phone_field.getText(),login_field.getText(),pass_field.getText(),address_field.getText(),Integer.parseInt(zip_field.getText()));
-        if(testSaisie()) {
-            if(!us.VerifLogin(login_field.getText(),c.getId())) {
+        Client c1 = new Client(full_field.getText(), email_field.getText(), phone_field.getText(), login_field.getText(), pass_field.getText(), address_field.getText(), Integer.parseInt(zip_field.getText()));
+        if (testSaisie()) {
+            if (!us.VerifLogin(login_field.getText(), c.getId())) {
                 if (!us.VerifEmail(email_field.getText(), c.getId())) {
-            if (pass_field.getText().equals(Rpass_field.getText())) {
-                if(!pass_field.getText().trim().isEmpty() || !Rpass_field.getText().trim().isEmpty()) {
-                us.UpdateAdmin(c1, c.getId());
-                cs.UpdateClient(address_field.getText(), Integer.parseInt(zip_field.getText()), c.getIdClient());
-                ProfilePane.setVisible(false);
-                afficherAlert("Account: "+c.getFullName()+" successfully updated", Alert.AlertType.INFORMATION);
-            }
-                else
-                {
-                    us.UpdateAdmin2(c1, c.getId());
-                    cs.UpdateClient(address_field.getText(), Integer.parseInt(zip_field.getText()), c.getIdClient());
-                    ProfilePane.setVisible(false);
-                    afficherAlert("Account: "+c.getFullName()+" successfully updated", Alert.AlertType.INFORMATION);
-                }
-            }
-            else
-                afficherAlert("Your password field must be equals to Repeat password field", Alert.AlertType.ERROR);
-                }
-                else
+                    if (pass_field.getText().equals(Rpass_field.getText())) {
+                        if (!pass_field.getText().trim().isEmpty() || !Rpass_field.getText().trim().isEmpty()) {
+                            us.UpdateAdmin(c1, c.getId());
+                            cs.UpdateClient(address_field.getText(), Integer.parseInt(zip_field.getText()), c.getIdClient());
+                            ProfilePane.setVisible(false);
+                            afficherAlert("Account: " + c.getFullName() + " successfully updated", Alert.AlertType.INFORMATION);
+                        } else {
+                            us.UpdateAdmin2(c1, c.getId());
+                            cs.UpdateClient(address_field.getText(), Integer.parseInt(zip_field.getText()), c.getIdClient());
+                            ProfilePane.setVisible(false);
+                            afficherAlert("Account: " + c.getFullName() + " successfully updated", Alert.AlertType.INFORMATION);
+                        }
+                    } else
+                        afficherAlert("Your password field must be equals to Repeat password field", Alert.AlertType.ERROR);
+                } else
                     afficherAlert("Email already used", Alert.AlertType.ERROR);
-            }
-            else
+            } else
                 afficherAlert("Login already used", Alert.AlertType.ERROR);
 
         }
@@ -139,10 +133,10 @@ public class ClientMenuController extends MenuBarController implements Initializ
 
     public void LogoutAction(ActionEvent actionEvent) throws IOException {
         Global.setCurrentUser(null);
-        ChangeInterface("/Views/Interfaces/login.fxml","BookStore");
+        ChangeInterface("/Views/Interfaces/login.fxml", "BookStore");
     }
 
-    public void ChangeInterface(String To,String Title) throws IOException {
+    public void ChangeInterface(String To, String Title) throws IOException {
         Stage stageq = (Stage) AnchorMenu.getScene().getWindow();
         stageq.close();
         FXMLLoader loader = new FXMLLoader();

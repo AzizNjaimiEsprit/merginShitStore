@@ -2,7 +2,7 @@ package Views.Controllers;
 
 import Beans.Category;
 import Beans.User;
-import Services.*;
+import Services.ServiceCategorie;
 import Utility.Global;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -10,24 +10,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
 import javax.swing.*;
 import java.net.URL;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class CategoryInterface extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
 
 
@@ -46,7 +39,7 @@ public class CategoryInterface extends MenuBarController implements Initializabl
     User connectedUser = Global.getCurrentUser();
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         initMenuBar(menuBar);
         System.out.println(sg.afficher());
         list = sg.afficher();

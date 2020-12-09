@@ -12,8 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
- *
- * @author  Njaimi Med Aziz
+ * @author Njaimi Med Aziz
  */
 
 public class OrderItemService implements IService<OrderItem> {

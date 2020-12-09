@@ -1,72 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-
-<GridPane alignment="center" hgap="10" prefHeight="506.0" prefWidth="728.0" stylesheets="@/Views/Resources/css/Style2.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.OnlineLibrary">
-   <columnConstraints>
-      <ColumnConstraints maxWidth="718.0" minWidth="718.0" prefWidth="718.0" />
-      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-   <children>
-      <AnchorPane prefHeight="495.0" prefWidth="729.0">
-         <children>
-            <TableView fx:id="table_library" layoutX="26.0" layoutY="145.0" prefHeight="314.0" prefWidth="677.0">
-               <columns>
-                  <TableColumn fx:id="col_book" prefWidth="109.0" text="Book" />
-                   <TableColumn fx:id="col_resume" prefWidth="128.0" text="Resume" />
-                   <TableColumn fx:id="col_status" prefWidth="132.0" text="Status" />
-                  <TableColumn fx:id="col_page" prefWidth="85.0" text="Reached page" />
-                  <TableColumn fx:id="read" prefWidth="101.0" text="Start reading" />
-                  <TableColumn fx:id="quiz" prefWidth="121.0" text="Take quiz" />
-               </columns>
-            </TableView>
-            <MenuBar layoutY="-5.0" prefHeight="36.0" prefWidth="729.0">
-              <menus>
-                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="library">
-                  <items>
-                    <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library" />
-                      <MenuItem id="ChatViewClient" mnemonicParsing="false" text="FAQ" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-            <Label layoutX="314.0" layoutY="75.0" prefHeight="30.0" prefWidth="105.0" styleClass="pagesTitles" text="My Library" />
-            <ImageView fitHeight="102.0" fitWidth="149.0" layoutX="26.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/Views/Resources/images/libraryIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="108.0" fitWidth="198.0" layoutX="505.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/Views/Resources/images/logo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </children>
+<?import javafx.scene.layout.*?>
+<GridPane alignment="center" hgap="10" prefHeight="506.0" prefWidth="728.0"
+          stylesheets="@/Views/Resources/css/Style2.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.OnlineLibrary">
+    <columnConstraints>
+        <ColumnConstraints maxWidth="718.0" minWidth="718.0" prefWidth="718.0"/>
+        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+        <RowConstraints/>
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="495.0" prefWidth="729.0">
+            <children>
+                <TableView fx:id="table_library" layoutX="26.0" layoutY="145.0" prefHeight="314.0" prefWidth="677.0">
+                    <columns>
+                        <TableColumn fx:id="col_book" prefWidth="109.0" text="Book"/>
+                        <TableColumn fx:id="col_resume" prefWidth="128.0" text="Resume"/>
+                        <TableColumn fx:id="col_status" prefWidth="132.0" text="Status"/>
+                        <TableColumn fx:id="col_page" prefWidth="85.0" text="Reached page"/>
+                        <TableColumn fx:id="read" prefWidth="101.0" text="Start reading"/>
+                        <TableColumn fx:id="quiz" prefWidth="121.0" text="Take quiz"/>
+                    </columns>
+                </TableView>
+                <MenuBar layoutY="-5.0" prefHeight="36.0" prefWidth="729.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="library">
+                            <items>
+                                <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
+                                <MenuItem id="ChatViewClient" mnemonicParsing="false" text="FAQ"/>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Delete"/>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About"/>
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <Label layoutX="314.0" layoutY="75.0" prefHeight="30.0" prefWidth="105.0" styleClass="pagesTitles"
+                       text="My Library"/>
+                <ImageView fitHeight="102.0" fitWidth="149.0" layoutX="26.0" layoutY="39.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@/Views/Resources/images/libraryIcon.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="108.0" fitWidth="198.0" layoutX="505.0" layoutY="56.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@/Views/Resources/images/logo.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
 </GridPane>

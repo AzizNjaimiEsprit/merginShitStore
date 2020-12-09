@@ -1,8 +1,7 @@
-
 package Services;
 
-import Beans.*;
-
+import Beans.Order;
+import Beans.User;
 import Utility.Global;
 import Utility.Singleton;
 import api.MailingService;
@@ -18,8 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- *
- * @author  Njaimi Med Aziz
+ * @author Njaimi Med Aziz
  */
 
 public class OrderService implements IService<Order> {
@@ -132,9 +130,10 @@ public class OrderService implements IService<Order> {
         }
         return order;
     }
+
     @Override
     public ArrayList<Order> get() {
-        return getOrders("","","");
+        return getOrders("", "", "");
     }
 
     /***************************************************************************************************/
@@ -159,8 +158,8 @@ public class OrderService implements IService<Order> {
         String sql = sql = "SELECT O.*,full_name FROM orders O join USER U on U.id = O.user_id where 1";
         try {
             Statement stmt = con.createStatement();
-            if (Global.getCurrentUser().getRole()==1)
-                sql += " AND O.user_id = "+Global.getCurrentUser().getId();
+            if (Global.getCurrentUser().getRole() == 1)
+                sql += " AND O.user_id = " + Global.getCurrentUser().getId();
             if (etat != "")
                 sql += " AND status='" + etat + "'";
             if (sdate != "" && edate != "") {
@@ -188,7 +187,6 @@ public class OrderService implements IService<Order> {
         }
         return res;
     }
-
 
 
 }

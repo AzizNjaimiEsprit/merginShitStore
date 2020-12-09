@@ -2,8 +2,9 @@ package Views.Controllers;
 
 import Beans.Client;
 import Beans.User;
-import Services.clientService;
 import Services.UserService;
+import Services.clientService;
+import Utility.Global;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,7 +18,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import Utility.Global;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class AdminMenuController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
 
     public TabPane menutab;
@@ -91,32 +91,32 @@ public class AdminMenuController implements Initializable {
     @FXML
     private TableColumn<Client, String> password_client;
 
-    UserService us=new UserService();
+    UserService us = new UserService();
     clientService cs = new clientService();
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
-        initMenuBar(menuBar);
+    public void initialize(URL location, ResourceBundle resources) {
+        //initMenuBar(menuBar);
 
-            image= new ImageView(new File("Views/Ressources/Images/iconelogout.png").toURI().toString());
+        image = new ImageView(new File("Views/Ressources/Images/iconelogout.png").toURI().toString());
 
         // id_admin.setCellValueFactory(new PropertyValueFactory<>("id"));
         full_col_admin.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         email_admin.setCellValueFactory(new PropertyValueFactory<>("email"));
         phone_admin.setCellValueFactory(new PropertyValueFactory<>("telephone"));
         login_admin.setCellValueFactory(new PropertyValueFactory<>("login"));
-       // password_admin.setCellValueFactory(new PropertyValueFactory<>("password"));
+        // password_admin.setCellValueFactory(new PropertyValueFactory<>("password"));
         System.out.println(us.GetAllUser());
         admin_table.setItems(us.GetAllUser());
         ///////////////////////////////////////////////////////////////////
-       // id_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+        // id_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
         full_client.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         email_client.setCellValueFactory(new PropertyValueFactory<>("email"));
         phone_client.setCellValueFactory(new PropertyValueFactory<>("telephone"));
         address_client.setCellValueFactory(new PropertyValueFactory<>("address"));
         zip_client.setCellValueFactory(new PropertyValueFactory<>("zipCode"));
         login_client.setCellValueFactory(new PropertyValueFactory<>("login"));
-       // password_client.setCellValueFactory(new PropertyValueFactory<>("password"));
+        // password_client.setCellValueFactory(new PropertyValueFactory<>("password"));
         System.out.println(cs.GetAllClient());
         client_table.setItems(cs.GetAllClient());
         SelectClient();
@@ -135,20 +135,18 @@ public class AdminMenuController implements Initializable {
     public boolean testSaisieAdmin() {
         if (
                 fullAdmin.getText().trim().isEmpty()
-             || phoneAdmin.getText().trim().isEmpty()
-             || emailAdmin.getText().trim().isEmpty()
+                        || phoneAdmin.getText().trim().isEmpty()
+                        || emailAdmin.getText().trim().isEmpty()
         ) {
             afficherAlert("All fields must be completed!!", Alert.AlertType.ERROR);
             return false;
         }
         Pattern err = Pattern.compile("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
-        if(!err.matcher(emailAdmin.getText()).matches())
-        {
+        if (!err.matcher(emailAdmin.getText()).matches()) {
             afficherAlert("Check your email format!!", Alert.AlertType.ERROR);
             return false;
         }
-        if(phoneAdmin.getText().length()!=8)
-        {
+        if (phoneAdmin.getText().length() != 8) {
             afficherAlert("Phone Number must contains 8 numbers", Alert.AlertType.ERROR);
             return false;
         }
@@ -173,13 +171,11 @@ public class AdminMenuController implements Initializable {
             return false;
         }
         Pattern err = Pattern.compile("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
-        if(!err.matcher(emailClient.getText()).matches())
-        {
+        if (!err.matcher(emailClient.getText()).matches()) {
             afficherAlert("Check your email format!!", Alert.AlertType.ERROR);
             return false;
         }
-        if(phoneClient.getText().length()!=8)
-        {
+        if (phoneClient.getText().length() != 8) {
             afficherAlert("Phone Number must contains 8 numbers", Alert.AlertType.ERROR);
             return false;
         }
@@ -194,25 +190,24 @@ public class AdminMenuController implements Initializable {
     }
 
     public void AddAdminAction(ActionEvent actionEvent) {
-        User u = new User(fullAdmin.getText(),emailAdmin.getText(),phoneAdmin.getText(),loginAdmin.getText(),passwrdAdmin.getText());
-        if(testSaisieAdmin()) {
+        User u = new User(fullAdmin.getText(), emailAdmin.getText(), phoneAdmin.getText(), loginAdmin.getText(), passwrdAdmin.getText());
+        if (testSaisieAdmin()) {
             if (passwrdAdmin.getText().equals(RpasswordAdmin.getText())) {
                 us.AddAdmin(u);
                 afficherAlert("Account Admin created successfully!", Alert.AlertType.INFORMATION);
                 Visibility();
                 admin_table.setItems(us.GetAllUser());
                 admin_table.refresh();
-            }
-            else
+            } else
                 afficherAlert("Your password field must be equals to Repeat password field", Alert.AlertType.ERROR);
         }
     }
 
     public void UpdateAdminAction(ActionEvent actionEvent) throws SQLException {
         User u = admin_table.getSelectionModel().getSelectedItem();
-        User u1 = new User(fullAdmin.getText(),emailAdmin.getText(),phoneAdmin.getText(),loginAdmin.getText(),passwrdAdmin.getText());
-        if(testSaisieAdmin()) {
-            if(!us.VerifLogin(loginAdmin.getText(),u.getId())) {
+        User u1 = new User(fullAdmin.getText(), emailAdmin.getText(), phoneAdmin.getText(), loginAdmin.getText(), passwrdAdmin.getText());
+        if (testSaisieAdmin()) {
+            if (!us.VerifLogin(loginAdmin.getText(), u.getId())) {
                 if (!us.VerifEmail(emailAdmin.getText(), u.getId())) {
                     if (passwrdAdmin.getText().equals(RpasswordAdmin.getText())) {
                         if (!passwrdAdmin.getText().trim().isEmpty() || !RpasswordAdmin.getText().trim().isEmpty()) {
@@ -231,11 +226,9 @@ public class AdminMenuController implements Initializable {
 
                     } else
                         afficherAlert("Your password field must be equals to Repeat password field", Alert.AlertType.ERROR);
-                }
-                else
+                } else
                     afficherAlert("Email already used", Alert.AlertType.ERROR);
-            }
-            else
+            } else
                 afficherAlert("Login already used", Alert.AlertType.ERROR);
         }
 
@@ -268,37 +261,32 @@ public class AdminMenuController implements Initializable {
 
 
     public void UpdateClientAction(ActionEvent actionEvent) throws SQLException {
-            Client c = client_table.getSelectionModel().getSelectedItem();
-        Client c1 = new Client(fullClient.getText(),emailClient.getText(),phoneClient.getText(),loginClient.getText(),passwrdClient.getText(),AdresseClient.getText(),Integer.parseInt(ZipClient.getText()));
-        if(testSaisieClient()) {
-            if(!us.VerifLogin(loginClient.getText(),c.getId())) {
+        Client c = client_table.getSelectionModel().getSelectedItem();
+        Client c1 = new Client(fullClient.getText(), emailClient.getText(), phoneClient.getText(), loginClient.getText(), passwrdClient.getText(), AdresseClient.getText(), Integer.parseInt(ZipClient.getText()));
+        if (testSaisieClient()) {
+            if (!us.VerifLogin(loginClient.getText(), c.getId())) {
                 if (!us.VerifEmail(emailClient.getText(), c.getId())) {
-            if (passwrdClient.getText().equals(RpasswordClient.getText())) {
-                if (!passwrdClient.getText().trim().isEmpty() || !RpasswordClient.getText().trim().isEmpty()) {
-                    us.UpdateAdmin(c1, c.getId());
-                    cs.UpdateClient(AdresseClient.getText(), Integer.parseInt(ZipClient.getText()), c.getIdClient());
-                    afficherAlert("Account: "+c.getFullName()+" successfully updated", Alert.AlertType.INFORMATION);
-                    Visibility();
-                    client_table.setItems(cs.GetAllClient());
-                    client_table.refresh();
-                }
-                else
-                {
-                    us.UpdateAdmin2(c1, c.getId());
-                    cs.UpdateClient(AdresseClient.getText(), Integer.parseInt(ZipClient.getText()), c.getIdClient());
-                    afficherAlert("Account: "+c.getFullName()+" successfully updated", Alert.AlertType.INFORMATION);
-                    Visibility();
-                    client_table.setItems(cs.GetAllClient());
-                    client_table.refresh();
-                }
-            }
-            else
-                afficherAlert("Your password field must be equals to Repeat password field", Alert.AlertType.ERROR);
-                }
-                else
+                    if (passwrdClient.getText().equals(RpasswordClient.getText())) {
+                        if (!passwrdClient.getText().trim().isEmpty() || !RpasswordClient.getText().trim().isEmpty()) {
+                            us.UpdateAdmin(c1, c.getId());
+                            cs.UpdateClient(AdresseClient.getText(), Integer.parseInt(ZipClient.getText()), c.getIdClient());
+                            afficherAlert("Account: " + c.getFullName() + " successfully updated", Alert.AlertType.INFORMATION);
+                            Visibility();
+                            client_table.setItems(cs.GetAllClient());
+                            client_table.refresh();
+                        } else {
+                            us.UpdateAdmin2(c1, c.getId());
+                            cs.UpdateClient(AdresseClient.getText(), Integer.parseInt(ZipClient.getText()), c.getIdClient());
+                            afficherAlert("Account: " + c.getFullName() + " successfully updated", Alert.AlertType.INFORMATION);
+                            Visibility();
+                            client_table.setItems(cs.GetAllClient());
+                            client_table.refresh();
+                        }
+                    } else
+                        afficherAlert("Your password field must be equals to Repeat password field", Alert.AlertType.ERROR);
+                } else
                     afficherAlert("Email already used", Alert.AlertType.ERROR);
-            }
-            else
+            } else
                 afficherAlert("Login already used", Alert.AlertType.ERROR);
         }
     }
@@ -320,57 +308,57 @@ public class AdminMenuController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 User u = admin_table.getSelectionModel().getSelectedItem();
-                if(u!=null){
-                fullAdmin.setVisible(true);
-                emailAdmin.setVisible(true);
-                phoneAdmin.setVisible(true);
-                loginAdmin.setVisible(true);
-                passwrdAdmin.setVisible(true);
-                RpasswordAdmin.setVisible(true);
-                UpdateAdmin.setVisible(true);
-                AddAdmin.setVisible(false);
-                DeleteAdmin.setVisible(true);
-                fullAdmin.setText(u.getFullName());
-                emailAdmin.setText(u.getEmail());
-                phoneAdmin.setText(u.getTelephone());
-                loginAdmin.setText(u.getLogin());
-                //passwrdAdmin.setText(u.getPassword());
-            }
-            else
-                Visibility();
+                if (u != null) {
+                    fullAdmin.setVisible(true);
+                    emailAdmin.setVisible(true);
+                    phoneAdmin.setVisible(true);
+                    loginAdmin.setVisible(true);
+                    passwrdAdmin.setVisible(true);
+                    RpasswordAdmin.setVisible(true);
+                    UpdateAdmin.setVisible(true);
+                    AddAdmin.setVisible(false);
+                    DeleteAdmin.setVisible(true);
+                    fullAdmin.setText(u.getFullName());
+                    emailAdmin.setText(u.getEmail());
+                    phoneAdmin.setText(u.getTelephone());
+                    loginAdmin.setText(u.getLogin());
+                    //passwrdAdmin.setText(u.getPassword());
+                } else
+                    Visibility();
             }
         });
     }
+
     public void SelectClient() {
         client_table.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Client u = client_table.getSelectionModel().getSelectedItem();
-                if(u!=null){
-                fullClient.setVisible(true);
-                emailClient.setVisible(true);
-                phoneClient.setVisible(true);
-                loginClient.setVisible(true);
-                passwrdClient.setVisible(true);
-                RpasswordClient.setVisible(true);
-                UpdateClient.setVisible(true);
-                DeleteClient.setVisible(true);
-                AdresseClient.setVisible(true);
-                ZipClient.setVisible(true);
-                fullClient.setText(u.getFullName());
-                emailClient.setText(u.getEmail());
-                phoneClient.setText(u.getTelephone());
-                loginClient.setText(u.getLogin());
-                ZipClient.setText(String.valueOf(u.getZipCode()));
-                AdresseClient.setText(u.getAddress());
-                //passwrdAdmin.setText(u.getPassword());
-            }
-                else
+                if (u != null) {
+                    fullClient.setVisible(true);
+                    emailClient.setVisible(true);
+                    phoneClient.setVisible(true);
+                    loginClient.setVisible(true);
+                    passwrdClient.setVisible(true);
+                    RpasswordClient.setVisible(true);
+                    UpdateClient.setVisible(true);
+                    DeleteClient.setVisible(true);
+                    AdresseClient.setVisible(true);
+                    ZipClient.setVisible(true);
+                    fullClient.setText(u.getFullName());
+                    emailClient.setText(u.getEmail());
+                    phoneClient.setText(u.getTelephone());
+                    loginClient.setText(u.getLogin());
+                    ZipClient.setText(String.valueOf(u.getZipCode()));
+                    AdresseClient.setText(u.getAddress());
+                    //passwrdAdmin.setText(u.getPassword());
+                } else
                     Visibility();
             }
         });
     }
-    public void Visibility(){
+
+    public void Visibility() {
         /////////////////////////////////////////////////////
         fullAdmin.setVisible(false);
         emailAdmin.setVisible(false);
@@ -393,6 +381,7 @@ public class AdminMenuController implements Initializable {
         AdresseClient.setVisible(false);
         ZipClient.setVisible(false);
     }
+
     public void afficherAlert(String message, Alert.AlertType t) {
         Alert alert = new Alert(t);
         alert.setTitle("Information Dialog");
@@ -401,7 +390,7 @@ public class AdminMenuController implements Initializable {
         alert.show();
     }
 
-    public void ChangeInterface(String To,String Title) throws IOException {
+    public void ChangeInterface(String To, String Title) throws IOException {
         Stage stageq = (Stage) AnchorAdmin.getScene().getWindow();
         stageq.close();
         FXMLLoader loader = new FXMLLoader();
@@ -417,7 +406,7 @@ public class AdminMenuController implements Initializable {
 
     public void logout(ActionEvent mouseEvent) throws IOException {
         Global.setCurrentUser(null);
-        ChangeInterface("/Views/Interfaces/login.fxml","BookStore");
+        ChangeInterface("/Views/Interfaces/login.fxml", "BookStore");
 
     }
 }

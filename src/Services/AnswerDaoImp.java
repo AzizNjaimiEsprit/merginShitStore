@@ -10,11 +10,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class AnswerDaoImp implements AnswerDao<Answer> {
-    Connection conn= Singleton.getConn();
+    Connection conn = Singleton.getConn();
 
     @Override
     public Answer addAnswer(Answer answer) {
-        Answer newAnswer=null;
+        Answer newAnswer = null;
         try {
             for (Answer i : displayAnswers()) {
                 if (i.equals(answer)) {
@@ -26,16 +26,15 @@ public class AnswerDaoImp implements AnswerDao<Answer> {
             st.setString(1, answer.getFirstAnswer());
             st.setString(2, answer.getSecondAnswer());
             st.setString(3, answer.getThirdAnswer());
-            st.setInt(4,answer.getCorrectAnswer());
+            st.setInt(4, answer.getCorrectAnswer());
             st.executeUpdate();
-            ResultSet rs=st.getGeneratedKeys();
-            if(rs.next()){
-                String id=rs.getString(1);
-                newAnswer= getAnswerById(Integer.parseInt(id));
+            ResultSet rs = st.getGeneratedKeys();
+            if (rs.next()) {
+                String id = rs.getString(1);
+                newAnswer = getAnswerById(Integer.parseInt(id));
             }
             System.out.println("Answer has been added successfully!");
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return newAnswer;
@@ -43,39 +42,37 @@ public class AnswerDaoImp implements AnswerDao<Answer> {
 
     @Override
     public void editAnswer(Answer answer) {
-        try{
-            PreparedStatement st=conn.prepareStatement("UPDATE ANSWER SET first_answer=? ,second_answer=?,third_answer=?,correct_answer=? WHERE id=?");
+        try {
+            PreparedStatement st = conn.prepareStatement("UPDATE ANSWER SET first_answer=? ,second_answer=?,third_answer=?,correct_answer=? WHERE id=?");
             st.setString(1, answer.getFirstAnswer());
             st.setString(2, answer.getSecondAnswer());
             st.setString(3, answer.getThirdAnswer());
-            st.setInt(4,answer.getCorrectAnswer());
-            st.setInt(5,answer.getId());
+            st.setInt(4, answer.getCorrectAnswer());
+            st.setInt(5, answer.getId());
             st.executeUpdate();
             System.out.println("Answer has been updated successfully!");
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Override
     public ArrayList<Answer> displayAnswers() {
-        ArrayList<Answer> res=new ArrayList<>();
-        try{
+        ArrayList<Answer> res = new ArrayList<>();
+        try {
             PreparedStatement preparedStat = conn.prepareStatement("SELECT * FROM ANSWER");
-            ResultSet rs=preparedStat.executeQuery();
-            while(rs.next()){
+            ResultSet rs = preparedStat.executeQuery();
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String firstAnswer = rs.getString("first_answer");
                 String secondAnswer = rs.getString("second_answer");
                 String thirdAnswer = rs.getString("third_answer");
                 int correctAnswer = rs.getInt("correct_answer");
-                Answer answer=new Answer(id,firstAnswer,secondAnswer,thirdAnswer,correctAnswer);
+                Answer answer = new Answer(id, firstAnswer, secondAnswer, thirdAnswer, correctAnswer);
                 res.add(answer);
             }
             rs.close();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return res;
@@ -83,22 +80,21 @@ public class AnswerDaoImp implements AnswerDao<Answer> {
 
     @Override
     public Answer getAnswerItem(Answer answer) {
-          Answer res=null;
-        try{
+        Answer res = null;
+        try {
             PreparedStatement st = conn.prepareStatement("SELECT * FROM ANSWER WHERE id=?");
             st.setString(1, answer.getFirstAnswer());
-            ResultSet rs=st.executeQuery();
-            while(rs.next()){
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String firstAnswer = rs.getString("first_answer");
                 String secondAnswer = rs.getString("second_answer");
                 String thirdAnswer = rs.getString("third_answer");
                 int correctAnswer = rs.getInt("correct_answer");
-                res=new Answer(id,firstAnswer,secondAnswer,thirdAnswer,correctAnswer);
+                res = new Answer(id, firstAnswer, secondAnswer, thirdAnswer, correctAnswer);
             }
             rs.close();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return res;
@@ -106,22 +102,21 @@ public class AnswerDaoImp implements AnswerDao<Answer> {
 
     @Override
     public Answer getAnswerById(int answerId) {
-        Answer res=null;
-        try{
+        Answer res = null;
+        try {
             PreparedStatement st = conn.prepareStatement("SELECT * FROM ANSWER WHERE id=?");
             st.setInt(1, answerId);
-            ResultSet rs=st.executeQuery();
-            while(rs.next()){
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String firstAnswer = rs.getString("first_answer");
                 String secondAnswer = rs.getString("second_answer");
                 String thirdAnswer = rs.getString("third_answer");
                 int correctAnswer = rs.getInt("correct_answer");
-                res=new Answer(id,firstAnswer,secondAnswer,thirdAnswer,correctAnswer);
+                res = new Answer(id, firstAnswer, secondAnswer, thirdAnswer, correctAnswer);
             }
             rs.close();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return res;

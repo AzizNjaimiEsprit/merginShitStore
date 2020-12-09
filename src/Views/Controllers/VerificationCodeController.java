@@ -16,8 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class VerificationCodeController implements Initializable {
-@FXML
-    private MenuBar menuBar;
+
     public Button validate_btn;
     public TextField verifcode_field;
     public Hyperlink hyper;
@@ -26,8 +25,8 @@ public class VerificationCodeController implements Initializable {
 
 
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
-        initMenuBar(menuBar);
+    public void initialize(URL location, ResourceBundle resources) {
+
         hyper.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -38,9 +37,9 @@ public class VerificationCodeController implements Initializable {
 
     public void ValidateAction(ActionEvent actionEvent) throws IOException {
         UserService us = new UserService();
-        int c=us.getId(LoginController.k);
+        int c = us.getId(LoginController.k);
         System.out.println(c);
-        if(c!=0&&LoginController.k!=null) {
+        if (c != 0 && LoginController.k != null) {
             us.VerifAccountUser(c, verifcode_field.getText());
             Parent fxml;
             fxml = FXMLLoader.load(getClass().getResource("/Views/Interfaces/login.fxml"));

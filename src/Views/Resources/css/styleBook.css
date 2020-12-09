@@ -1,23 +1,30 @@
 /* Menu Bar */
 .menu-bar {
-    -fx-background-color:  #61c4f2;
+    -fx-background-color: #61c4f2;
 }
-.menu { /* The File menu item */ }
+
+.menu { /* The File menu item */
+}
+
 .menu:showing {
     -fx-text-fill: green;
 }
-.menu .label{
+
+.menu .label {
     -fx-text-fill: white;
-    -fx-font-size: 16px ;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
+
 .menu:showing .label {
     -fx-text-fill: black;
 }
+
 .menu-item:focused {
     -fx-background-color: #61c4f2;
 }
-.menu-item:focused .label{
+
+.menu-item:focused .label {
     -fx-text-fill: white;
 }
 
@@ -28,14 +35,16 @@
 .table-view .column-header-background .filler {
     -fx-background-color: #61c4f2;
     -fx-stroke: transparent;
-    -fx-size:50;
-    -fx-alignment: CENTER ;
+    -fx-size: 50;
+    -fx-alignment: CENTER;
     -fx-text-alignment: center;
 }
-.table-view{
+
+.table-view {
     -fx-border-color: #61c4f2;
 }
-.table-view .label{
+
+.table-view .label {
     -fx-text-fill: white;
 }
 
@@ -47,7 +56,7 @@
     -fx-text-alignment: center;
 }
 
-.table-view .table-column{
+.table-view .table-column {
     -fx-text-alignment: center;
     -fx-alignment: CENTER
 }
@@ -55,35 +64,39 @@
 .table-row-cell:selected {
     -fx-background-color: #d8d8ff;
 }
+
 .table-row-cell:selected .text {
-    -fx-fill: black ;
+    -fx-fill: black;
 }
+
 /* Text Field */
-.text-field{
-    -fx-background-radius : 50px;
+.text-field {
+    -fx-background-radius: 50px;
     -fx-border-radius: 50px;
 }
 
-.buttonBlue{
-    -fx-background-color :  #61c4f2;
-    -fx-background-radius : 50px;
+.buttonBlue {
+    -fx-background-color: #61c4f2;
+    -fx-background-radius: 50px;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 16px;
 
 }
-.pagesTitles{
+
+.pagesTitles {
     -fx-font-weight: bold;
     -fx-font-size: 20px;
 }
 
-.label{
+.label {
     -fx-text-fill: black;
-    -fx-font-size: 14px ;
+    -fx-font-size: 14px;
 }
-.pagetitle{
+
+.pagetitle {
     -fx-text-fill: #1e225e;
-    -fx-font-size: 35px ;
+    -fx-font-size: 35px;
     -fx-font-weight: bold;
 
 }

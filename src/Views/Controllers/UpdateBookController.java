@@ -2,14 +2,13 @@ package Views.Controllers;
 
 import Beans.Category;
 import Beans.OnlineBook;
-
 import Services.CrudOnlineBook;
 import Services.ServiceCategorie;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -19,18 +18,17 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class UpdateBookController extends MenuBarController implements Initializable {
-@FXML
+    @FXML
     private MenuBar menuBar;
     private OnlineBook toshow = null;
-    private int id =-9;
+    private int id = -9;
 
     public void setToshow(OnlineBook toshow) {
         System.out.println(toshow);
         this.toshow = toshow;
-        this.id=toshow.getId();
+        this.id = toshow.getId();
         init(toshow);
     }
-
 
 
     @FXML
@@ -69,16 +67,17 @@ public class UpdateBookController extends MenuBarController implements Initializ
     private TextField txtauthor;
 
     ServiceCategorie cc = new ServiceCategorie();
+
     @Override
-       @Override public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         initMenuBar(menuBar);
 
         categories.setItems(cc.afficher());
 
 
     }
-    public void init (OnlineBook toUpdate)
-    {
+
+    public void init(OnlineBook toUpdate) {
         txtitle.appendText(toUpdate.getTitle());
         txtprice.appendText(Double.toString(toUpdate.getPrice()));
         txtsummary.appendText(toUpdate.getSummary());
@@ -92,8 +91,10 @@ public class UpdateBookController extends MenuBarController implements Initializ
         txtauthor.appendText(toUpdate.getAuthors());
         txturl.appendText(toUpdate.getUrl());
     }
-AddOnlineBookController a = new AddOnlineBookController();
+
+    AddOnlineBookController a = new AddOnlineBookController();
     CrudOnlineBook cb = new CrudOnlineBook();
+
     public void updatebook(javafx.event.ActionEvent actionEvent) {
         OnlineBook book = new OnlineBook(
                 txtitle.getText(),
@@ -110,8 +111,8 @@ AddOnlineBookController a = new AddOnlineBookController();
                 txturl.getText());
         book.setId(id);
 
-        cb.ModifierLivreEnLigne( book);
-        JOptionPane.showMessageDialog(null,"Book updated successfully");
+        cb.ModifierLivreEnLigne(book);
+        JOptionPane.showMessageDialog(null, "Book updated successfully");
 
     }
 
