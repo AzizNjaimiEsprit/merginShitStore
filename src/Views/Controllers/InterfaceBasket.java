@@ -83,17 +83,7 @@ public class InterfaceBasket extends MenuBarController implements Initializable 
         txt_quantite.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         txt_prix.setCellValueFactory(new PropertyValueFactory<>("bookPrice"));
         txt_prixTotale.setCellValueFactory(new PropertyValueFactory<>("TotalPrice"));
-
-        // btnUpdate.setStyle(" -fx-background-radius: 50px; ");
-        // btnValider.setStyle(" -fx-background-radius: 50px; ");
-        //  btnDelete.setStyle(" -fx-background-radius: 50px; ");
-
-
-
-        /*txt_prixTotale.setCellValueFactory(new PropertyValueFactory<>(nteger.parseInt(txt_prix.getText()))));*/
         tableviewPanier.setItems(list);
-
-
     }
 
     public void onclic(SortEvent<TableView<Basket>> tableViewSortEvent) {

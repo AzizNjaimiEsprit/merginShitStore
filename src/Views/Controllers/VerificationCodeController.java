@@ -38,7 +38,6 @@ public class VerificationCodeController implements Initializable {
     public void ValidateAction(ActionEvent actionEvent) throws IOException {
         UserService us = new UserService();
         int c = us.getId(LoginController.k);
-        System.out.println(c);
         if (c != 0 && LoginController.k != null) {
             us.VerifAccountUser(c, verifcode_field.getText());
             Parent fxml;

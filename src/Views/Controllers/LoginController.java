@@ -92,10 +92,11 @@ public class LoginController extends MenuBarController implements Initializable 
                 if (loginUser != null) {
                     if (loginUser instanceof Client) {
                         redirect("HomeByAziz");
-                        //ChangeInterface("/Views/Interfaces/ClientMenu.fxml","BookStore Client Interface");
-                    } else if (loginUser instanceof User) {
-                        ChangeInterface("/Views/Interfaces/AdminMenu.fxml", "BookStore Admin Interface");
                     }
+                        //ChangeInterface("/Views/Interfaces/ClientMenu.fxml","BookStore Client Interface");
+//                    } else if (loginUser instanceof User) {
+//                        ChangeInterface("/Views/Interfaces/AdminMenu.fxml", "BookStore Admin Interface");
+//                    }
                 } else {
                     System.out.println("error");
                     afficherAlert("Check your field", Alert.AlertType.ERROR);
@@ -181,7 +182,7 @@ public class LoginController extends MenuBarController implements Initializable 
 //        back_btn.setOnAction(new EventHandler<ActionEvent>() {
 //            @Override
 //            public void handle(ActionEvent event) {
-//                test1.host.showDocument("https://www.facebook.com/nounou.abbes2/");
+//                Main.host.showDocument("https://www.facebook.com/nounou.abbes2/");
 //            }
 //        });
 //

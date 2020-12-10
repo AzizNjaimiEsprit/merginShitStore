@@ -15,6 +15,9 @@ public class OnlineBook extends Book {
         this.url = url;
     }
 
+    public OnlineBook(int id) {
+        super(id);
+    }
 
     public OnlineBook() {
     }

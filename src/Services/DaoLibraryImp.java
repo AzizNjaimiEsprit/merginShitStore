@@ -4,6 +4,7 @@ import Beans.Library;
 import Beans.OnlineBook;
 import Beans.User;
 import Dao.DaoLibrary;
+import Utility.Global;
 import Utility.Singleton;
 import com.twilio.Twilio;
 import com.twilio.type.PhoneNumber;
@@ -145,11 +146,11 @@ public class DaoLibraryImp implements DaoLibrary<Library> {
     @Override
     public void sendSms(User user, Library library) {
         try {
-            final String ACCOUNT_SID = "AC4bde583360226b8f1ede5b56f62ebe27";
-            final String AUTH_TOKEN = "ae37ac8cfadd40cdf9d865831f1bb325";
+             String ACCOUNT_SID ="AC29228da2e149d16275fe001f963dba51";
+             String AUTH_TOKEN ="aa92d820bcf1aa03d3e4e4e0ffc434c5";
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
             com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message.creator(
-                    new PhoneNumber("+216" + user.getTelephone()), // To number
+                    new PhoneNumber("+216" + Global.getCurrentUser().getTelephone()), // To number
                     new PhoneNumber("+17658964442"), // From number
                     "Congratulations you have received : " + library.getQuizScore() * 10 + " fidelity points from the quiz"
             ).create();

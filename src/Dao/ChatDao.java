@@ -3,7 +3,7 @@ package Dao;
 
 import javafx.collections.ObservableList;
 
-public interface DaoLibrary<T> {
+public interface ChatDao<T> {
     public void ajouterElementChat(T t);
 
     public String afficherReponse(T t);

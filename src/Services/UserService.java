@@ -29,8 +29,8 @@ public class UserService implements IServiceUser<User> {
     private int temprestid;
     public static int coderest = 0;
     public static int idverif = 0;
-    private final static String ACCOUNT_SID = "AC8bf11b4617928354b8740083e87e374a";
-    private final static String AUTH_TOKEN = "0609c5b01fad3bd803ac3bcf4dfe9778";
+    private final static String ACCOUNT_SID ="AC29228da2e149d16275fe001f963dba51";
+    private final static String AUTH_TOKEN ="aa92d820bcf1aa03d3e4e4e0ffc434c5";
     MailingService mailingService = new MailingService();
 
     public UserService() {
@@ -53,7 +53,7 @@ public class UserService implements IServiceUser<User> {
                 return;
             }
         }
-        String req = "Insert into USER values (NULL,?,?,?,?,?,0)";
+        String req = "Insert into USER values (NULL,?,?,?,?,?,?)";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getFullName());
@@ -61,6 +61,7 @@ public class UserService implements IServiceUser<User> {
             pst.setString(3, t.getTelephone());
             pst.setString(4, t.getLogin());
             pst.setString(5, BCrypt.hashpw(t.getPassword(), BCrypt.gensalt(12)));
+            pst.setInt(6,t.getRole());
             String verifcode = BCrypt.hashpw(t.getFullName(), BCrypt.gensalt(12));
             UserService us = new UserService();
             mailingService.sendConfirmationEmail(t.getEmail(), "Verification code" + verifcode);
@@ -71,7 +72,6 @@ public class UserService implements IServiceUser<User> {
         System.out.println("Account Admin created successfully!");
         //afficherAlert("Account Admin created successfully!", Alert.AlertType.INFORMATION);
     }
-
 
     public void UpdateAdmin(User t, int id) {
         String req = "update USER set full_name = ?,email = ?,telephone = ?,login = ?,password = ? where id = ? ";
@@ -91,7 +91,6 @@ public class UserService implements IServiceUser<User> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
     }
 
     public void UpdateAdmin2(User t, int id) {
@@ -421,45 +420,13 @@ public class UserService implements IServiceUser<User> {
             System.out.println("Verifier votre code");
     }
 
-    @Override
-    public void mailling(String mail, String message) {
-        final String username = "nourabes12@gmail.com";
-        final String password = "0123azertyuiop";
-        String fromEmail = "nourabes12@gmail.com";
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        Session session = Session.getInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
-            }
-        });
-        MimeMessage msg = new MimeMessage(session);
-        try {
-            msg.setFrom(new InternetAddress(fromEmail));
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(mail));
-            msg.setSubject("User Verification");
-            Multipart emailContent = new MimeMultipart();
-            MimeBodyPart textBodyPart = new MimeBodyPart();
-            textBodyPart.setText(message);
-            emailContent.addBodyPart(textBodyPart);
-            msg.setContent(emailContent);
-            Transport.send(msg);
-            System.out.println("Sent message");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void sendsms(String str, int body) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message.creator(
                 new PhoneNumber("+216" + str), // To number
-                new PhoneNumber("+16516613989"), // From number
+                new PhoneNumber("+17658964442"), // From number
                 "Verification code to reset password is :" + body
         ).create();
     }

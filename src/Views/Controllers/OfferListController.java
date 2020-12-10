@@ -1,7 +1,10 @@
 package Views.Controllers;
 
+import Beans.Coupon;
 import Beans.Offer;
+import Services.CouponService;
 import Services.OfferService;
+import api.SMS_Service;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -121,10 +124,17 @@ public class OfferListController extends MenuBarController implements Initializa
 
     private void handleDeclineButton(Offer offer) {
         offerCRUD.decline(offer);
+        SMS_Service sms = new SMS_Service();
+        sms.SendDeclineSMS(offer.getUser());
     }
 
     private void handleAcceptButton(Offer offer) {
         offerCRUD.buy(offer);
+        SMS_Service sms = new SMS_Service();
+        CouponService couponCRUD = new CouponService();
+        Coupon coupon = new Coupon(offer.getUser(), (float) (offer.getPrice() * 0.2));
+        couponCRUD.add(coupon);
+        sms.SendSMSCouponGenerated(coupon);
     }
 
 }

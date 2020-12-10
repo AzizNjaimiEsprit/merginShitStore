@@ -14,7 +14,9 @@
             <menus>
                 <Menu fx:id="userMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="HomeByAziz" mnemonicParsing="false" text="Home"/>
+                        <MenuItem id="ClientMenu" mnemonicParsing="false" text="Profile"/>
+
                         <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
                         <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
                         <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
@@ -25,9 +27,10 @@
                         <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin"><items>
-                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
-
+                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                    <items>
+                        <MenuItem id="HomeByAziz" mnemonicParsing="false" text="Home"/>
+                        <MenuItem id="ClientMenu" mnemonicParsing="false" text="Profile"/>
 
                         <MenuItem id="AdminMenu" mnemonicParsing="false" text="Users List"/>
 

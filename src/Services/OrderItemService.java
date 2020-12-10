@@ -1,10 +1,9 @@
 package Services;
 
 
-import Beans.Book;
-import Beans.Order;
-import Beans.OrderItem;
+import Beans.*;
 import Dao.IService;
+import Utility.Global;
 import Utility.Singleton;
 
 import java.sql.Connection;
@@ -20,6 +19,8 @@ public class OrderItemService implements IService<OrderItem> {
     private Connection con = Singleton.getConn();
     private ReptureStock reptureStock = new ReptureStock();
     private CrudBook crudBook = new CrudBook();
+    private CrudOnlineBook crudOnlineBook = new CrudOnlineBook();
+    private DaoLibraryImp serviceLibrary = new DaoLibraryImp();
 
     /******************************************** Interface Implementation **********************************************/
     @Override
@@ -33,6 +34,10 @@ public class OrderItemService implements IService<OrderItem> {
             System.out.println("Item Inseré Avec Succes");
             crudBook.ModifierQuantitéLivre(item.getBook(), item.getQuantity() * -1);
             reptureStock.verificationStock(item.getBook());
+            if (crudOnlineBook.RecupererLivreEnLigneByid(item.getBook().getId()) != null){
+                OnlineBook onlineBook = new OnlineBook(item.getBook().getId());
+                serviceLibrary.addToLibrary(new Library(Global.getCurrentUser(),onlineBook,null,0,0));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

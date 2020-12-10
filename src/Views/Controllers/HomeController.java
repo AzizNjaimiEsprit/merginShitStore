@@ -4,10 +4,7 @@ import Beans.Book;
 import Beans.Category;
 import Beans.Chat;
 import Beans.OnlineBook;
-import Services.ChatDaoImp;
-import Services.CrudOnlineBook;
-import Services.CrudRate;
-import Services.ServiceCategorie;
+import Services.*;
 import Utility.Global;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,7 +40,7 @@ public class HomeController extends MenuBarController implements Initializable {
     @FXML
     private MenuBar menuBar;
 
-    CrudOnlineBook cb = new CrudOnlineBook();
+    CrudBook cb = new CrudBook();
     CrudRate crudRate = new CrudRate();
     ServiceCategorie cc = new ServiceCategorie();
 
@@ -71,7 +68,7 @@ public class HomeController extends MenuBarController implements Initializable {
     private Label userFullName;
 
 
-    ObservableList<OnlineBook> bookList = FXCollections.observableArrayList(cb.RecupererListLivreEnLigne());
+    ObservableList<Book> bookList = FXCollections.observableArrayList(cb.RecupererListLivre());
     private int sliderIterator = 0;
 
     @Override
@@ -118,7 +115,7 @@ public class HomeController extends MenuBarController implements Initializable {
                 ((Label) nodeIn).setText(toShow.get(i).getAuthors());
             }
             if (nodeIn.getId().contains("rate")) {
-                ((Label) nodeIn).setText("" + crudRate.getMoyRates((OnlineBook) toShow.get(i)) + "%");
+                ((Label) nodeIn).setText("" + crudRate.getMoyRates(toShow.get(i)) + "%");
             }
             if (nodeIn.getId().contains("price")) {
                 ((Label) nodeIn).setText("" + toShow.get(i).getPrice() + "D");
@@ -150,7 +147,7 @@ public class HomeController extends MenuBarController implements Initializable {
                     @Override
                     public void handle(MouseEvent event) {
                         if (event.getClickCount() == 2)
-                            redirectToBook((OnlineBook) toShow.get(finalI));
+                            redirectToBook( toShow.get(finalI));
                     }
                 });
             }
@@ -161,7 +158,7 @@ public class HomeController extends MenuBarController implements Initializable {
                 ((Label) nodeIn).setText(toShow.get(i).getAuthors());
             }
             if (nodeIn.getId().contains("rate")) {
-                ((Label) nodeIn).setText("" + crudRate.getMoyRates((OnlineBook) toShow.get(i)) + "%");
+                ((Label) nodeIn).setText("" + crudRate.getMoyRates( toShow.get(i)) + "%");
             }
             if (nodeIn.getId().contains("price")) {
                 ((Label) nodeIn).setText("" + toShow.get(i).getPrice() + "D");
@@ -174,12 +171,12 @@ public class HomeController extends MenuBarController implements Initializable {
 
     public void showBook(MouseEvent mouseEvent) {
         System.out.println(textSearch.getText());
-        OnlineBook onlineBook = bookList.stream().filter(p -> p.getTitle().equals(textSearch.getText())).findFirst().get();
+        Book onlineBook = bookList.stream().filter(p -> p.getTitle().equals(textSearch.getText())).findFirst().get();
         redirectToBook(onlineBook);
     }
 
     // Redirection
-    public void redirectToBook(OnlineBook book) {
+    public void redirectToBook(Book book) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../Interfaces/Book.fxml"));
             Global.getPrimaryStage().setWidth(getWidth("Book"));
@@ -199,7 +196,7 @@ public class HomeController extends MenuBarController implements Initializable {
     }
 
     public void goToAccountDetails(MouseEvent mouseEvent) {
-          redirect("ClientMenu");
+        redirect("ClientMenu");
     }
 
     public void goToBasket(MouseEvent mouseEvent) {
@@ -208,7 +205,9 @@ public class HomeController extends MenuBarController implements Initializable {
     }
 
     public void goToOrder(MouseEvent mouseEvent) {
-        redirect("Offer");
+        //    redirect("Order");
+
+
     }
 
 

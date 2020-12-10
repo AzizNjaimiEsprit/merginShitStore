@@ -16,7 +16,8 @@
                     <items>
 
 
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="HomeByAziz" mnemonicParsing="false" text="Home"/>
+                        <MenuItem id="ClientMenu" mnemonicParsing="false" text="Profile"/>
 
                         <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
                         <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
@@ -28,9 +29,10 @@
                         <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin"><items>
-                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
-
+                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                    <items>
+                        <MenuItem id="HomeByAziz" mnemonicParsing="false" text="Home"/>
+                        <MenuItem id="ClientMenu" mnemonicParsing="false" text="Profile"/>
 
                         <MenuItem id="AdminMenu" mnemonicParsing="false" text="Users List"/>
 
@@ -258,7 +260,8 @@
                 <Image url="@/Views/Resources/images/icons8-read-online-96.png"/>
             </image>
         </ImageView>
-        <Button layoutX="673.0" layoutY="459.0" mnemonicParsing="false" text="Check DEMO"/>
+        <Button onMouseClicked="#buyBookOnline" layoutX="673.0" layoutY="459.0" mnemonicParsing="false"
+                text="Add To Library"/>
         <Line endX="518.0" layoutX="398.0" layoutY="592.0" startX="-100.0"/>
         <Label layoutX="300.0" layoutY="602.0" text="Comment " textFill="#1e225e">
             <font>

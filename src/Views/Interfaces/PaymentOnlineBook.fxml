@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.*?>
-<VBox prefHeight="683.0" prefWidth="840.0" stylesheets="@/Views/Resources/css/style1.css"
-      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Views.Controllers.EditOrderController">
+<VBox prefHeight="537.0" prefWidth="694.0" style="-fx-background-color: white;"
+      stylesheets="@/Views/Resources/css/style1.css" xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.PaymentControllerOnlineBook">
     <children>
         <MenuBar fx:id="menuBar">
             <menus>
@@ -56,62 +56,69 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="482.0" prefWidth="878.0" VBox.vgrow="ALWAYS">
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="438.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
             <children>
-                <ImageView fitHeight="56.0" fitWidth="70.0" layoutX="25.0" layoutY="24.0" pickOnBounds="true"
+                <Label layoutX="169.0" layoutY="29.0" text="In order to proceed with your payment, please enter">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ImageView fitHeight="59.0" fitWidth="90.0" layoutX="16.0" layoutY="16.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@/Views/Resources/images/edit-order.png"/>
+                        <Image url="@/Views/Resources/images/basket1.png"/>
                     </image>
                 </ImageView>
-                <Label layoutX="384.0" layoutY="35.0" styleClass="pagesTitles" text="Edit Order">
+                <ImageView fitHeight="59.0" fitWidth="90.0" layoutX="607.0" layoutY="19.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@/Views/Resources/images/payment1.png"/>
+                    </image>
+                </ImageView>
+                <TextField fx:id="in_numCarte" layoutX="272.0" layoutY="183.0" prefHeight="26.0" prefWidth="232.0"/>
+                <TextField fx:id="in_month" layoutX="272.0" layoutY="240.0" prefHeight="26.0" prefWidth="60.0"/>
+                <TextField fx:id="in_year" layoutX="341.0" layoutY="240.0" prefHeight="26.0" prefWidth="90.0"/>
+                <Label layoutX="132.0" layoutY="185.0" text="Card Number">
                     <font>
-                        <Font name="System Bold" size="18.0"/>
+                        <Font size="16.0"/>
                     </font>
                 </Label>
-                <TableView fx:id="order_items" layoutX="24.0" layoutY="120.0" onMouseClicked="#clickItem"
-                           prefHeight="195.0" prefWidth="842.0">
-                    <columns>
-                        <TableColumn fx:id="id_book" prefWidth="108.00002670288086" text="Book ID"/>
-                        <TableColumn fx:id="book_title" prefWidth="272.80003356933594" text="Book Title"/>
-                        <TableColumn fx:id="quantity" prefWidth="154.39996337890625" text="Quantity"/>
-                        <TableColumn fx:id="price" prefWidth="130.4000244140625" text="Book Price"/>
-                        <TableColumn fx:id="total_price" prefWidth="123.199951171875" text="Total Price"/>
-                    </columns>
-                </TableView>
-                <Label layoutX="652.0" layoutY="334.0" text="Amount to repay :">
+                <Label layoutX="132.0" layoutY="239.0" text="Expiration date">
                     <font>
-                        <Font name="System Bold" size="15.0"/>
+                        <Font size="16.0"/>
                     </font>
                 </Label>
-                <Label fx:id="text_totalPrice" layoutX="798.0" layoutY="334.0" text="180 Dt">
+                <TextField fx:id="in_email" layoutX="272.0" layoutY="300.0" prefHeight="26.0" prefWidth="232.0"/>
+                <Label layoutX="134.0" layoutY="299.0" text="Email">
                     <font>
-                        <Font name="System Bold" size="15.0"/>
+                        <Font size="16.0"/>
                     </font>
                 </Label>
-                <Label layoutX="75.0" layoutY="615.0"
-                       text="The amount is refunded in the form of a discount coupon valid for all types of purchases on note platform"
-                       textFill="RED"/>
-                <Label layoutX="53.0" layoutY="395.0" text="Addresse">
+                <TextField fx:id="in_amount" layoutX="275.0" layoutY="363.0"/>
+                <Label layoutX="131.0" layoutY="362.0" text="Amount To Pay">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="16.0"/>
                     </font>
                 </Label>
-                <Label layoutX="49.0" layoutY="459.0" text="Telephone">
-                    <font>
-                        <Font size="14.0"/>
-                    </font>
-                </Label>
-                <TextField fx:id="in_adrs" layoutX="182.0" layoutY="396.0" prefHeight="26.0" prefWidth="346.0"/>
-                <Label layoutX="51.0" layoutY="516.0" text="Code Postale"/>
-                <TextField fx:id="in_codepostale" layoutX="182.0" layoutY="516.0" prefHeight="26.0" prefWidth="108.0"/>
-                <TextField fx:id="in_telephone" layoutX="182.0" layoutY="460.0" prefHeight="26.0" prefWidth="219.0"/>
-                <Button layoutX="357.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#valider"
-                        prefHeight="26.0" prefWidth="142.0" styleClass="buttonBlue" text="Confirm" textFill="WHITE">
+                <Button layoutX="306.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#checkCard"
+                        prefHeight="39.0" prefWidth="123.0"
+                        style="-fx-background-color: #61c4f2; -fx-background-radius: 50px;" text="Confirm"
+                        textFill="WHITE">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Button>
+                <Label layoutX="256.0" layoutY="62.0" text="yout credit card informations">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="in_fullname" layoutX="272.0" layoutY="128.0" prefHeight="26.0" prefWidth="232.0"/>
+                <Label layoutX="133.0" layoutY="128.0" text="Full Name">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
     </children>

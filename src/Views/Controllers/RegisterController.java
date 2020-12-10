@@ -75,6 +75,7 @@ public class RegisterController implements Initializable {
         if (testSaisieClient()) {
             if (password_field.getText().equals(repeat_field.getText())) {
                 Client c = new Client(fullname_field.getText(), email_field.getText(), phone_field.getText(), login_field.getText(), password_field.getText(), address_field.getText(), Integer.parseInt(zipcode_field.getText()));
+                c.setRole(0);
                 us.AddAdmin(c);
                 int t = us.getId(login_field.getText());
                 Client cc = new Client(t, fullname_field.getText(), email_field.getText(), phone_field.getText(), login_field.getText(), password_field.getText(), address_field.getText(), Integer.parseInt(zipcode_field.getText()));

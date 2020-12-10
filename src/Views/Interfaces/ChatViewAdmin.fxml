@@ -14,7 +14,8 @@
                 <Menu fx:id="userMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
 
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="HomeByAziz" mnemonicParsing="false" text="Home"/>
+                        <MenuItem id="ClientMenu" mnemonicParsing="false" text="Profile"/>
 
                         <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
                         <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
@@ -26,9 +27,10 @@
                         <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin"><items>
-                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
-
+                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                    <items>
+                        <MenuItem id="HomeByAziz" mnemonicParsing="false" text="Home"/>
+                        <MenuItem id="ClientMenu" mnemonicParsing="false" text="Profile"/>
 
                         <MenuItem id="AdminMenu" mnemonicParsing="false" text="Users List"/>
 
@@ -56,26 +58,7 @@
         </MenuBar>
 
         <Accordion layoutX="330.0" layoutY="142.0"/>
-        <MenuBar layoutY="-2.0" prefHeight="25.0" prefWidth="796.0">
-            <menus>
-                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="FAQ">
-                    <items>
-                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
-                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About"/>
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
+
         <TableView fx:id="table_chat" layoutX="29.0" layoutY="142.0" prefHeight="328.0" prefWidth="738.0">
             <columns>
                 <TableColumn fx:id="col_question" prefWidth="246.0" text="Questions"/>

@@ -3,6 +3,7 @@ package api;
 import Beans.Coupon;
 import Beans.Order;
 import Beans.OrderItem;
+import Beans.User;
 import Utility.Credentials;
 import Utility.Global;
 import com.nexmo.client.NexmoClient;
@@ -66,6 +67,26 @@ public class SMS_Service implements Credentials {
                 return true;
             else
                 return false;
+        }
+        return false;
+    }
+    public boolean SendDeclineSMS (User user) {
+        NexmoClient client = NexmoClient.builder()
+                .apiKey(nexmo_apiKey)
+                .apiSecret(nexmo_apiSecret)
+                .build();
+        String text = "Hi " + user.getFullName() + "\nSorry but we are not interested in buying your book.";
+        SmsSubmissionResponse responses = client.getSmsClient().submitMessage(new TextMessage(
+                "BookStore",
+                "216"+ user.getTelephone(),
+                text));
+        for (SmsSubmissionResponseMessage response : responses.getMessages()) {
+            System.out.println(response.getStatus());
+            if (response.getStatus().equals("OK"))
+                return true;
+            else
+                return false;
+
         }
         return false;
     }

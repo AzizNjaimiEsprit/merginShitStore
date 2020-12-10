@@ -1,60 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@../Resources/css/style1.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Controllers.OfferListController">
+<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@../Resources/css/style1.css"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Views.Controllers.OfferListController">
     <children>
         <MenuBar fx:id="menuBar">
             <menus>
                 <Menu fx:id="userMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
-                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders" />
-                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library" />
-                        <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList" />
-                        <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket" />
-                        <MenuItem id="Coupon" mnemonicParsing="false" text="Coupon" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
+                        <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
+                        <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
+                        <MenuItem id="InterfaceBasket" mnemonicParsing="false" text="My Basket"/>
+                        <MenuItem id="Coupon" mnemonicParsing="false" text="Coupon"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin"><items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile" />
+                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                    <items>
+                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
 
 
-                        <MenuItem id="AdminMenu" mnemonicParsing="false" text="Users List" />
+                        <MenuItem id="AdminMenu" mnemonicParsing="false" text="Users List"/>
 
 
-                        <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List" />
-                        <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List" />
-                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders" />
-                        <MenuItem id="OfferList" mnemonicParsing="false" text="Offers" />
-                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List" />
-                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem id="logout" mnemonicParsing="false" text="Log out" />
-                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin" />
-                        <MenuItem id="quit" mnemonicParsing="false" text="Quit" />
+                        <MenuItem id="AddOnlineBook" mnemonicParsing="false" text="Book List"/>
+                        <MenuItem id="CategoryInterface" mnemonicParsing="false" text="Category List"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders"/>
+                        <MenuItem id="OfferList" mnemonicParsing="false" text="Offers"/>
+                        <MenuItem id="QuizViewAdmin" mnemonicParsing="false" text="Quiz List"/>
+                        <MenuItem id="ChatViewAdmin" mnemonicParsing="false" text="FAQ"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem id="logout" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem id="AdminOrdersListPage" mnemonicParsing="false" text="Orders Admin"/>
+                        <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Our Web Site" />
-                        <MenuItem mnemonicParsing="false" text="Contact" />
-                        <MenuItem mnemonicParsing="false" text="About BookStore" />
+                        <MenuItem mnemonicParsing="false" text="Our Web Site"/>
+                        <MenuItem mnemonicParsing="false" text="Contact"/>
+                        <MenuItem mnemonicParsing="false" text="About BookStore"/>
                     </items>
                 </Menu>
             </menus>
@@ -65,29 +61,32 @@
                     <children>
                         <Label layoutX="422.0" layoutY="45.0" text="Offer List">
                             <font>
-                                <Font name="System Bold" size="26.0" />
+                                <Font name="System Bold" size="26.0"/>
                             </font>
                         </Label>
-                        <TableView fx:id="offersTableView" layoutX="160.0" layoutY="119.0" prefHeight="350.0" prefWidth="637.0">
+                        <TableView fx:id="offersTableView" layoutX="160.0" layoutY="119.0" prefHeight="350.0"
+                                   prefWidth="637.0">
                             <columns>
-                                <TableColumn fx:id="colUser" prefWidth="124.0" text="User name" />
-                                <TableColumn fx:id="bookCol" prefWidth="121.0" text="Book name" />
-                                <TableColumn fx:id="authorCol" prefWidth="107.0" text="Author" />
-                                <TableColumn fx:id="priceCol" prefWidth="76.0" text="Price" />
-                                <TableColumn fx:id="acceptCol" prefWidth="107.0" text="Accept offer" />
-                                <TableColumn fx:id="declineOffer" prefWidth="101.0" text="Decline offer" />
+                                <TableColumn fx:id="colUser" prefWidth="124.0" text="User name"/>
+                                <TableColumn fx:id="bookCol" prefWidth="121.0" text="Book name"/>
+                                <TableColumn fx:id="authorCol" prefWidth="107.0" text="Author"/>
+                                <TableColumn fx:id="priceCol" prefWidth="76.0" text="Price"/>
+                                <TableColumn fx:id="acceptCol" prefWidth="107.0" text="Accept offer"/>
+                                <TableColumn fx:id="declineOffer" prefWidth="101.0" text="Decline offer"/>
                             </columns>
                         </TableView>
-                  <ImageView fitHeight="51.0" fitWidth="65.0" layoutX="754.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Resources/images/admin_logo.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="137.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Resources/images/offer-115863_115806.png" />
-                     </image>
-                  </ImageView>
+                        <ImageView fitHeight="51.0" fitWidth="65.0" layoutX="754.0" layoutY="39.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../Resources/images/admin_logo.png"/>
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="137.0" layoutY="34.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../Resources/images/offer-115863_115806.png"/>
+                            </image>
+                        </ImageView>
                     </children>
                 </Pane>
             </children>

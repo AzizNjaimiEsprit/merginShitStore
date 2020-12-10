@@ -193,6 +193,7 @@ public class AdminMenuController extends MenuBarController implements Initializa
         User u = new User(fullAdmin.getText(), emailAdmin.getText(), phoneAdmin.getText(), loginAdmin.getText(), passwrdAdmin.getText());
         if (testSaisieAdmin()) {
             if (passwrdAdmin.getText().equals(RpasswordAdmin.getText())) {
+                u.setRole(1);
                 us.AddAdmin(u);
                 afficherAlert("Account Admin created successfully!", Alert.AlertType.INFORMATION);
                 Visibility();

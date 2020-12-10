@@ -14,7 +14,9 @@
             <menus>
                 <Menu fx:id="userMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
-                        <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
+                        <MenuItem id="HomeByAziz" mnemonicParsing="false" text="Home"/>
+                        <MenuItem id="ClientMenu" mnemonicParsing="false" text="Profile"/>
+
                         <MenuItem id="ClientOrdersListPage" mnemonicParsing="false" text="My Orders"/>
                         <MenuItem id="OnlineLibrary" mnemonicParsing="false" text="My Library"/>
                         <MenuItem id="InterfaceWishList" mnemonicParsing="false" text="My WishList"/>
@@ -25,9 +27,10 @@
                         <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin"><items>
-                    <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
-
+                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
+                    <items>
+                        <MenuItem id="HomeByAziz" mnemonicParsing="false" text="Home"/>
+                        <MenuItem id="ClientMenu" mnemonicParsing="false" text="Profile"/>
 
                         <MenuItem id="AdminMenu" mnemonicParsing="false" text="Users List"/>
 
@@ -55,7 +58,8 @@
         </MenuBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <ImageView onMouseClicked="#backToBasket" fitHeight="70.0" fitWidth="89.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true"
+                <ImageView onMouseClicked="#backToBasket" fitHeight="70.0" fitWidth="89.0" layoutX="14.0" layoutY="14.0"
+                           pickOnBounds="true"
                            preserveRatio="true">
                     <image>
                         <Image url="@/Views/Resources/images/basket1.png"/>

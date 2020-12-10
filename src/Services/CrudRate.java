@@ -81,7 +81,7 @@ public class CrudRate {
         return null;
     }
 
-    public double getMoyRates(OnlineBook b) {
+    public double getMoyRates(Book b) {
         try {
             String req = "SELECT AVG(rate) FROM RATE  WHERE id_book= " + b.getId();
             PreparedStatement ps = cnn.prepareStatement(req);

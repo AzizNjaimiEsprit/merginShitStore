@@ -18,6 +18,11 @@ public class Library {
 
     }
 
+    public Library(User user, OnlineBook book) {
+        this.user = user;
+        this.book = book;
+    }
+
     public Library(User user, OnlineBook book, String status, int reachedPage, int quizScore) {
         this.user = user;
         this.book = book;
