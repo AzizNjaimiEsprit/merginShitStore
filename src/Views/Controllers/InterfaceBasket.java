@@ -194,4 +194,8 @@ public class InterfaceBasket extends MenuBarController implements Initializable 
             tableviewPanier.setItems(list);
         }
     }
+
+    public void validateBasket(MouseEvent mouseEvent) {
+        redirect("PassOrderPage");
+    }
 }

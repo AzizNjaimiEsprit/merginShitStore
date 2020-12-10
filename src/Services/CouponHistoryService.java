@@ -3,6 +3,7 @@ package Services;
 import Beans.Coupon;
 import Beans.CouponUsageHistory;
 import Beans.Order;
+import Dao.IService;
 import Utility.Singleton;
 
 import java.sql.Connection;

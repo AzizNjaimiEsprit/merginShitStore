@@ -2,6 +2,7 @@ package Services;
 
 import Beans.FidelityCard;
 import Beans.User;
+import Dao.IService;
 import Utility.*;
 
 import java.sql.Connection;
@@ -10,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class FidelityCardService implements IService<FidelityCard>{
+public class FidelityCardService implements IService<FidelityCard> {
     private final Connection cnx = Singleton.getConn();
 
     @Override

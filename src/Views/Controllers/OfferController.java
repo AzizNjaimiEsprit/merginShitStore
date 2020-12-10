@@ -4,6 +4,8 @@ import Beans.Offer;
 import Utility.Global;
 import Services.OfferService;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -16,8 +18,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class OfferController extends MenuBarController{
+public class OfferController extends MenuBarController implements Initializable {
 
     @FXML
     private TextField bookTitleField;
@@ -49,18 +53,12 @@ public class OfferController extends MenuBarController{
         if (file != null) {
             System.out.println(file.getAbsolutePath());
             bookCoverImage = ImageIO.read(file);
-
             System.out.println(bookCoverImage.getHeight(null));
             System.out.println(bookCoverImage.getWidth(null));
 
         }
     }
 
-    public void handleSendOfferButtonClicked (MouseEvent mouseEvent) {
-        String imagePath = "C:/wamp64/www/BookStore/Offers/" + String.valueOf(offerCRUD.countOffers() + 1) + ".jpg";
-        offerCRUD.add(new Offer(Global.getCurrentUser(), bookTitleField.getText(), descriptionField.getText(), authorNameField.getText(), Float.valueOf(priceField.getText()), imagePath));
-        saveImage();
-    }
 
     private void saveImage ()  {
         try {
@@ -82,7 +80,60 @@ public class OfferController extends MenuBarController{
         }
 
     }
+    public void handleSendOfferButtonClicked (MouseEvent mouseEvent) {
+        if (this.bookCoverImage == null) showErrorBox("book cover image");
+        else {
+            String imagePath = "C:/wamp64/www/BookStore/Offers/" + String.valueOf(offerCRUD.countOffers() + 1) + ".jpg";
+            offerCRUD.add(new Offer(Global.getCurrentUser(), bookTitleField.getText(), descriptionField.getText(), authorNameField.getText(), Float.valueOf(priceField.getText()), imagePath));
+            saveImage();
+        }
+    }
 
 
+    private void showErrorBox (String errorMsg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error !");
+        alert.setHeaderText("Input error");
+        alert.setContentText("Please verify " + errorMsg + " input");
+        alert.showAndWait();
+    }
+
+    private boolean verifyText (String text) {
+        if (text.trim().isEmpty()) return false;
+        char[] chars = text.toCharArray();
+        for (char c: chars) if (!Character.isAlphabetic(c) && c != ' ') return false;
+        return true;
+    }
+
+    private boolean verifyFloat (String text) {
+        if (text.trim().isEmpty()) return false;
+        char[] chars = text.toCharArray();
+        for (char c: chars) if (!Character.isDigit(c) && c != '.') return false;
+        return true;
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.bookTitleField.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (oldVal)
+                if (!verifyText(bookTitleField.getText())) showErrorBox("book title");
+        });
+
+        this.authorNameField.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (oldVal)
+                if (!verifyText(authorNameField.getText())) showErrorBox("author name");
+        });
+
+        this.descriptionField.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (oldVal)
+                if (!verifyText(descriptionField.getText())) showErrorBox("description");
+        });
+
+        this.priceField.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (oldVal)
+                if (!verifyFloat(priceField.getText())) showErrorBox("price");
+        });
+    }
 }
 

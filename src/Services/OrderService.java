@@ -2,6 +2,7 @@ package Services;
 
 import Beans.Order;
 import Beans.User;
+import Dao.IService;
 import Utility.Global;
 import Utility.Singleton;
 import api.MailingService;

@@ -11,7 +11,7 @@
     <children>
         <MenuBar fx:id="menuBar">
             <menus>
-                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="User">
+                <Menu fx:id="userMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="User">
                     <items>
                         <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
 
@@ -25,8 +25,7 @@
                         <MenuItem id="quit" mnemonicParsing="false" text="Quit"/>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" onAction="#handlemenuclick" text="Admin">
-                      <items>
+                <Menu fx:id="adminMenu" mnemonicParsing="false" onAction="#handlemenuclick" text="Admin"><items>
                     <MenuItem id="PassOrderPage" mnemonicParsing="false" text="Profile"/>
 
 

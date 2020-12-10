@@ -2,6 +2,7 @@ package Services;
 
 import Beans.Client;
 import Beans.User;
+import Dao.IServiceUser;
 import Utility.Singleton;
 import api.MailingService;
 import com.twilio.Twilio;

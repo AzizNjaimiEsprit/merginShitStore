@@ -116,7 +116,7 @@ public class ClientOrdersListController extends MenuBarController implements Ini
 
     @FXML
     public void clickItem(MouseEvent event) {
-        if (order_items.getSelectionModel().getSelectedIndex() == -1)
+        if (table.getSelectionModel().getSelectedIndex() == -1)
             return;
 
         if (event.getClickCount() == 1) //Checking click -> Fetch data into table 2

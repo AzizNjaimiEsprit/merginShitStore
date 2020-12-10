@@ -78,7 +78,7 @@ public class OrderItem {
     public String toString() {
         return "OrderItem{" +
                 "id=" + id +
-                ", orderId=" + order +
+                ", orderId=" + order.getId() +
                 ", quantity=" + quantity +
                 ", bookId=" + book.getId() +
                 '}';

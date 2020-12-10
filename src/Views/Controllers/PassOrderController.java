@@ -5,6 +5,7 @@ import Beans.Coupon;
 import Beans.Order;
 import Beans.OrderItem;
 import Services.CouponService;
+import Services.CrudBook;
 import Services.OrderItemService;
 import Services.OrderService;
 import Utility.Global;
@@ -40,6 +41,7 @@ public class PassOrderController extends MenuBarController implements Initializa
 
     OrderItemService orderItemService = new OrderItemService();
     OrderService orderService = new OrderService();
+    CrudBook crudBook = new CrudBook();
     CouponService couponService = new CouponService();
     Coupon payment_coupon = null;
     InputControlOrders inputControl = new InputControlOrders();
@@ -114,7 +116,8 @@ public class PassOrderController extends MenuBarController implements Initializa
 
     @FXML
     public void valider(MouseEvent event) {
-
+        if (checkBookDispo() == false)
+            return;
         String address = in_adrs.getText();
         String codePostal = in_codepostale.getText();
         String numTel = in_telephone.getText();
@@ -179,6 +182,10 @@ public class PassOrderController extends MenuBarController implements Initializa
     }
 
     public void validateCoupon(MouseEvent mouseEvent) {
+        if (in_coupon.getText().length()!=8){
+            in_coupon.clear();
+            return;
+        }
         label_discount.setVisible(true);
         amount_toPay.setVisible(true);
         discount_amount.setVisible(true);
@@ -198,5 +205,19 @@ public class PassOrderController extends MenuBarController implements Initializa
             discount_amount.setVisible(false);
             label_toPay.setVisible(false);
         }
+    }
+    public boolean checkBookDispo(){
+        for (OrderItem i : res){
+            Book book = crudBook.RecupererLivre(i.getBook());
+            if (book.getQuantity()<i.getQuantity()){
+                inputControl.showAlert("The requested quantity of "+i.getBookTitle()+" is invalid\n"+"There is only "+book.getQuantity()+" books in the stock");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void backToBasket(MouseEvent mouseEvent) {
+        redirect("InterfaceBasket");
     }
 }

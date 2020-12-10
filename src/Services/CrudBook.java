@@ -97,10 +97,12 @@ public class CrudBook {
 
 
 
-    public void ModifierQuantitéLivre(Book b) {
+    public void ModifierQuantitéLivre(Book b,int quantity) {
         if (b.equals(RecupererLivre(b))) {
             try {
-                PreparedStatement preparedStat = cnn.prepareStatement(" UPDATE BOOK SET quantity='" + b.getQuantity() + "' WHERE id=" + b.getId());
+                PreparedStatement preparedStat = cnn.prepareStatement("update BOOK set quantity = quantity + ? where id=?");
+                preparedStat.setInt(1,quantity);
+                preparedStat.setInt(2,b.getId());
                 //executing the request
                 preparedStat.executeUpdate();
                 System.out.println("La quantité du livre " + b.getId() + "est modifier ");

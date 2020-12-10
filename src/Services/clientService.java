@@ -1,6 +1,7 @@
 package Services;
 
 import Beans.Client;
+import Dao.IServiceClient;
 import Utility.Singleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

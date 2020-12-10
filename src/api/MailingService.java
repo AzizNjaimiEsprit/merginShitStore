@@ -74,10 +74,10 @@ public class MailingService implements Credentials {
 
             message.setText(text);
 
-            System.out.println("sending...");
+            System.out.println("sending receipt mail...");
             // Send message
             Transport.send(message);
-            System.out.println("Sent message successfully....");
+            System.out.println("Receipt mail Sent message successfully....");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
@@ -89,10 +89,10 @@ public class MailingService implements Credentials {
              message.addRecipient(Message.RecipientType.TO, new InternetAddress("samar.neji@esprit.tn"));
              message.setSubject("Alerte : Repture du stock ");
              message.setText(" Bonjour Admin \n Le Stock du livre N°" + B.getId() + " est en repture du stock " + "\n ** DETAIL DU LIVRE ** \n" + B.toString() + "`\n" + "Cordialement");
-             System.out.println("sending...");
+             System.out.println("Sending out of stock mail ...");
 
              Transport.send(message);
-             System.out.println("Sent message successfully....");
+             System.out.println("Out of stock mail Sent message successfully....");
          } catch (MessagingException mex) {
              mex.printStackTrace();
          }

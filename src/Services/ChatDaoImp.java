@@ -1,6 +1,7 @@
 package Services;
 
 import Beans.Chat;
+import Dao.ChatDao;
 import Utility.Singleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

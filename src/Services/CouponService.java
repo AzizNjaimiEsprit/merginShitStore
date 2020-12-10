@@ -2,6 +2,7 @@ package Services;
 
 import Beans.Coupon;
 import Beans.User;
+import Dao.IService;
 import Utility.*;
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -11,12 +12,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CouponService implements IService<Coupon>{
+public class CouponService implements IService<Coupon> {
     private final Connection cnx = Singleton.getConn();
 
     private String couponCode () {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#^*()-_=+[]}\\|;:\'\",<.>/?";
-        return RandomStringUtils.random( 10, characters );
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#*()-_=+|<.>/?";
+        return RandomStringUtils.random( 8, characters );
     }
 
     // This method used for testing...
@@ -154,19 +155,19 @@ public class CouponService implements IService<Coupon>{
             PreparedStatement statement = cnx.prepareStatement(request);
             statement.setString(1, coupon.getCode());
             ResultSet result = statement.executeQuery();
-            if (!result.next()) return true;
+            if (!result.next()) return false;
             else {
-                String req = "SELECT * FROM COUPON_USAGE_HISTORY WHERE coupon_code = ? and usage_type = 'payment'";
+                String req = "SELECT * FROM COUPON_USAGE_HISTORY WHERE coupon_code = ? and usage_type = 'PAYMENT'";
                 PreparedStatement st = cnx.prepareStatement(req);
                 st.setString(1, coupon.getCode());
                 ResultSet resultSet = st.executeQuery();
-                if (!resultSet.next()) return true;
-                else return false;
+                if (resultSet.next()) return false;
+                else return true;
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-        return false;
+        return true;
     }
 
 }

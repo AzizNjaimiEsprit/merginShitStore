@@ -3,6 +3,7 @@ package Services;
 import Beans.OnlineBook;
 import Beans.Question;
 import Beans.Quiz;
+import Dao.QuizDao;
 import Utility.Singleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

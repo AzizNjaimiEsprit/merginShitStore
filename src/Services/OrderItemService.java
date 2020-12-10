@@ -4,6 +4,7 @@ package Services;
 import Beans.Book;
 import Beans.Order;
 import Beans.OrderItem;
+import Dao.IService;
 import Utility.Singleton;
 
 import java.sql.Connection;
@@ -30,10 +31,8 @@ public class OrderItemService implements IService<OrderItem> {
             preparedStmt.setInt(3, item.getQuantity());
             preparedStmt.execute();
             System.out.println("Item Inseré Avec Succes");
-            item.getBook().setQuantity(item.getBook().getQuantity()- item.getQuantity());
-            crudBook.ModifierQuantitéLivre(item.getBook());
+            crudBook.ModifierQuantitéLivre(item.getBook(), item.getQuantity() * -1);
             reptureStock.verificationStock(item.getBook());
-            //crudBook.updateQuantity(bookid,amount);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,10 +41,12 @@ public class OrderItemService implements IService<OrderItem> {
     @Override
     public void update(OrderItem item) {
         try {
+            OrderItem before = get(item.getId());
             PreparedStatement preparedStmt = con.prepareStatement("update ORDER_ITEM set quantity=? where id=?");
             preparedStmt.setInt(1, item.getQuantity());
             preparedStmt.setInt(2, item.getId());
             preparedStmt.execute();
+            crudBook.ModifierQuantitéLivre(item.getBook(), before.getQuantity()- item.getQuantity());
             System.out.println("Item Modifié Avec Succes");
         } catch (Exception e) {
             System.err.println(e.getMessage());
